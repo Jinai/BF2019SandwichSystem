@@ -33,23 +33,23 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MealServices.DataLayerTests
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FacilityServices", "FacilityServices", "{0DDEE60A-8AE3-4255-9B3F-837F62049D4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityServices.BusinessLayer", "FacilityServices\FacilityServices.BusinessLayer\FacilityServices.BusinessLayer.csproj", "{9DC18D8C-D979-4680-84FE-D6FB55BC7C63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityServices.BusinessLayer", "FacilityServices\FacilityServices.BusinessLayer\FacilityServices.BusinessLayer.csproj", "{9DC18D8C-D979-4680-84FE-D6FB55BC7C63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic Layer", "Business Logic Layer", "{135D23C0-EC8E-45B5-8E48-D98B14A0F17E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityServices.BusinessLayerTests", "FacilityServices\FacilityServices.BusinessLayerTests\FacilityServices.BusinessLayerTests.csproj", "{D1AD10B5-310D-4877-ACC1-AF636E809D4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityServices.BusinessLayerTests", "FacilityServices\FacilityServices.BusinessLayerTests\FacilityServices.BusinessLayerTests.csproj", "{D1AD10B5-310D-4877-ACC1-AF636E809D4A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cross-Cutting", "Cross-Cutting", "{38F573E1-DCBB-450A-98D9-99E5602B2EBE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access Layer", "Data Access Layer", "{AEA097D8-4641-4D2E-919B-17DF2BE64BA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityServices.Shared", "FacilityServices\FacilityServices.Shared\FacilityServices.Shared.csproj", "{9E1D88A8-CCF7-4826-AD52-09A52728F2B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityServices.Shared", "FacilityServices\FacilityServices.Shared\FacilityServices.Shared.csproj", "{9E1D88A8-CCF7-4826-AD52-09A52728F2B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityServices.SharedTests", "FacilityServices\FacilityServices.SharedTests\FacilityServices.SharedTests.csproj", "{DF2F63D9-9CA7-4016-BFC4-ACD75152195A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityServices.SharedTests", "FacilityServices\FacilityServices.SharedTests\FacilityServices.SharedTests.csproj", "{DF2F63D9-9CA7-4016-BFC4-ACD75152195A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityServices.DataLayer", "FacilityServices\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj", "{3823F515-D90E-4F40-95F3-F62F5F61F225}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityServices.DataLayer", "FacilityServices\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj", "{3823F515-D90E-4F40-95F3-F62F5F61F225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacilityServices.DataLayerTests", "FacilityServices\FacilityServices.DataLayerTests\FacilityServices.DataLayerTests.csproj", "{6B2475E4-C154-4A6B-A6F6-A1FE588929A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FacilityServices.DataLayerTests", "FacilityServices\FacilityServices.DataLayerTests\FacilityServices.DataLayerTests.csproj", "{6B2475E4-C154-4A6B-A6F6-A1FE588929A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

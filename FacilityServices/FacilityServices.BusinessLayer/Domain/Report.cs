@@ -10,5 +10,6 @@ namespace FacilityServices.BusinessLayer
         public BreakType Break { get; set; }
         public Floor Floor { get; set; }
         public Room Romm { get; set; }
+        public string Comment { get; set; }
     }
 }
