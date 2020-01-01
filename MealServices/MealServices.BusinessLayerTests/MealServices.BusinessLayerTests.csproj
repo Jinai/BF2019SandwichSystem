@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2019.12.3.2</AssemblyVersion>
+    <AssemblyVersion>1912.18.0.1052</AssemblyVersion>
 
-    <FileVersion>2019.12.3.2</FileVersion>
+    <FileVersion>1912.18.0.1052</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Shared.csproj" />
     <ProjectReference Include="..\MealServices.BusinessLayer\MealServices.BusinessLayer.csproj" />
     <ProjectReference Include="..\MealServices.Shared\MealServices.Shared.csproj" />
   </ItemGroup>
