@@ -7,7 +7,7 @@ namespace FacilityServices.Shared.Extensions
 {
     public static class StringTranslatedExtensions
     {
-        public static T FillFromStringTranslated<T>(this T ToFill, StringTranslated stringTranslated)
+        public static T FillFromStringTranslated<T>(this T ToFill, MultiLanguageString stringTranslated)
             where T : IMultiLanguageFields
         {
             ToFill.NameEnglish = stringTranslated.English;
@@ -17,7 +17,7 @@ namespace FacilityServices.Shared.Extensions
             return ToFill;
         }
 
-        public static StringTranslated ExtractToStringTranslated(this IMultiLanguageFields Multilanguage)
-            => new StringTranslated(Multilanguage.NameEnglish, Multilanguage.NameFrench, Multilanguage.NameDutch);
+        public static MultiLanguageString ExtractToStringTranslated(this IMultiLanguageFields Multilanguage)
+            => new MultiLanguageString(Multilanguage.NameEnglish, Multilanguage.NameFrench, Multilanguage.NameDutch);
     }
 }

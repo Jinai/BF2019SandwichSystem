@@ -3,9 +3,9 @@ using FacilityServices.Shared.Enumerations;
 using System;
 namespace FacilityServices.Shared
 {
-    public class StringTranslated
+    public class MultiLanguageString
     {
-        public StringTranslated(string English, string French, string Dutch)
+        public MultiLanguageString(string English, string French, string Dutch)
         {
             this.English = English;
             this.French = French;
