@@ -1,11 +1,10 @@
-﻿using FacilityServices.Shared.Interfaces;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
-    public class Participant : IParticipant
+    public class Participant
     {
         public bool CreateReport() { return false; }
     }
