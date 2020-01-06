@@ -1,4 +1,5 @@
-﻿using OnlineServices.Shared.TranslationServices.TransfertObjects;
+﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,8 +8,8 @@ using System.Text;
 
 namespace FacilityServices.DataLayer.Entities
 {
-    [Table("Issue")]
-    public class IssueEF
+    [Table("Issues")]
+    public class IssueEF : IEntity<int>
     {
         [Key]
         public int Id { get; set; }

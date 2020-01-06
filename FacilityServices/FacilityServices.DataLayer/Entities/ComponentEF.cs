@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FacilityServices.DataLayer.Entities
 {
-    [Table("Component")]
+    [Table("Components")]
     public class ComponentEF
     {
         [Key]

@@ -1,11 +1,12 @@
-﻿using OnlineServices.Shared.FacilityServices.Enumerations;
+﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.FacilityServices.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FacilityServices.DataLayer.Entities
 {
-    [Table("Report")]
-    public class ReportEF
+    [Table("Reports")]
+    public class ReportEF : IEntity<int>
     {
         [Key]
         public int Id { get; set; }
