@@ -1,8 +1,9 @@
-﻿using OnlineServices.Shared.FacilityServices.Enumerations;
+﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.FacilityServices.Enumerations;
 
 namespace OnlineServices.Shared.FacilityServices.TransfertObjects
 {
-    public class IncidentTO
+    public class IncidentTO : IEntity<int>
     {
         public int Id { get; set; }
         public ComponentTO Component { get; set; }

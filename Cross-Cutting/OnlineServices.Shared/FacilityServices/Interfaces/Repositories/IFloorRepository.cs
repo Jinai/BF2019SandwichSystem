@@ -6,7 +6,8 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
-    public interface IFloorRepository //: IRepository<FloorTO, int>
+    public interface IFloorRepository : IRepositoryTemp<FloorTO, int>
     {
+        // Je ne sais pas si on a vraiment besoin de cette interface ? 
     }
 }
