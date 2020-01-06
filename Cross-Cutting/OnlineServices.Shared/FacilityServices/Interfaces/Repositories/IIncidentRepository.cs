@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
-    public interface IIncidentRepository : IRepository<IncidentTO, int>
+    public interface IIncidentRepository //: IRepository<IncidentTO, int>
     {
     }
 }

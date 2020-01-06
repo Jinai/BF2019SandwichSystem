@@ -3,7 +3,7 @@ using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class ComponentRepository : IComponentRepository, IRepository<ComponentTo, >
+    internal class ComponentRepository : IComponentRepository
     {
         private FacilityContext facilityContext;
 

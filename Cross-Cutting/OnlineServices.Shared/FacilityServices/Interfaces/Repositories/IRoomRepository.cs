@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
-    public interface IRoomRepository : IRepository<RoomTO, int>
+    public interface IRoomRepository //: IRepository<RoomTO, int>
     {
     }
 }
