@@ -9,7 +9,9 @@ namespace FacilityServices.DataLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string FrenchName { get; set; }
+        public string EnglishName { get; set; }
+        public string DeutchName { get; set; }
         public FloorEF FloorAttached { get; set; }
     }
 }
