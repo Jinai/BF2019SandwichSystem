@@ -10,29 +10,29 @@ namespace FacilityServices.DataLayer.Extensions
 {
     public static class ComponentExtensions
     {
-        public static ComponentTO ToTranfertObject(this ComponentEF component)
+        public static ComponentTO ToTranfertObject(this ComponentEF Component)
         {
-            if (component is null)
-                throw new ArgumentNullException(nameof(component));
+            if (Component is null)
+                throw new ArgumentNullException(nameof(Component));
 
             return new ComponentTO
             {
-                Id = component.Id,
-                Name = new MultiLanguageString(component.NameEnglish, component.NameFrench, component.NameDutch),
+                Id = Component.Id,
+                Name = new MultiLanguageString(Component.NameEnglish, Component.NameFrench, Component.NameDutch),
             };
         }
 
-        public static ComponentEF ToEF(this ComponentTO component)
+        public static ComponentEF ToEF(this ComponentTO Component)
         {
-            if (component is null)
-                throw new ArgumentNullException(nameof(component));
+            if (Component is null)
+                throw new ArgumentNullException(nameof(Component));
 
             return new ComponentEF
             {
-                Id = component.Id,
-                NameEnglish = component.Name.English,
-                NameFrench = component.Name.French,
-                NameDutch = component.Name.Dutch
+                Id = Component.Id,
+                NameEnglish = Component.Name.English,
+                NameFrench = Component.Name.French,
+                NameDutch = Component.Name.Dutch
             };
         }
 

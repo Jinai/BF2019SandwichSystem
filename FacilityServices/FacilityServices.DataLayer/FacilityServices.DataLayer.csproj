@@ -20,8 +20,4 @@
     <ProjectReference Include="..\FacilityServices.BusinessLayer\FacilityServices.BusinessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
-
 </Project>

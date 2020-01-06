@@ -9,12 +9,10 @@ using System.Text;
 namespace FacilityServices.DataLayer.Entities
 {
     [Table("Floors")]
-    public class FloorEF : IEntity<int>, IMultiLanguageNameFields
+    public class FloorEF : IEntity<int>
     {
         [Key]
         public int Id { get; set; }
-        public string NameFrench { get; set; }
-        public string NameEnglish { get; set; }
-        public string NameDutch { get; set; }
+        public int Name { get; set; }
     }
 }
