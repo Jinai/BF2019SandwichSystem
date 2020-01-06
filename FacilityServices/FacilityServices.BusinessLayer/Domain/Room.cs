@@ -8,7 +8,7 @@ namespace FacilityServices.BusinessLayer
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Floor FloorAttached { get; set; }
+        public Floor Floor { get; set; }
 
         public Room(string name)
         {
@@ -17,7 +17,7 @@ namespace FacilityServices.BusinessLayer
         public Room(string name, Floor floorAttached)
         {
             this.Name = name;
-            this.FloorAttached = floorAttached;
+            this.Floor = floorAttached;
         }
     }
 }

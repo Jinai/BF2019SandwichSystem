@@ -1,6 +1,6 @@
 ﻿namespace OnlineServices.Shared.FacilityServices.Enumerations
 {
-    public enum ReportStatus
+    public enum IncidentStatus
     {
         Accepted,
         Refused,
