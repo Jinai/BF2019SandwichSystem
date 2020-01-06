@@ -2,11 +2,11 @@
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class ReportRepository : IReportRepository
+    internal class IncidentRepository : IIncidentRepository
     {
         private FacilityContext facilityContext;
 
-        public ReportRepository(FacilityContext facilityContext)
+        public IncidentRepository(FacilityContext facilityContext)
         {
             this.facilityContext = facilityContext;
         }
