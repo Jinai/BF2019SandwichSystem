@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FacilityServices.DataLayer.Repositories
+namespace FacilityServices.DataLayer
 {
     public class FacilityContext : DbContext
     {
