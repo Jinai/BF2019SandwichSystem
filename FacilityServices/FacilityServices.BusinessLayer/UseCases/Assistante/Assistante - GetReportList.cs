@@ -6,9 +6,9 @@ namespace FacilityServices.BusinessLayer.UseCases.Assistante
 {
     public partial class Assistante
     {
-        public List<Report> GetReportList() 
+        public List<Incident> GetReportList() 
         {
-            return new List<Report> ();
+            return new List<Incident> ();
         }
     }
 }
