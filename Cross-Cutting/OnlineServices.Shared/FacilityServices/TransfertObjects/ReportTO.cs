@@ -4,7 +4,7 @@ using OnlineServices.Shared.DataAccessHelpers;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 
-namespace OnlineServices.Shared.MealServices.TransfertObjects
+namespace OnlineServices.Shared.FacilityServices.TransfertObjects
 {
     public class ReportTO
     {

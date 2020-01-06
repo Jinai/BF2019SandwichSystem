@@ -4,7 +4,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.TransfertObjects
 {
-    class FloorTO
+    public class FloorTO
     {
     }
 }

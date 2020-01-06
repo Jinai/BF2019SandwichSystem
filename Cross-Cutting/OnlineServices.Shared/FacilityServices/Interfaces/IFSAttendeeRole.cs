@@ -4,7 +4,8 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces
 {
-    class IReport
+    public interface IFSAttendeeRole
     {
+        public bool CreateReport();
     }
 }
