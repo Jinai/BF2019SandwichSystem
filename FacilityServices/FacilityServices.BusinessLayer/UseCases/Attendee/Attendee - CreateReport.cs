@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
-    public class Participant
+    public class Attendee
     {
         public bool CreateReport() { return false; }
     }
