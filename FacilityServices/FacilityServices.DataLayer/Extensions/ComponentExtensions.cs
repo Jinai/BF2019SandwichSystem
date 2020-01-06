@@ -1,4 +1,5 @@
-﻿using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using FacilityServices.DataLayer.Entities;
+using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace FacilityServices.DataLayer.Extensions
 
             if ((AttachedEF != default) && (DetachedEF != default))
             {
-                AttachedEF.IsAllergen = DetachedEF.IsAllergen;
+                AttachedEF.Room = DetachedEF.Room;
                 AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
             }
 
