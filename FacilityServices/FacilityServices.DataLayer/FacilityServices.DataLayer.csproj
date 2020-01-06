@@ -17,10 +17,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\MealServices\MealServices.Shared\MealServices.Shared.csproj" />
+    <ProjectReference Include="..\FacilityServices.BusinessLayer\FacilityServices.BusinessLayer.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Entities\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 
