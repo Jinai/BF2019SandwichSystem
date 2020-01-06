@@ -13,7 +13,6 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
         IRoomRepository RoomRepository { get; }
         IReportRepository ReportRepository { get; }
         
-        void Dispose();
         void Save();
     }
 }
