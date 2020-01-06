@@ -2,7 +2,7 @@
 
 namespace FacilityServices.BusinessLayer
 {
-    public class BreakType
+    public class Issue
     {
         public int Id { get; set; }
         public MultiLanguageString Name { get; set; }
