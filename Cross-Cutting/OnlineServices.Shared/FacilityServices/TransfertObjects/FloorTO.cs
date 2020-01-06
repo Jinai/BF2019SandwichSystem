@@ -6,5 +6,6 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
 {
     public class FloorTO
     {
+        public int Name { get; set; }
     }
 }
