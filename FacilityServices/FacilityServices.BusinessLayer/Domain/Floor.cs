@@ -6,6 +6,7 @@ namespace FacilityServices.BusinessLayer
 {
     public class Floor
     {
+        public int Id { get; set; }
         public int Name { get; set; }
     }
 }
