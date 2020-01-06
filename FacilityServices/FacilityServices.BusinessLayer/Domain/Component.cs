@@ -3,7 +3,7 @@ using System;
 
 namespace FacilityServices.BusinessLayer
 {
-    public class Object
+    public class Component
     {
         public int Id { get; set; }
         public MultiLanguageString Name { get; set; }
