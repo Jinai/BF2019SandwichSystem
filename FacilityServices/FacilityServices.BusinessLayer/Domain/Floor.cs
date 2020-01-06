@@ -8,5 +8,10 @@ namespace FacilityServices.BusinessLayer
     {
         public int Id { get; set; }
         public int Name { get; set; }
+
+        public Floor(int name)
+        {
+            this.Name = name;
+        }
     }
 }
