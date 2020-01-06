@@ -12,5 +12,6 @@ namespace FacilityServices.BusinessLayer
         public Issue Issue { get; set; }
         public string Comment { get; set; }
         public IncidentStatus Status { get; set; }
+
     }
 }
