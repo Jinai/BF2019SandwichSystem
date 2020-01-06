@@ -14,6 +14,6 @@ namespace FacilityServices.DataLayer.Entities
         public IssueEF Issue { get; set; }
         public RoomEF Room { get; set; }
         public string Comment { get; set; }
-        public ReportStatus Status { get; set; }
+        public IncidentStatus Status { get; set; }
     }
 }

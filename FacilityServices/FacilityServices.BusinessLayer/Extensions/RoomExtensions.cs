@@ -9,7 +9,7 @@ namespace FacilityServices.BusinessLayer.Extensions
     {
         public static Room ToDomain(this RoomTO RoomTO)
         {
-            return new Room(RoomTO.Name, RoomTO.FloorAttached.ToDomain())
+            return new Room(RoomTO.Name, RoomTO.Floor.ToDomain())
             {
                 Id = RoomTO.Id
             };

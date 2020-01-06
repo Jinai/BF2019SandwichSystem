@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public FloorTO FloorAttached { get; set; }
+        public FloorTO Floor { get; set; }
     }
 }
