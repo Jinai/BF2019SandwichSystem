@@ -33,9 +33,9 @@ namespace FacilityServices.DataLayer
         public IRoomRepository RoomRepository
             => roomRepository ??= new RoomRepository(facilityContext);
 
-        private IReportRepository reportRepository;
-        public IReportRepository ReportRepository
-            => reportRepository ??= new ReportRepository(facilityContext);
+        private IIncidentRepository incidentRepository;
+        public IIncidentRepository IncidentRepository
+            => incidentRepository ??= new IncidentRepository(facilityContext);
 
 
         private bool disposed = false;

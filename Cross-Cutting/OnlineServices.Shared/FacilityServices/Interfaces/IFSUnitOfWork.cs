@@ -9,7 +9,7 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
         IFloorRepository FloorRepository { get; }
         IIssueRepository IssueRepository { get; }
         IRoomRepository RoomRepository { get; }
-        IReportRepository ReportRepository { get; }
+        IIncidentRepository IncidentRepository { get; }
 
         void Save();
     }
