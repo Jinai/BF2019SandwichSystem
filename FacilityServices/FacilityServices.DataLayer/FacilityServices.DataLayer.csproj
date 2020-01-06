@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MealServices\MealServices.Shared\MealServices.Shared.csproj" />
+    <ProjectReference Include="..\..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Shared.csproj" />
     <ProjectReference Include="..\FacilityServices.BusinessLayer\FacilityServices.BusinessLayer.csproj" />
   </ItemGroup>
 

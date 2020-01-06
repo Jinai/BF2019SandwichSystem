@@ -1,4 +1,5 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.TranslationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@ using System.Text;
 namespace FacilityServices.DataLayer.Entities
 {
     [Table("Floors")]
-    public class FloorEF : IEntity<int>
+    public class FloorEF : IEntity<int>, IMultiLanguageNameFields
     {
         [Key]
         public int Id { get; set; }
