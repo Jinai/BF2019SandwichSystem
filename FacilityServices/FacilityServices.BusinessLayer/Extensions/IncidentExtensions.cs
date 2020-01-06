@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FacilityServices.BusinessLayer.Extensions
 {
-    class ReportExtensions
+    class IncidentExtensions
     {
     }
 }
