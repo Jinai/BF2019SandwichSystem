@@ -1,20 +1,16 @@
 ﻿using OnlineServices.Shared.FacilityServices.Enumerations;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces
 {
     public interface IFSAssistantRole : IFSAttendeeRole
     {
-        public bool AddCommentToReport(string CommentToAdd, int ReportId);
-        public bool AddComponent(ComponentTO ComponentToAdd);
-        public bool AddFloor(FloorTO FloorToAdd);
-        public bool AddRoom(RoomTO RoomToAdd);
-        public bool AddIssue (IssueTO IssueToAdd);
-        public List<ReportTO> GetReportList();
-        public bool ChangeReportStatus(ReportStatus StatusToSubmit, int ReportId);
+        public bool AddCommentToReport(string commentToAdd, int reportId);
+        public bool AddComponent(ComponentTO componentToAdd);
+        public bool AddFloor(FloorTO floorToAdd);
+        public bool AddRoom(RoomTO roomToAdd);
+        public bool AddIssue(IssueTO issueToAdd);
+        public bool ChangeReportStatus(ReportStatus statusToSubmit, int reportId);
 
     }
 }

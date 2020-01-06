@@ -1,7 +1,5 @@
 ﻿using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces
 {
@@ -12,7 +10,7 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
         IIssueRepository IssueRepository { get; }
         IRoomRepository RoomRepository { get; }
         IReportRepository ReportRepository { get; }
-        
+
         void Save();
     }
 }

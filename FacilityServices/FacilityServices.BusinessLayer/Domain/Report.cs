@@ -7,8 +7,9 @@ namespace FacilityServices.BusinessLayer
 {
     public class Report
     {
-        public Component Object { get; set; }
-        public Issue Break { get; set; }
+        public int Id { get; set; }
+        public Component Component { get; set; }
+        public Issue Issue { get; set; }
         public Room Room { get; set; }
         public string Comment { get; set; }
         public ReportStatus Status { get; set; }
