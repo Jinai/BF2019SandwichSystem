@@ -7,5 +7,10 @@ namespace FacilityServices.BusinessLayer
         public int Id { get; set; }
         public MultiLanguageString Name { get; set; }
 
+        public Component (MultiLanguageString name)
+        {
+            this.Name = name;
+        }
+
     }
 }
