@@ -40,18 +40,46 @@ namespace FacilityServices.DataLayer.Repositories
         }
 
         public bool Remove(IssueTO entity)
-        {
-            throw new System.NotImplementedException();
-        }
+        => Remove(entity.Id);
 
         public bool Remove(int Id)
         {
-            throw new System.NotImplementedException();
+            if (!facilityContext.Issues.Any(x => x.Id == Id))
+                throw new Exception($"IssueRepository. Delete(IssueId = {Id}) no record to delete.");
+
+            var ReturnValue = false;
+
+            var issue = facilityContext.Floors.FirstOrDefault(x => x.Id == Id);
+            if (issue != default)
+            {
+                try
+                {
+                    facilityContext.Floors.Remove(issue);
+                    ReturnValue = true;
+                }
+                catch (Exception)
+                {
+                    ReturnValue = false;
+                }
+            }
+
+            return ReturnValue;
         }
 
         public IssueTO Update(IssueTO Entity)
         {
-            throw new System.NotImplementedException();
+            if (!facilityContext.Issues.Any(x => x.Id == Entity.Id))
+                throw new Exception($"IssueRepository. Update(IssueTransfertObject) no record to update.");
+
+            var attachedIssues = facilityContext.Issues
+                .FirstOrDefault(x => x.Id == Entity.Id);
+
+            if (attachedIssues != default)
+            {
+                attachedIssues.UpdateFromDetached(Entity.ToEF());
+            }
+
+            return facilityContext.Issues.Update(attachedIssues).Entity.ToTransfertObject();
         }
     }
 }

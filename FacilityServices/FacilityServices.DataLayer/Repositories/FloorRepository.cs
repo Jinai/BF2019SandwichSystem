@@ -71,7 +71,7 @@ namespace FacilityServices.DataLayer.Repositories
         public FloorTO Update(FloorTO Entity)
         {
             if (!facilityContext.Floors.Any(x => x.Id == Entity.Id))
-                throw new Exception($"MealRepository. Update(MealTransfertObject) no record to update.");
+                throw new Exception($"FloorRepository. Update(FloorTransfertObject) no record to update.");
 
             var attachedFloors = facilityContext.Floors
                 .FirstOrDefault(x => x.Id == Entity.Id);
