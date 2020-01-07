@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class RoomRepository : IRoomRepository
+    public class RoomRepository : IRoomRepository
     {
         private FacilityContext facilityContext;
 
@@ -24,6 +24,11 @@ namespace FacilityServices.DataLayer.Repositories
         }
 
         public RoomTO GetByID(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<RoomTO> GetRoomsByFloors(FloorTO Floor)
         {
             throw new System.NotImplementedException();
         }

@@ -1,36 +1,58 @@
-﻿using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
+﻿using FacilityServices.DataLayer.Extensions;
+using Microsoft.EntityFrameworkCore;
+using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class FloorRepository : IFloorRepository
+    public class FloorRepository : IFloorRepository
     {
-        private FacilityContext facilityContext;
+        private readonly FacilityContext facilityContext;
 
-        public FloorRepository(FacilityContext facilityContext)
+        public FloorRepository(FacilityContext ContextIoC)
         {
-            this.facilityContext = facilityContext;
+            this.facilityContext = ContextIoC ?? throw new ArgumentNullException($"{nameof(ContextIoC)} in IngredientRepository");
         }
 
-        public FloorTO Add(FloorTO Entity)
+        public FloorTO Add(FloorTO entity)
         {
-            throw new System.NotImplementedException();
+            if (entity is null)
+                throw new ArgumentNullException(nameof(entity));
+
+            return facilityContext.Floors
+                .Add(entity.ToEF())
+                .Entity
+                .ToTranfertObject();
         }
 
         public IEnumerable<FloorTO> GetAll()
-        {
-            throw new System.NotImplementedException();
-        }
+            => facilityContext.Floors
+            .Select(x => x.ToTranfertObject())
+            .ToList();
+
 
         public FloorTO GetByID(int Id)
         {
-            throw new System.NotImplementedException();
+            return facilityContext.Floors
+            .FirstOrDefault(x => x.Id == Id)
+            .ToTranfertObject();
         }
+        
 
         public bool Remove(FloorTO entity)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                facilityContext.Floors.Remove(entity.ToEF());
+                return true;
+            }
+            catch (Exception Ex)
+            {
+                throw;
+            }
         }
 
         public bool Remove(int Id)

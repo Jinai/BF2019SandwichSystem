@@ -1,4 +1,5 @@
 ﻿using FacilityServices.DataLayer.Entities;
+using OnlineServices.Shared.FacilityServices.Exceptions;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static FloorTO ToTranfertObject(this FloorEF Floor)
         {
             if (Floor is null)
-                throw new ArgumentNullException(nameof(Floor));
+                throw new NotExistingFloorException(nameof(Floor));
 
             return new FloorTO
             {
@@ -23,7 +24,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static FloorEF ToEF(this FloorTO Floor)
         {
             if (Floor is null)
-                throw new ArgumentNullException(nameof(Floor));
+                throw new NotExistingFloorException(nameof(Floor));
 
             return new FloorEF()
             {
