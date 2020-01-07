@@ -10,7 +10,7 @@ namespace FacilityServices.DataLayer.Extensions
 {
     public static class ComponentExtensions
     {
-        public static ComponentTO ToTranfertsObject(this ComponentEF Component)
+        public static ComponentTO ToTransfertObject(this ComponentEF Component)
         {
             if (Component is null)
                 throw new ArgumentNullException(nameof(Component));

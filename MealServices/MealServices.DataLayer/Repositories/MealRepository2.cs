@@ -31,7 +31,7 @@ namespace MealServices.DataLayer.Repositories
             .Include(x => x.Supplier)
             .Include(x => x.MealsComposition)
             .Where(x => x.Supplier.Id == Supplier.Id)
-            .Select(x => x.ToTranfertsObject())
+            .Select(x => x.ToTransfertObject())
 
             .ToList();
 
@@ -47,7 +47,7 @@ namespace MealServices.DataLayer.Repositories
 
         public override MealTO ToTransfertObject(MealEF entity)
         {
-            return entity.ToTranfertsObject();
+            return entity.ToTransfertObject();
         }
 
         public override MealEF UpdateFromDetached(MealEF AttachedEF, MealEF DetachedEF)
