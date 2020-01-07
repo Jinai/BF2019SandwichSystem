@@ -1,10 +1,11 @@
 ﻿using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using System;
 using System.Collections.Generic;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class FloorRepository : IFloorRepository
+    public class FloorRepository : IFloorRepository
     {
         private FacilityContext facilityContext;
 
@@ -15,32 +16,32 @@ namespace FacilityServices.DataLayer.Repositories
 
         public FloorTO Add(FloorTO Entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public IEnumerable<FloorTO> GetAll()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public FloorTO GetByID(int Id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Remove(FloorTO entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Remove(int Id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public FloorTO Update(FloorTO Entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

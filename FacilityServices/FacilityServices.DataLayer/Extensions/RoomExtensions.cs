@@ -19,6 +19,7 @@ namespace FacilityServices.DataLayer.Extensions
             return new RoomTO
             {
                 Id = Room.Id,
+                Floor = Room.Floor.ToTranfertObject(),
                 Name = new MultiLanguageString(Room.NameEnglish, Room.NameFrench, Room.NameDutch),
             };
         }
@@ -31,6 +32,7 @@ namespace FacilityServices.DataLayer.Extensions
             return new RoomEF()
             {
                 Id = Room.Id,
+                Floor = Room.Floor.ToEF(),
                 NameEnglish = Room.Name.English,
                 NameFrench = Room.Name.French,
                 NameDutch = Room.Name.Dutch,
