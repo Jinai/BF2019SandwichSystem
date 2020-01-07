@@ -46,16 +46,17 @@ namespace FacilityServices.DataLayer.Repositories
 
         public bool Remove(int Id)
         {
-            var ReturnValue = false;
-            if (!facilityContext.Rooms.Any(x => x.Id == Id))
+            if (!facilityContext.Floors.Any(x => x.Id == Id))
                 throw new Exception($"FloorRepository. Delete(FloorId = {Id}) no record to delete.");
 
-            var floor = facilityContext.Rooms.FirstOrDefault(x => x.Id == Id);
+            var ReturnValue = false;
+
+            var floor = facilityContext.Floors.FirstOrDefault(x => x.Id == Id);
             if (floor != default)
             {
                 try
                 {
-                    facilityContext.Rooms.Remove(floor);
+                    facilityContext.Floors.Remove(floor);
                     ReturnValue = true;
                 }
                 catch (Exception)
