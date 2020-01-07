@@ -1,11 +1,13 @@
-﻿using OnlineServices.Shared.TranslationServices.TransfertObjects;
+﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.TranslationServices;
+using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FacilityServices.DataLayer.Entities
 {
     [Table("Components")]
-    public class ComponentEF
+    public class ComponentEF : IEntity<int>, IMultiLanguageNameFields
     {
         [Key]
         public int Id { get; set; }
