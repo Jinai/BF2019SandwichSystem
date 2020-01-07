@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,14 +8,14 @@ namespace FacilityServices.BusinessLayer
     public class Room
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        public MultiLanguageString Name { get; set; }
         public Floor Floor { get; set; }
 
-        public Room(string name)
+        public Room(MultiLanguageString name)
         {
             this.Name = name;
         }
-        public Room(string name, Floor floorAttached)
+        public Room(MultiLanguageString name, Floor floorAttached)
         {
             this.Name = name;
             this.Floor = floorAttached;

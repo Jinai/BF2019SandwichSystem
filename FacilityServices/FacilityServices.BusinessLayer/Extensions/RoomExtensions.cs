@@ -15,14 +15,14 @@ namespace FacilityServices.BusinessLayer.Extensions
             };
         }
 
-
-        //public static RoomTO ToTransfertObject(this Room Room)
-        //{
-
-        //}
-        //public static RoomTO ToTransfertObject(this Room Room, Floor Floor)
-        //{
-
-        //}
+        public static RoomTO ToTransfertObject(this Room Room)
+        {
+            return new RoomTO
+            {
+                Id = Room.Id,
+                Name = Room.Name,
+                Floor = Room.Floor.ToTransfertObject()
+            };
+        }
     }
 }
