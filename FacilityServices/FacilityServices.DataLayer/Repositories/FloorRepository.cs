@@ -70,7 +70,21 @@ namespace FacilityServices.DataLayer.Repositories
 
         public FloorTO Update(FloorTO Entity)
         {
-            throw new NotImplementedException();
+            if (!facilityContext.Floors.Any(x => x.Id == Entity.Id))
+                throw new Exception($"MealRepository. Update(MealTransfertObject) no record to update.");
+
+            var attachedFloors = facilityContext.Floors
+                .FirstOrDefault(x => x.Id == Entity.Id);
+
+            if (attachedFloors != default)
+            {
+                attachedFloors.UpdateFromDetached(Entity.ToEF());
+                //attachedFloors.FloorsComposition = attachedFloors.FloorsComposition
+                //    .ToList()
+                //    .UpdateListFromDetached(Entity.ToEF().FloorsComposition.ToList());
+            }
+
+            return facilityContext.Floors.Update(attachedFloors).Entity.ToTransfertObject();
         }
     }
 }

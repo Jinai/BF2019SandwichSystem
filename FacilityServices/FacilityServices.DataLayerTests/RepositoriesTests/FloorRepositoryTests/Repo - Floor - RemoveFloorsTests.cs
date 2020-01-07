@@ -23,33 +23,20 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
-                //ARRANGE
                 var FloorToUseInTest = new FloorTO
-                {
-                    Id = 1,
-                    Name = 0
-                };
-
+                { Name = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                {
-                    Id = 2,
-                    Name = -1
-                };
+                { Name = -1 };
                 var FloorToUseInTest3 = new FloorTO
-                {
-                    Id = 3,
-                    Name = -2
-                };
+                { Name = -2 };
 
 
                 var floorRepository = new FloorRepository(memoryCtx);
 
-                //ACT
                 floorRepository.Add(FloorToUseInTest);
                 floorRepository.Add(FloorToUseInTest2);
                 memoryCtx.SaveChanges();
 
-                //ASSERT
                 Assert.ThrowsException<Exception>(() => floorRepository.Remove(FloorToUseInTest3));
             }
         }
@@ -62,22 +49,13 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
-                //ARRANGE
                 var FloorToUseInTest = new FloorTO
-                {
-                   //Id = 1,
-                    Name = 0
-                };
-
+                { Name = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                {
-                   // Id = 2,
-                    Name = -1
-                };
-
+                { Name = -1 };
+              
                 var floorRepository = new FloorRepository(memoryCtx);
 
-                //ACT
                 var f1 = floorRepository.Add(FloorToUseInTest);
                 var f2 = floorRepository.Add(FloorToUseInTest2);
                 memoryCtx.SaveChanges();
@@ -100,33 +78,20 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
-                //ARRANGE
                 var FloorToUseInTest = new FloorTO
-                {
-                    Id = 1,
-                    Name = 0
-                };
-
+                { Name = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                {
-                    Id = 2,
-                    Name = -1
-                };
+                { Name = -1 };
                 var FloorToUseInTest3 = new FloorTO
-                {
-                    Id = 3,
-                    Name = -2
-                };
+                { Name = -2 };
 
 
                 var floorRepository = new FloorRepository(memoryCtx);
 
-                //ACT
                 floorRepository.Add(FloorToUseInTest);
                 floorRepository.Add(FloorToUseInTest2);
                 memoryCtx.SaveChanges();
 
-                //ASSERT
                 Assert.ThrowsException<Exception>(() => floorRepository.Remove(3));
             }
         }
@@ -139,28 +104,15 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
-                //ARRANGE
                 var FloorToUseInTest = new FloorTO
-                {
-                    //Id = 1,
-                    Name = 0
-                };
-
+                { Name = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                {
-                    //Id = 2,
-                    Name = -1
-                };
+                { Name = -1 };
                 var FloorToUseInTest3 = new FloorTO
-                {
-                    //Id = 3,
-                    Name = -2
-                };
-
+                { Name = -2 };
 
                 var floorRepository = new FloorRepository(memoryCtx);
 
-                //ACT
                 floorRepository.Add(FloorToUseInTest);
                 floorRepository.Add(FloorToUseInTest2);
                 memoryCtx.SaveChanges();
