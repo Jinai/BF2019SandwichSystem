@@ -11,6 +11,7 @@ namespace FacilityServices.BusinessLayer
         public Component Component { get; set; }
         public Issue Issue { get; set; }
         public string Comment { get; set; }
+        public DateTime SubmitDate { get; set; }
         public IncidentStatus Status { get; set; }
 
     }

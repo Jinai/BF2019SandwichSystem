@@ -15,7 +15,9 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Component = IncidentTO.Component.ToDomain(),
                 Issue = IncidentTO.Issue.ToDomain(),
                 Comment = IncidentTO.Comment,
-                Status = IncidentTO.Status
+                Status = IncidentTO.Status,
+                SubmitDate = IncidentTO.SubmitDate
+               
             };
         }
 
@@ -27,7 +29,8 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Component = Incident.Component.ToTransfertObject(),
                 Issue = Incident.Issue.ToTransfertObject(),
                 Comment = Incident.Comment,
-                Status = Incident.Status
+                Status = Incident.Status,
+                SubmitDate = Incident.SubmitDate
             };
         }
     }

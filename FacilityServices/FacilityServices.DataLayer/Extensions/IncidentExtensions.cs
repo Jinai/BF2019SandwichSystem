@@ -21,6 +21,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Issue = Incident.Issue.ToTranfertObject(),
                 Comment = Incident.Comment,
                 Status = Incident.Status,
+                SubmitDate = Incident.SubmitDate
             };
         }
 
@@ -36,6 +37,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Issue = Incident.Issue.ToEF(),
                 Comment = Incident.Comment,
                 Status = Incident.Status,
+                SubmitDate = Incident.SubmitDate
             };
         }
     }

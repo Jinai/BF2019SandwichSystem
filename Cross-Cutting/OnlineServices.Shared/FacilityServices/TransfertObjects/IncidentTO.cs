@@ -1,5 +1,6 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
 using OnlineServices.Shared.FacilityServices.Enumerations;
+using System;
 
 namespace OnlineServices.Shared.FacilityServices.TransfertObjects
 {
@@ -9,6 +10,7 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
         public ComponentTO Component { get; set; }
         public IssueTO Issue { get; set; }
         public string Comment { get; set; }
+        public DateTime SubmitDate { get; set; }
         public IncidentStatus Status { get; set; }
     }
 

@@ -8,5 +8,6 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
     public interface IRoomRepository : IRepositoryTemp<RoomTO, int>
     {
+        List<RoomTO> GetRoomsByFloors(FloorTO Floor);
     }
 }
