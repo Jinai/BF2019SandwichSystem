@@ -19,6 +19,7 @@ namespace FacilityServices.DataLayer.Extensions
             {
                 Id = Issue.Id,
                 Name = new MultiLanguageString(Issue.NameEnglish, Issue.NameFrench, Issue.NameDutch),
+                Description = Issue.Description
             };
         }
 
@@ -32,7 +33,8 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = Issue.Id,
                 NameEnglish = Issue.Name.English,
                 NameFrench = Issue.Name.French,
-                NameDutch = Issue.Name.Dutch
+                NameDutch = Issue.Name.Dutch,
+                Description = Issue.Description
             };
         }
 
