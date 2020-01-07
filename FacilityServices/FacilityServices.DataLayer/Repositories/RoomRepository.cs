@@ -25,7 +25,9 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(Entity));
             }
 
-            return facilityContext.Rooms.Add(Entity.ToEF()).Entity.ToTranfertObject();
+            var tracking = facilityContext.Rooms.Add(Entity.ToEF());
+            tracking.State = EntityState.Added;
+            return tracking.Entity.ToTranfertObject();
         }
 
         public IEnumerable<RoomTO> GetAll()
@@ -37,6 +39,11 @@ namespace FacilityServices.DataLayer.Repositories
 
         public RoomTO GetByID(int Id)
         {
+            if (Id <= 0)
+            {
+                throw new ArgumentException("The ID isn't in the correct format!");
+            }
+
             return facilityContext.Rooms
                                   .AsNoTracking()
                                   .Include(r => r.Floor)
@@ -45,6 +52,11 @@ namespace FacilityServices.DataLayer.Repositories
 
         public List<RoomTO> GetRoomsByFloors(FloorTO Floor)
         {
+            if (Floor is null)
+            {
+                throw new ArgumentNullException(nameof(Floor));
+            }
+
             return facilityContext.Rooms
                                   .Include(r => r.Floor)
                                   .Where(r => r.Floor.Id == Floor.Id)
@@ -66,6 +78,11 @@ namespace FacilityServices.DataLayer.Repositories
 
         public bool Remove(int Id)
         {
+            if (Id <= 0)
+            {
+                throw new ArgumentException("The ID isn't in the correct format!");
+            }
+
             return Remove(GetByID(Id));
         }
 
@@ -76,10 +93,10 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(Entity));
             }
 
-            var EFEntity = GetEFEntity<RoomEF>(Entity.Id);
-            facilityContext.Entry(EFEntity).State = EntityState.Modified;
+            facilityContext.Entry(Entity.ToEF()).State = EntityState.Modified;
+            //var EFEntity = GetEFEntity<RoomEF>(Entity.Id);
 
-            return EFEntity.ToTranfertObject();
+            return Entity;
         }
 
         private T GetEFEntity<T>(int Id) where T : class
