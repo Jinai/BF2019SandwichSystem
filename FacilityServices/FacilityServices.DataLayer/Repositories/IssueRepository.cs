@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class IssueRepository : IIssueRepository
+    public class IssueRepository : IIssueRepository
     {
         private FacilityContext facilityContext;
 

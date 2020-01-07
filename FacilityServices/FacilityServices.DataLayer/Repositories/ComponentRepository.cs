@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class ComponentRepository : IComponentRepository
+    public class ComponentRepository : IComponentRepository
     {
         private FacilityContext facilityContext;
 

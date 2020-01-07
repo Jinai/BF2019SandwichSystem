@@ -32,7 +32,6 @@ namespace MealServices.DataLayer.Repositories
             .Include(x => x.MealsComposition)
             .Where(x => x.Supplier.Id == Supplier.Id)
             .Select(x => x.ToTransfertObject())
-
             .ToList();
 
         public List<MealTO> GetMealsWithoutIngredient(List<IngredientTO> Ingredients)
