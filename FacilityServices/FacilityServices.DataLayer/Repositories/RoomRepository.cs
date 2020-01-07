@@ -1,5 +1,4 @@
-﻿using FacilityServices.DataLayer.Entities;
-using FacilityServices.DataLayer.Extensions;
+﻿using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
 using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
@@ -94,14 +93,8 @@ namespace FacilityServices.DataLayer.Repositories
             }
 
             facilityContext.Entry(Entity.ToEF()).State = EntityState.Modified;
-            //var EFEntity = GetEFEntity<RoomEF>(Entity.Id);
 
             return Entity;
-        }
-
-        private T GetEFEntity<T>(int Id) where T : class
-        {
-            return facilityContext.Set<T>().Find(Id);
         }
     }
 }

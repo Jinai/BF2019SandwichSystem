@@ -5,11 +5,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {

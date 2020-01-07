@@ -23,8 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MealServices\MealServices.Shared\MealServices.Shared.csproj" />
-    <ProjectReference Include="..\..\UserServices\UserServices.DataLayer\UserServices.DataLayer.csproj" />
     <ProjectReference Include="..\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj" />
   </ItemGroup>
 
