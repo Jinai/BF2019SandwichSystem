@@ -17,30 +17,28 @@ namespace FacilityServices.DataLayer.Repositories
             this.facilityContext = ContextIoC ?? throw new ArgumentNullException($"{nameof(ContextIoC)} in IngredientRepository");
         }
 
-        public FloorTO Add(FloorTO entity)
+        public FloorTO Add(FloorTO Entity)
         {
-            if (entity is null)
-                throw new ArgumentNullException(nameof(entity));
+            if (Entity is null)
+                throw new ArgumentNullException(nameof(Entity));
 
             return facilityContext.Floors
-                .Add(entity.ToEF())
+                .Add(Entity.ToEF())
                 .Entity
-                .ToTranfertObject();
+                .ToTransfertObject();
         }
 
         public IEnumerable<FloorTO> GetAll()
-            => facilityContext.Floors
-            .Select(x => x.ToTranfertObject())
+        => facilityContext.Floors
+            .Select(x => x.ToTransfertObject())
             .ToList();
-
 
         public FloorTO GetByID(int Id)
         {
             return facilityContext.Floors
             .FirstOrDefault(x => x.Id == Id)
-            .ToTranfertObject();
+            .ToTransfertObject();
         }
-        
 
         public bool Remove(FloorTO entity)
         {
@@ -57,12 +55,12 @@ namespace FacilityServices.DataLayer.Repositories
 
         public bool Remove(int Id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public FloorTO Update(FloorTO Entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

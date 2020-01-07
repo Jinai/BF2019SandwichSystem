@@ -7,7 +7,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.DataAccessHelpers
 {
-    public abstract class GenericRepositoryTO<TEntity, TTransfertObject, TIdType> : IRepository<TTransfertObject, TIdType>
+    public abstract class GenericRepositoryTO<TEntity, TTransfertObject, TIdType> : IRepositoryToDelete<TTransfertObject, TIdType>
         where TEntity : class, IEntity<TIdType>
         where TTransfertObject : class, IEntity<TIdType>
     {
@@ -18,12 +18,12 @@ namespace OnlineServices.Shared.DataAccessHelpers
             this.dbContext = dBContext;
         }
 
-        void IRepository<TTransfertObject, TIdType>.Create(TTransfertObject entity)
+        void IRepositoryToDelete<TTransfertObject, TIdType>.Create(TTransfertObject entity)
         {
             dbContext.Set<TEntity>().Add(ToEF(entity));
         }
 
-        void IRepository<TTransfertObject, TIdType>.Delete(TTransfertObject entity)
+        void IRepositoryToDelete<TTransfertObject, TIdType>.Delete(TTransfertObject entity)
         {
             dbContext.Set<TEntity>().Remove(ToEF(entity));
         }
@@ -33,7 +33,7 @@ namespace OnlineServices.Shared.DataAccessHelpers
         //    return EqualityComparer<TIdType>.Default.Equals(a,b);
         //}
 
-        void IRepository<TTransfertObject, TIdType>.Delete(TIdType id)
+        void IRepositoryToDelete<TTransfertObject, TIdType>.Delete(TIdType id)
         {
             var entityToDelete = dbContext.Set<TEntity>().FirstOrDefault(e => e.Id.Equals(id));
             if (entityToDelete != null)
@@ -42,18 +42,18 @@ namespace OnlineServices.Shared.DataAccessHelpers
             }
         }
 
-        void IRepository<TTransfertObject, TIdType>.Edit(TTransfertObject entity)
+        void IRepositoryToDelete<TTransfertObject, TIdType>.Edit(TTransfertObject entity)
         {
             var dbEntity = dbContext.Set<TEntity>().FirstOrDefault(e => e.Id.Equals(entity.Id));
             dbEntity = UpdateFromDetached(dbEntity, ToEF(entity));
         }
 
-        IEnumerable<TTransfertObject> IRepository<TTransfertObject, TIdType>.GetAll()
+        IEnumerable<TTransfertObject> IRepositoryToDelete<TTransfertObject, TIdType>.GetAll()
         {
             return dbContext.Set<TEntity>().Select(x => ToTransfertObject(x));
         }
 
-        IEnumerable<TTransfertObject> IRepository<TTransfertObject, TIdType>.Filter(Func<TTransfertObject, bool> predicate)
+        IEnumerable<TTransfertObject> IRepositoryToDelete<TTransfertObject, TIdType>.Filter(Func<TTransfertObject, bool> predicate)
         {
 
             return dbContext.Set<TEntity>()
@@ -61,12 +61,12 @@ namespace OnlineServices.Shared.DataAccessHelpers
                 .Select(x => ToTransfertObject(x));
         }
 
-        TTransfertObject IRepository<TTransfertObject, TIdType>.GetById(TIdType id)
+        TTransfertObject IRepositoryToDelete<TTransfertObject, TIdType>.GetById(TIdType id)
         {
             return ToTransfertObject(dbContext.Set<TEntity>().FirstOrDefault(e => e.Id.Equals(id)));
         }
 
-        int IRepository<TTransfertObject, TIdType>.SaveChanges()
+        int IRepositoryToDelete<TTransfertObject, TIdType>.SaveChanges()
         {
             return dbContext.SaveChanges();
         }

@@ -22,13 +22,13 @@ namespace MealServices.DataLayer
             => mealRepository = new MealRepository(mealContext);
         //=> mealRepository ??= new MealRepository(mealContext);
 
-        private IRepository<IngredientTO, int> ingredientRepository2;
-        public IRepository<IngredientTO, int> IngredientRepository2
+        private IRepositoryToDelete<IngredientTO, int> ingredientRepository2;
+        public IRepositoryToDelete<IngredientTO, int> IngredientRepository2
             => ingredientRepository2 = new IngredientRepository2(mealContext);
         //=> ingredientRepository ??= new IngredientRepository(mealContext);
 
-        private IRepositoryTemp<IngredientTO, int> ingredientRepository;
-        public IRepositoryTemp<IngredientTO, int> IngredientRepository
+        private IRepository<IngredientTO, int> ingredientRepository;
+        public IRepository<IngredientTO, int> IngredientRepository
             => ingredientRepository = new IngredientRepository(mealContext);
             //=> ingredientRepository ??= new IngredientRepository(mealContext);
 

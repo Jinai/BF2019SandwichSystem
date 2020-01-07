@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace OnlineServices.Shared.MealServices.Interfaces
 {
-    public interface IMealRepository : IRepositoryTemp<MealTO, int>
+    public interface IMealRepository : IRepository<MealTO, int>
     {
         List<MealTO> GetMealsBySupplier(SupplierTO Supplier);
         List<MealTO> GetMealsByIngredient(List<IngredientTO> Ingredients);

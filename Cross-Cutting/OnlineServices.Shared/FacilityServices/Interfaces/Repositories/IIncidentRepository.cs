@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
-    public interface IIncidentRepository : IRepositoryTemp<IncidentTO, int>
+    public interface IIncidentRepository : IRepository<IncidentTO, int>
     {
         List<IncidentTO> GetIncidentsByUserId(int UserId);
         //Est-ce que nous ne rajouterions pas DateTime pour les Incidents, comme ça on pourrait faire un tri par date ? 

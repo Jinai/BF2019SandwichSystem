@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
-    public interface IRoomRepository : IRepositoryTemp<RoomTO, int>
+    public interface IRoomRepository : IRepository<RoomTO, int>
     {
         List<RoomTO> GetRoomsByFloors(FloorTO Floor);
     }
