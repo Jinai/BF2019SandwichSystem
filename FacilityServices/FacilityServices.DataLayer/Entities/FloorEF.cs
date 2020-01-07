@@ -1,4 +1,5 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.TranslationServices;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,8 +13,6 @@ namespace FacilityServices.DataLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        public string NameFrench { get; set; }
-        public string NameEnglish { get; set; }
-        public string NameDutch { get; set; }
+        public int Name { get; set; }
     }
 }

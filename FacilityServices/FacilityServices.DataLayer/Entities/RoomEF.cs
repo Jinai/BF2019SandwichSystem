@@ -1,11 +1,12 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Shared.TranslationServices;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FacilityServices.DataLayer.Entities
 {
     [Table("Rooms")]
-    public class RoomEF : IEntity<int>
+    public class RoomEF : IEntity<int>, IMultiLanguageNameFields
     {
         [Key]
         public int Id { get; set; }
