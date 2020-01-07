@@ -34,7 +34,7 @@ namespace MealServices.DataLayerTests
                     Name = new MultiLanguageString("Ingr1EN", "Ingr1FR", "Ingr1NL")
                 };
 
-                IRepositoryToDelete<IngredientTO, int> ingredientRepository2 = new IngredientRepository2(memoryCtx);
+                IRepository<IngredientTO, int> ingredientRepository2 = new IngredientRepository2(memoryCtx);
 
                 //ACT
                 ingredientRepository2.Create(IngredientToUseInTest);

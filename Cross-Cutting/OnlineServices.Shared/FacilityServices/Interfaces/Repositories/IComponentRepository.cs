@@ -6,7 +6,7 @@ using System.Text;
 
 namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
-    public interface IComponentRepository : IRepository<ComponentTO, int>
+    public interface IComponentRepository : IRepositoryTemp<ComponentTO, int>
     {
         List<ComponentTO> GetComponentByRoom(RoomTO Room);
 

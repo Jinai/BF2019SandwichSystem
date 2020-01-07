@@ -50,7 +50,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 memoryCtx.SaveChanges();
 
                 //ASSERT
-                Assert.ThrowsException<InvalidOperationException>(() => floorRepository.Remove(FloorToUseInTest3));
+                Assert.ThrowsException<Exception>(() => floorRepository.Remove(FloorToUseInTest3));
             }
         }
         [TestMethod()]
@@ -65,13 +65,13 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 //ARRANGE
                 var FloorToUseInTest = new FloorTO
                 {
-                    Id = 1,
+                    Id = 0,
                     Name = 0
                 };
 
                 var FloorToUseInTest2 = new FloorTO
                 {
-                    Id = 2,
+                    Id = 0,
                     Name = -1
                 };
 
@@ -80,8 +80,6 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 //ACT
                 floorRepository.Add(FloorToUseInTest);
                 floorRepository.Add(FloorToUseInTest2);
-                memoryCtx.SaveChanges();
-                FloorToUseInTest2.Id = 2;
                 floorRepository.Remove(FloorToUseInTest2);
                 memoryCtx.SaveChanges();
 

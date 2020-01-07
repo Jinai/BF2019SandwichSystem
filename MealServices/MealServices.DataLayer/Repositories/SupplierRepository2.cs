@@ -15,7 +15,7 @@ namespace MealServices.DataLayer.Repositories
     public class SupplierRepository2 : GenericRepositoryTO<SupplierEF, SupplierTO, int>, ISupplierRepository2
     {
         private readonly MealContext mealContext;
-        private IRepositoryToDelete<SupplierTO, int> localRepo;
+        private IRepository<SupplierTO, int> localRepo;
 
         public SupplierRepository2(MealContext ContextIoC): base(ContextIoC)
         {

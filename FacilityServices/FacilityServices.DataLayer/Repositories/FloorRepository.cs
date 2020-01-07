@@ -41,21 +41,30 @@ namespace FacilityServices.DataLayer.Repositories
         }
 
         public bool Remove(FloorTO entity)
-        {
-            try
-            {
-                facilityContext.Floors.Remove(entity.ToEF());
-                return true;
-            }
-            catch (Exception Ex)
-            {
-                throw;
-            }
-        }
+        => Remove(entity.Id);
+
 
         public bool Remove(int Id)
         {
-            throw new NotImplementedException();
+            var ReturnValue = false;
+            if (!facilityContext.Rooms.Any(x => x.Id == Id))
+                throw new Exception($"FloorRepository. Delete(FloorId = {Id}) no record to delete.");
+
+            var floor = facilityContext.Rooms.FirstOrDefault(x => x.Id == Id);
+            if (floor != default)
+            {
+                try
+                {
+                    facilityContext.Rooms.Remove(floor);
+                    ReturnValue = true;
+                }
+                catch (Exception)
+                {
+                    ReturnValue = false;
+                }
+            }
+
+            return ReturnValue;
         }
 
         public FloorTO Update(FloorTO Entity)

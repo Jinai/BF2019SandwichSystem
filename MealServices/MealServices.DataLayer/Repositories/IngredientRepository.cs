@@ -10,7 +10,7 @@ using System.Linq;
 
 namespace MealServices.DataLayer.Repositories
 {
-    public class IngredientRepository : IRepository<IngredientTO, int>
+    public class IngredientRepository : IRepositoryTemp<IngredientTO, int>
     {
         private readonly MealContext mealContext;
 
