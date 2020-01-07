@@ -9,7 +9,7 @@ namespace FacilityServices.DataLayer.Extensions
 {
     public static class IncidentExtensions
     {
-        public static IncidentTO ToTranfertObject(this IncidentEF Incident)
+        public static IncidentTO ToTransfertObject(this IncidentEF Incident)
         {
             if (Incident is null)
                 throw new ArgumentNullException(nameof(Incident));
@@ -17,8 +17,8 @@ namespace FacilityServices.DataLayer.Extensions
             return new IncidentTO
             {
                 Id = Incident.Id,
-                Component = Incident.Component.ToTranfertObject(),
-                Issue = Incident.Issue.ToTranfertObject(),
+                Component = Incident.Component.ToTransfertObject(),
+                Issue = Incident.Issue.ToTransfertObject(),
                 Comment = Incident.Comment,
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate

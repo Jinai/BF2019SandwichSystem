@@ -63,6 +63,11 @@ namespace FacilityServices.DataLayer.Repositories
                                   .ToList();
         }
 
+        public List<RoomTO> GetRoomsByFloors(FloorTO Floor)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool Remove(RoomTO entity)
         {
             if (entity is null)

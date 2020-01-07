@@ -1,11 +1,11 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace FacilityServices.DataLayerTests
+namespace EvaluationServices.DataLayerTests
 {
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod()]
+        [TestMethod]
         public void TestMethod1()
         {
         }
