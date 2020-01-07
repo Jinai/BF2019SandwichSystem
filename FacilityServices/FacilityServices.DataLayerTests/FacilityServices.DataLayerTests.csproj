@@ -25,4 +25,8 @@
     <ProjectReference Include="..\..\UserServices\UserServices.DataLayer\UserServices.DataLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RepositoriesTests\ComponentRepositoryTest\" />
+  </ItemGroup>
+
 </Project>
