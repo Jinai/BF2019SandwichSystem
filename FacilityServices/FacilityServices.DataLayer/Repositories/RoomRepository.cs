@@ -26,14 +26,14 @@ namespace FacilityServices.DataLayer.Repositories
 
             var tracking = facilityContext.Rooms.Add(Entity.ToEF());
             tracking.State = EntityState.Added;
-            return tracking.Entity.ToTranfertObject();
+            return tracking.Entity.ToTransfertObject();
         }
 
         public IEnumerable<RoomTO> GetAll()
         {
             return facilityContext.Rooms
                                   .Include(r => r.Floor)
-                                  .Select(r => r.ToTranfertObject());
+                                  .Select(r => r.ToTransfertObject());
         }
 
         public RoomTO GetByID(int Id)
@@ -46,7 +46,7 @@ namespace FacilityServices.DataLayer.Repositories
             return facilityContext.Rooms
                                   .AsNoTracking()
                                   .Include(r => r.Floor)
-                                  .FirstOrDefault(r => r.Id == Id).ToTranfertObject();
+                                  .FirstOrDefault(r => r.Id == Id).ToTransfertObject();
         }
 
         public List<RoomTO> GetRoomsByFloors(FloorTO Floor)
@@ -59,13 +59,8 @@ namespace FacilityServices.DataLayer.Repositories
             return facilityContext.Rooms
                                   .Include(r => r.Floor)
                                   .Where(r => r.Floor.Id == Floor.Id)
-                                  .Select(r => r.ToTranfertObject())
+                                  .Select(r => r.ToTransfertObject())
                                   .ToList();
-        }
-
-        public List<RoomTO> GetRoomsByFloors(FloorTO Floor)
-        {
-            throw new System.NotImplementedException();
         }
 
         public bool Remove(RoomTO entity)

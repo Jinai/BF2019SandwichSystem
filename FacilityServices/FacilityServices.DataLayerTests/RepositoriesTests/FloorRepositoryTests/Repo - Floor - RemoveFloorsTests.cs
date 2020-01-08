@@ -15,7 +15,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
     public class RemoveFloorsTests
     {
         [TestMethod()]
-        public void RemoveFloorByTranfertObject_ThrowException_WhenDeletingANonExistantFloor()
+        public void RemoveFloorByTransfertObject_ThrowException_WhenDeletingANonExistantFloor()
         {
             var options = new DbContextOptionsBuilder<FacilityContext>()
                    .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
@@ -41,7 +41,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             }
         }
         [TestMethod()]
-        public void RemoveFloorByTranfertObject_Successfull()
+        public void RemoveFloorByTransfertObject_Successfull()
         {
             var options = new DbContextOptionsBuilder<FacilityContext>()
                    .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
