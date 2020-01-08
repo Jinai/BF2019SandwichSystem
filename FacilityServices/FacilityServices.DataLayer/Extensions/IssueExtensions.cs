@@ -1,5 +1,6 @@
 ﻿using FacilityServices.DataLayer.Entities;
 using OnlineServices.Shared.Extensions;
+using OnlineServices.Shared.FacilityServices.Exceptions;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
@@ -13,7 +14,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static IssueTO ToTransfertObject(this IssueEF Issue)
         {
             if (Issue is null)
-                throw new ArgumentNullException(nameof(Issue));
+                throw new NotExistingIssueException(nameof(Issue));
 
             return new IssueTO
             {
@@ -26,7 +27,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static IssueEF ToEF(this IssueTO Issue)
         {
             if (Issue is null)
-                throw new ArgumentNullException(nameof(Issue));
+                throw new NotExistingIssueException(nameof(Issue));
 
             return new IssueEF
             {

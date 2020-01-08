@@ -49,12 +49,12 @@ namespace FacilityServices.DataLayer.Repositories
 
             var ReturnValue = false;
 
-            var issue = facilityContext.Floors.FirstOrDefault(x => x.Id == Id);
+            var issue = facilityContext.Issues.FirstOrDefault(x => x.Id == Id);
             if (issue != default)
             {
                 try
                 {
-                    facilityContext.Floors.Remove(issue);
+                    facilityContext.Issues.Remove(issue);
                     ReturnValue = true;
                 }
                 catch (Exception)
