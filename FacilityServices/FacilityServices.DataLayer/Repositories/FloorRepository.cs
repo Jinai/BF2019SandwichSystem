@@ -1,4 +1,5 @@
-﻿using FacilityServices.DataLayer.Extensions;
+﻿using FacilityServices.DataLayer.Entities;
+using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
 using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
@@ -22,6 +23,8 @@ namespace FacilityServices.DataLayer.Repositories
             if (Entity is null)
                 throw new ArgumentNullException(nameof(Entity));
 
+            //return facilityContext.Update<FloorEF>(Entity.ToEF()).Entity.ToTransfertObject();
+
             return facilityContext.Floors
                 .Add(Entity.ToEF())
                 .Entity
@@ -30,12 +33,14 @@ namespace FacilityServices.DataLayer.Repositories
 
         public IEnumerable<FloorTO> GetAll()
         => facilityContext.Floors
+            .AsNoTracking()
             .Select(x => x.ToTransfertObject())
             .ToList();
 
         public FloorTO GetByID(int Id)
         {
             return facilityContext.Floors
+            .AsNoTracking()
             .FirstOrDefault(x => x.Id == Id)
             .ToTransfertObject();
         }

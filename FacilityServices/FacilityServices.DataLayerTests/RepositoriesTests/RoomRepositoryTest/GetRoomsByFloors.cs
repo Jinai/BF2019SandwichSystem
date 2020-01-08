@@ -16,34 +16,37 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
     public class GetRoomsByFloors
     {
         [TestMethod]
-        [Ignore]
+        //[Ignore]
         public void GetRoomsByFloors_ReturnCoorectNumberOfCorrespondingRooms()
         {
             //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
                 .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
                 .Options;
+
             using var context = new FacilityContext(options);
-            IRoomRepository repository = new RoomRepository(context);
-            var mockUnitOfWork = new Mock<IFSUnitOfWork>();
-            mockUnitOfWork.SetupSequence(u => u.FloorRepository.GetByID(It.IsAny<int>()))
-                          .Returns(new FloorTO { Id = 1, Number = 1 });
+            IRoomRepository roomRepository = new RoomRepository(context);
+            IFloorRepository floorRepository = new FloorRepository(context);
 
-            var gottenFloor = mockUnitOfWork.Object.FloorRepository.GetByID(1);
-
-            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = gottenFloor };
-            RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = new FloorTO { Id= 2, Number = 2 } };
-            RoomTO room3 = new RoomTO { Name = new MultiLanguageString("Room3", "Room3", "Room3"), Floor = gottenFloor };
-            //Save the Add() response in firstRoomAdded variable, in order to use its Floor later.
-            var firstRoomAdded = repository.Add(room1);
-            repository.Add(room2);
-            repository.Add(room3);
+            var floor = new FloorTO { Number = 2 };
+            var floor2 = new FloorTO { Number = -1 };
+            var addedFloor1 = floorRepository.Add(floor);
+            var addedFloor2 = floorRepository.Add(floor2);
             context.SaveChanges();
-            //ACT
-            var retrievedRooms = repository.GetRoomsByFloors(firstRoomAdded.Floor);
-            //ASSERT
+
+            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
+            RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = addedFloor1 };
+            RoomTO room3 = new RoomTO { Name = new MultiLanguageString("Room3", "Room3", "Room3"), Floor = addedFloor2 };
+
+            var firstRoomAdded = roomRepository.Add(room1);
+            var secondRoomAdded = roomRepository.Add(room2);
+            var thirdRoomAdded = roomRepository.Add(room3);
+            context.SaveChanges();
+
+            var retrievedRooms = roomRepository.GetRoomsByFloors(addedFloor1);
+
             Assert.IsNotNull(retrievedRooms);
-            Assert.AreEqual(retrievedRooms.Count(), 2);
+            Assert.AreEqual(2, retrievedRooms.Count());
         }
     }
 }

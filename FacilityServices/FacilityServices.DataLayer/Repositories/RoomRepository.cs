@@ -1,4 +1,5 @@
-﻿using FacilityServices.DataLayer.Extensions;
+﻿using FacilityServices.DataLayer.Entities;
+using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
 using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
@@ -20,13 +21,26 @@ namespace FacilityServices.DataLayer.Repositories
         public RoomTO Add(RoomTO Entity)
         {
             if (Entity is null)
-            {
                 throw new ArgumentNullException(nameof(Entity));
-            }
 
-            var tracking = facilityContext.Rooms.Add(Entity.ToEF());
-            tracking.State = EntityState.Added;
-            return tracking.Entity.ToTransfertObject();
+            var roomEf = Entity.ToEF();
+            roomEf.Floor = facilityContext.Floors.First(x=>x.Id == Entity.Floor.Id);
+            roomEf.Floor = roomEf.Floor.UpdateFromDetached(Entity.Floor.ToEF());
+
+            return facilityContext.Rooms.Add(roomEf).Entity.ToTransfertObject();
+
+            //return facilityContext.Rooms
+            //    .Add(Entity.ToEF())
+            //    .Entity
+            //    .ToTransfertObject();
+            //if (Entity is null)
+            //{
+            //    throw new ArgumentNullException(nameof(Entity));
+            //}
+
+            //var tracking = facilityContext.Rooms.Add(Entity.ToEF());
+            //tracking.State = EntityState.Added;
+            //return tracking.Entity.ToTransfertObject();
         }
 
         public IEnumerable<RoomTO> GetAll()
@@ -70,7 +84,7 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            var entityEF  = facilityContext.Rooms.Find(entity.Id);
+            var entityEF = facilityContext.Rooms.Find(entity.Id);
             var tracking = facilityContext.Rooms.Remove(entityEF);
             return tracking.State == EntityState.Deleted;
         }

@@ -1,4 +1,5 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
+using System.Collections.Generic;
 
 namespace OnlineServices.Shared.FacilityServices.TransfertObjects
 {
@@ -7,5 +8,6 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
         public int Id { get; set; }
         public int Number { get; set; }
         public bool Archived { get; set; }
+        public List<RoomTO> Rooms { get; set; } = new List<RoomTO>();
     }
 }

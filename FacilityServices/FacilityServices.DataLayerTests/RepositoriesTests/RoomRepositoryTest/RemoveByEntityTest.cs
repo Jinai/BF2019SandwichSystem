@@ -21,7 +21,13 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
                 .Options;
             using var context = new FacilityContext(options);
             IRoomRepository repository = new RoomRepository(context);
-            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = new FloorTO { Number = 1 } };
+            IFloorRepository floorRepository = new FloorRepository(context);
+
+            var floor = new FloorTO { Number = 2 };
+            var addedFloor1 = floorRepository.Add(floor);
+            context.SaveChanges();
+
+            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
             var added = repository.Add(room);
             context.SaveChanges();
             //ACT

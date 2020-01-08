@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace FacilityServices.BusinessLayer.Domain
 {
@@ -9,6 +7,7 @@ namespace FacilityServices.BusinessLayer.Domain
         public int Id { get; set; }
         public int Number { get; set; }
         public bool Archived { get; set; }
+        public List<Room> Rooms { get; set; } = new List<Room>();
 
         public Floor(int number)
         {

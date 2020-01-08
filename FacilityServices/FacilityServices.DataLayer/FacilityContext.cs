@@ -13,6 +13,7 @@ namespace FacilityServices.DataLayer
         public FacilityContext(DbContextOptions<FacilityContext> options) : base(options)
         { }
 
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (optionsBuilder is null)

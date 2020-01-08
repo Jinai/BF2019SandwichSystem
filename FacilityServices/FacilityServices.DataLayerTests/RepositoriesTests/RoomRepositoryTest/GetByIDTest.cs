@@ -15,18 +15,23 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
         [TestMethod]
         public void GetByID_AddNewRoomAndRetrieveTheAddedRoom_ReturnTheCoorectRoom()
         {
-            //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
                 .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
                 .Options;
             using var context = new FacilityContext(options);
             IRoomRepository repository = new RoomRepository(context);
-            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = new FloorTO { Id = 1, Number = 1 } };
+            IFloorRepository floorRepository = new FloorRepository(context);
+
+            var floor = new FloorTO { Number = 2 };
+            var addedFloor1 = floorRepository.Add(floor);
+            context.SaveChanges();
+
+            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
             var result = repository.Add(room);
             context.SaveChanges();
-            //ACT
+
             var retrievedRoom = repository.GetByID(result.Id);
-            //ASSERT
+
             Assert.IsNotNull(retrievedRoom);
             Assert.AreEqual(retrievedRoom.ToString(), result.ToString());
         }

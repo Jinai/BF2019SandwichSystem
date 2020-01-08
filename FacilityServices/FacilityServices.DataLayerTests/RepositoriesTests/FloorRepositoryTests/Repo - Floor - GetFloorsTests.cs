@@ -15,7 +15,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
     [TestClass]
     public class GetFloorsTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void GetFloorById_ThrowsException_WhenInvalidIdIsProvided()
         {
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -28,7 +28,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 Assert.ThrowsException<NotExistingFloorException>(() => floorRepository.GetByID(100));
             }
         }
-        [TestMethod()]
+        [TestMethod]
         public void GetFloorById_Successfull()
         {
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -56,7 +56,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             }
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void GetAllFloors_Successfull()
         {
             var options = new DbContextOptionsBuilder<FacilityContext>()

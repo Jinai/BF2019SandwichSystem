@@ -14,5 +14,6 @@ namespace FacilityServices.DataLayer.Entities
         public string NameEnglish { get; set; }
         public string NameDutch { get; set; }
         public FloorEF Floor { get; set; }
+        public bool Archived { get; set; }
     }
 }

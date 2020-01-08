@@ -5,6 +5,7 @@ using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace FacilityServices.DataLayer.Extensions
@@ -19,7 +20,9 @@ namespace FacilityServices.DataLayer.Extensions
             return new FloorTO
             {
                 Id = Floor.Id,
-                Number = Floor.Name,
+                Number = Floor.Number,
+                //Rooms = Floor.Rooms?.Select(x => x.ToTransfertObject()).ToList(),
+                Archived = Floor.Archived
             };
         }
 
@@ -31,7 +34,9 @@ namespace FacilityServices.DataLayer.Extensions
             return new FloorEF()
             {
                 Id = Floor.Id,
-                Name = Floor.Number,
+                Number = Floor.Number,
+                //Rooms = Floor.Rooms?.Select(x => x.ToEF()).ToList(),
+                Archived = Floor.Archived
             };
         }
 
@@ -48,7 +53,7 @@ namespace FacilityServices.DataLayer.Extensions
 
             if ((AttachedEF != default) && (DetachedEF != default))
             {
-                AttachedEF.Name = DetachedEF.Name;
+                AttachedEF.Number = DetachedEF.Number;
             }
             return AttachedEF;
         }

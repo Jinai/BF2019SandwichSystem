@@ -8,6 +8,7 @@ namespace FacilityServices.BusinessLayer.Domain
     public class Incident
     {
         public int Id { get; set; }
+        public int UserId { get; set; }
         public Component Component { get; set; }
         public Issue Issue { get; set; }
         public List<Comment> AssistantComments { get; set; } = new List<Comment>();

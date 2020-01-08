@@ -21,6 +21,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = Room.Id,
                 Floor = Room.Floor.ToTransfertObject(),
                 Name = new MultiLanguageString(Room.NameEnglish, Room.NameFrench, Room.NameDutch),
+                Archived = Room.Archived
             };
         }
 
@@ -36,6 +37,7 @@ namespace FacilityServices.DataLayer.Extensions
                 NameEnglish = Room.Name.English,
                 NameFrench = Room.Name.French,
                 NameDutch = Room.Name.Dutch,
+                Archived = Room.Archived
             };
         }
         public static RoomEF UpdateFromDetached(this RoomEF AttachedEF, RoomEF DetachedEF)
