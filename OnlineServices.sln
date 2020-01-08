@@ -13,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User Interfaces", "User Int
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{36AE1E9F-8116-4EE8-8F29-D104432E7023}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		README.md = README.md
 	EndProjectSection
@@ -113,9 +114,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Logic Layer", "Bus
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data Access Layer", "Data Access Layer", "{A864CBCF-EB40-4D99-99A6-EE3575C3A6BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvaluationServices.DataLayer", "EvaluationServices\EvaluationServices.DataLayer\EvaluationServices.DataLayer.csproj", "{9417427D-A880-426A-8221-4776DDC33BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvaluationServices.DataLayer", "EvaluationServices\EvaluationServices.DataLayer\EvaluationServices.DataLayer.csproj", "{9417427D-A880-426A-8221-4776DDC33BD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvaluationServices.DataLayerTests", "EvaluationServices\EvaluationServices.DataLayerTests\EvaluationServices.DataLayerTests.csproj", "{30DB3E98-7804-4D68-8E91-F8A5BE31E9D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvaluationServices.DataLayerTests", "EvaluationServices\EvaluationServices.DataLayerTests\EvaluationServices.DataLayerTests.csproj", "{30DB3E98-7804-4D68-8E91-F8A5BE31E9D5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EvaluationServices.BusinessLayer", "EvaluationServices\EvaluationServices.BusinessLayer\EvaluationServices.BusinessLayer.csproj", "{3BDCDED2-18CB-4A3A-B89D-9945E3E55F07}"
 EndProject
