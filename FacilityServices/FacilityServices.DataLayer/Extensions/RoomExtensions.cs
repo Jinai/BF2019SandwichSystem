@@ -38,24 +38,24 @@ namespace FacilityServices.DataLayer.Extensions
                 NameDutch = Room.Name.Dutch,
             };
         }
-        //public static RoomEF UpdateFromDetached(this RoomEF AttachedEF, RoomEF DetachedEF)
-        //{
-        //    if (AttachedEF is null)
-        //        throw new ArgumentNullException(nameof(AttachedEF));
+        public static RoomEF UpdateFromDetached(this RoomEF AttachedEF, RoomEF DetachedEF)
+        {
+            if (AttachedEF is null)
+                throw new ArgumentNullException(nameof(AttachedEF));
 
-        //    if (DetachedEF is null)
-        //        throw new ArgumentNullException(nameof(DetachedEF));
+            if (DetachedEF is null)
+                throw new ArgumentNullException(nameof(DetachedEF));
 
-        //    if (AttachedEF.Id != DetachedEF.Id)
-        //        throw new Exception("Cannot update ComponentEF entity as it is not the same.");
+            if (AttachedEF.Id != DetachedEF.Id)
+                throw new Exception("Cannot update ComponentEF entity as it is not the same.");
 
-        //    if ((AttachedEF != default) && (DetachedEF != default))
-        //    {
-        //        AttachedEF.Room = DetachedEF.Room;
-        //        AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
-        //    }
+            if ((AttachedEF != default) && (DetachedEF != default))
+            {
+                AttachedEF.Floor = DetachedEF.Floor;
+                AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
+            }
 
-        //    return AttachedEF;
-        //}
+            return AttachedEF;
+        }
     }
 }
