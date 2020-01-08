@@ -30,7 +30,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             var addedFloor2 = floorRepository.Add(floor2);
             context.SaveChanges();
 
-            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor =addedFloor1  };
+            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
             RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = addedFloor1 };
             RoomTO room3 = new RoomTO { Name = new MultiLanguageString("Room3", "Room3", "Room3"), Floor = addedFloor2 };
             repository.Add(room1);

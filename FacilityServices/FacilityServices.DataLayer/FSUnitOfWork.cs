@@ -18,8 +18,16 @@ namespace FacilityServices.DataLayer
         }
 
         private IComponentRepository componentRepository;
-        public IComponentRepository ComponentRepository 
+        public IComponentRepository ComponentRepository
             => componentRepository ??= new ComponentRepository(facilityContext);
+
+        private IComponentTypeRepository componentTypeRepository;
+        public IComponentTypeRepository ComponentTypeRepository
+            => componentTypeRepository ??= new ComponentTypeRepository(facilityContext);
+
+        private ICommentRepository commentRepository;
+        public ICommentRepository CommentRepository
+            => commentRepository ??= new CommentRepository(facilityContext);
 
         private IFloorRepository floorRepository;
         public IFloorRepository FloorRepository
