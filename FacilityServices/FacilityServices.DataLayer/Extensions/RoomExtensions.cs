@@ -19,7 +19,7 @@ namespace FacilityServices.DataLayer.Extensions
             return new RoomTO
             {
                 Id = Room.Id,
-                Floor = Room.Floor.ToTranfertObject(),
+                Floor = Room.Floor.ToTransfertObject(),
                 Name = new MultiLanguageString(Room.NameEnglish, Room.NameFrench, Room.NameDutch),
             };
         }
