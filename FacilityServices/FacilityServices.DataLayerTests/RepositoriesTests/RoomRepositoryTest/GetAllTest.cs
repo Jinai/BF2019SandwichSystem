@@ -22,9 +22,9 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
                 .Options;
             using var context = new FacilityContext(options);
             IRoomRepository repository = new RoomRepository(context);
-            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = new FloorTO { Id = 1, Name = 1 } };
-            RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = new FloorTO { Id = 2, Name = 2 } };
-            RoomTO room3 = new RoomTO { Name = new MultiLanguageString("Room3", "Room3", "Room3"), Floor = new FloorTO { Id = 3, Name = 1 } };
+            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = new FloorTO { Id = 1, Number = 1 } };
+            RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = new FloorTO { Id = 2, Number = 2 } };
+            RoomTO room3 = new RoomTO { Name = new MultiLanguageString("Room3", "Room3", "Room3"), Floor = new FloorTO { Id = 3, Number = 1 } };
             repository.Add(room1);
             context.SaveChanges();
             repository.Add(room2);

@@ -27,12 +27,12 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             IRoomRepository repository = new RoomRepository(context);
             var mockUnitOfWork = new Mock<IFSUnitOfWork>();
             mockUnitOfWork.SetupSequence(u => u.FloorRepository.GetByID(It.IsAny<int>()))
-                          .Returns(new FloorTO { Id = 1, Name = 1 });
+                          .Returns(new FloorTO { Id = 1, Number = 1 });
 
             var gottenFloor = mockUnitOfWork.Object.FloorRepository.GetByID(1);
 
             RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = gottenFloor };
-            RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = new FloorTO { Id= 2, Name = 2 } };
+            RoomTO room2 = new RoomTO { Name = new MultiLanguageString("Room2", "Room2", "Room2"), Floor = new FloorTO { Id= 2, Number = 2 } };
             RoomTO room3 = new RoomTO { Name = new MultiLanguageString("Room3", "Room3", "Room3"), Floor = gottenFloor };
             //Save the Add() response in firstRoomAdded variable, in order to use its Floor later.
             var firstRoomAdded = repository.Add(room1);

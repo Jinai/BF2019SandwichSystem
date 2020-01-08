@@ -40,7 +40,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 var FloorToUseInTest = new FloorTO
                 {
                     Id = 2,
-                    Name = 0
+                    Number = 0
                 };
 
                 var floorRepository = new FloorRepository(memoryCtx);
@@ -52,7 +52,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 //ASSERT
                 var FloorToAssert = floorRepository.GetByID(2);
                 Assert.AreEqual(2, FloorToAssert.Id);
-                Assert.AreEqual(0, FloorToAssert.Name);
+                Assert.AreEqual(0, FloorToAssert.Number);
             }
         }
 
@@ -68,18 +68,18 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 var FloorToUseInTest = new FloorTO
                 {
                     Id = 1,
-                    Name = 0
+                    Number = 0
                 };
 
                 var FloorToUseInTest1 = new FloorTO
                 {
                     Id = 2,
-                    Name = -1
+                    Number = -1
                 };
                 var FloorToUseInTest2 = new FloorTO
                 {
                     Id = 3,
-                    Name = -2
+                    Number = -2
                 };
                 var floorRepository = new FloorRepository(memoryCtx);
 

@@ -1,7 +1,5 @@
-﻿using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FacilityServices.BusinessLayer.Domain;
+using OnlineServices.Shared.FacilityServices.TransfertObjects;
 
 namespace FacilityServices.BusinessLayer.Extensions
 {
@@ -14,10 +12,10 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Id = IncidentTO.Id,
                 Component = IncidentTO.Component.ToDomain(),
                 Issue = IncidentTO.Issue.ToDomain(),
-                Comment = IncidentTO.Comment,
+                //Comment = IncidentTO.Comment,
                 Status = IncidentTO.Status,
                 SubmitDate = IncidentTO.SubmitDate
-               
+
             };
         }
 
@@ -28,7 +26,7 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Id = Incident.Id,
                 Component = Incident.Component.ToTransfertObject(),
                 Issue = Incident.Issue.ToTransfertObject(),
-                Comment = Incident.Comment,
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate
             };

@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 var FloorToUseInTest = new FloorTO
                 {
                     Id = 1,
-                    Name = -1
+                    Number = -1
                 };
 
                 var floorRepository = new FloorRepository(memoryCtx);
@@ -48,7 +48,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 var FloorToUseInTest = new FloorTO
                 {
                     Id = 1,
-                    Name = 0
+                    Number = 0
                 };
 
                 var floorRepository = new FloorRepository(memoryCtx);
@@ -61,7 +61,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 Assert.AreEqual(1, floorRepository.GetAll().Count());
                 var FloorToAssert = floorRepository.GetByID(1);
                 Assert.AreEqual(1, FloorToAssert.Id);
-                Assert.AreEqual(0, FloorToAssert.Name);
+                Assert.AreEqual(0, FloorToAssert.Number);
             }
         }
     }

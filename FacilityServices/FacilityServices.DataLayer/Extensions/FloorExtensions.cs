@@ -19,7 +19,7 @@ namespace FacilityServices.DataLayer.Extensions
             return new FloorTO
             {
                 Id = Floor.Id,
-                Name = Floor.Name,
+                Number = Floor.Name,
             };
         }
 
@@ -31,7 +31,7 @@ namespace FacilityServices.DataLayer.Extensions
             return new FloorEF()
             {
                 Id = Floor.Id,
-                Name = Floor.Name,
+                Name = Floor.Number,
             };
         }
 

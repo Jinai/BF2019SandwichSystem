@@ -24,11 +24,11 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             using (var memoryCtx = new FacilityContext(options))
             {
                 var FloorToUseInTest = new FloorTO
-                { Name = 0 };
+                { Number = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                { Name = -1 };
+                { Number = -1 };
                 var FloorToUseInTest3 = new FloorTO
-                { Name = -2 };
+                { Number = -2 };
 
 
                 var floorRepository = new FloorRepository(memoryCtx);
@@ -50,9 +50,9 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             using (var memoryCtx = new FacilityContext(options))
             {
                 var FloorToUseInTest = new FloorTO
-                { Name = 0 };
+                { Number = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                { Name = -1 };
+                { Number = -1 };
               
                 var floorRepository = new FloorRepository(memoryCtx);
 
@@ -79,11 +79,11 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             using (var memoryCtx = new FacilityContext(options))
             {
                 var FloorToUseInTest = new FloorTO
-                { Name = 0 };
+                { Number = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                { Name = -1 };
+                { Number = -1 };
                 var FloorToUseInTest3 = new FloorTO
-                { Name = -2 };
+                { Number = -2 };
 
 
                 var floorRepository = new FloorRepository(memoryCtx);
@@ -105,11 +105,11 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             using (var memoryCtx = new FacilityContext(options))
             {
                 var FloorToUseInTest = new FloorTO
-                { Name = 0 };
+                { Number = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                { Name = -1 };
+                { Number = -1 };
                 var FloorToUseInTest3 = new FloorTO
-                { Name = -2 };
+                { Number = -2 };
 
                 var floorRepository = new FloorRepository(memoryCtx);
 

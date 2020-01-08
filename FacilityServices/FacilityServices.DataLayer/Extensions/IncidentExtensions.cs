@@ -19,7 +19,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = Incident.Id,
                 Component = Incident.Component.ToTransfertObject(),
                 Issue = Incident.Issue.ToTransfertObject(),
-                Comment = Incident.Comment,
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate
             };
@@ -35,7 +35,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = Incident.Id,
                 Component = Incident.Component.ToEF(),
                 Issue = Incident.Issue.ToEF(),
-                Comment = Incident.Comment,
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate
             };

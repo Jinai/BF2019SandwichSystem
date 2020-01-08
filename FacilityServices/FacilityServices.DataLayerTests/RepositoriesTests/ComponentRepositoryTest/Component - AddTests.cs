@@ -31,7 +31,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryT
                 {
                     Id = 0,
                     Name = componentName,
-                    Room = new RoomTO { Id = 1, Name = roomName, Floor = new FloorTO { Id = 1, Name = -2 } }
+                    Room = new RoomTO { Id = 1, Name = roomName, Floor = new FloorTO { Id = 1, Number = -2 } }
                 };
 
                 var componentRepository = new ComponentRepository(memoryCtx);

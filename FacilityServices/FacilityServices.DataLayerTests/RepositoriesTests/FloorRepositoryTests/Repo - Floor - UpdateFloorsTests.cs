@@ -24,9 +24,9 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             using (var memoryCtx = new FacilityContext(options))
             {
                 var FloorToUseInTest = new FloorTO
-                { Name = 0 };
+                { Number = 0 };
                 var FloorToUseInTest2 = new FloorTO
-                { Name = -1 };
+                { Number = -1 };
 
 
                 var floorRepository = new FloorRepository(memoryCtx);
@@ -34,11 +34,11 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 var f1 = floorRepository.Add(FloorToUseInTest);
                 var f2 = floorRepository.Add(FloorToUseInTest2);
                 memoryCtx.SaveChanges();
-                f2.Name = 18;
+                f2.Number = 18;
                 floorRepository.Update(f2);
 
                 Assert.AreEqual(2, floorRepository.GetAll().Count());
-                Assert.AreEqual(18, f2.Name);
+                Assert.AreEqual(18, f2.Number);
             }
         }
     }

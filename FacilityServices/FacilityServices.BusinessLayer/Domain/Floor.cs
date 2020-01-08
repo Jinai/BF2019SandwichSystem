@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FacilityServices.BusinessLayer
+namespace FacilityServices.BusinessLayer.Domain
 {
     public class Floor
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public int Number { get; set; }
+        public bool Archived { get; set; }
 
-        public Floor(int name)
+        public Floor(int number)
         {
-            this.Name = name;
+            this.Number = number;
         }
     }
 }
