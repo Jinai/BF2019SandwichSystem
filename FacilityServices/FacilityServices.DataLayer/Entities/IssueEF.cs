@@ -17,5 +17,6 @@ namespace FacilityServices.DataLayer.Entities
         public string NameFrench { get; set; }
         public string NameEnglish { get; set; }
         public string NameDutch { get; set; }
+        public string Description { get; set; }
     }
 }
