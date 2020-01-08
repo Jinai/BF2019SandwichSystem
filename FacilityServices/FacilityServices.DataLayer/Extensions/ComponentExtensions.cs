@@ -10,50 +10,52 @@ namespace FacilityServices.DataLayer.Extensions
 {
     public static class ComponentExtensions
     {
-        public static ComponentTO ToTransfertObject(this ComponentEF Component)
+        public static ComponentTO ToTransfertObject(this ComponentEF component)
         {
-            if (Component is null)
-                throw new ArgumentNullException(nameof(Component));
+            if (component is null)
+                throw new ArgumentNullException(nameof(component));
 
             return new ComponentTO
             {
-                Id = Component.Id,
-                Name = new MultiLanguageString(Component.NameEnglish, Component.NameFrench, Component.NameDutch),
+                Id = component.Id,
+                Room = component.Room.ToTransfertObject(),
+                Name = new MultiLanguageString(component.NameEnglish, component.NameFrench, component.NameDutch),
             };
         }
 
-        public static ComponentEF ToEF(this ComponentTO Component)
+        public static ComponentEF ToEF(this ComponentTO component)
         {
-            if (Component is null)
-                throw new ArgumentNullException(nameof(Component));
+            if (component is null)
+                throw new ArgumentNullException(nameof(component));
 
             return new ComponentEF
             {
-                Id = Component.Id,
-                NameEnglish = Component.Name.English,
-                NameFrench = Component.Name.French,
-                NameDutch = Component.Name.Dutch
+                Id = component.Id,
+                Room = component.Room.ToEF(),
+                NameEnglish = component.Name.English,
+                NameFrench = component.Name.French,
+                NameDutch = component.Name.Dutch
             };
         }
 
-        public static ComponentEF UpdateFromDetached(this ComponentEF AttachedEF, ComponentEF DetachedEF)
+        public static ComponentEF UpdateFromDetached(this ComponentEF attachedEF, ComponentEF detachedEF)
         {
-            if (AttachedEF is null)
-                throw new ArgumentNullException(nameof(AttachedEF));
+            if (attachedEF is null)
+                throw new ArgumentNullException(nameof(attachedEF));
 
-            if (DetachedEF is null)
-                throw new ArgumentNullException(nameof(DetachedEF));
+            if (detachedEF is null)
+                throw new ArgumentNullException(nameof(detachedEF));
 
-            if (AttachedEF.Id != DetachedEF.Id)
+            if (attachedEF.Id != detachedEF.Id)
                 throw new Exception("Cannot update ComponentEF entity as it is not the same.");
 
-            if ((AttachedEF != default) && (DetachedEF != default))
+            if ((attachedEF != default) && (detachedEF != default))
             {
-                AttachedEF.Room = DetachedEF.Room;
-                AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
+                attachedEF.Room = detachedEF.Room;
+                attachedEF = attachedEF.FillFromMultiLanguageString(detachedEF.ExtractToMultiLanguageString());
             }
 
-            return AttachedEF;
+            return attachedEF;
         }
     }
 }
