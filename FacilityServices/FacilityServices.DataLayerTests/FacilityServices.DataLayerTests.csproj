@@ -24,10 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="RepositoriesTests\ComponentRepositoryTest\" />
+    <ProjectReference Include="..\..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Shared.csproj" />
+    <ProjectReference Include="..\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

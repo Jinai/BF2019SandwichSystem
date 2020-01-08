@@ -38,7 +38,7 @@ namespace MealServices.DataLayer.Repositories
             return mealContext.Suppliers
                 .AsNoTracking()
                 .FirstOrDefault(x => x.IsDefault == true)
-                .ToTranfertObject();
+                .ToTransfertObject();
         }
 
         public void SetDefaultSupplier(SupplierTO Supplier)
@@ -70,7 +70,7 @@ namespace MealServices.DataLayer.Repositories
 
         public override SupplierTO ToTransfertObject(SupplierEF entity)
         {
-            return entity.ToTranfertObject();
+            return entity.ToTransfertObject();
         }
 
         public override SupplierEF UpdateFromDetached(SupplierEF AttachedEF, SupplierEF DetachedEF)
