@@ -92,9 +92,18 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(Entity));
             }
 
-            facilityContext.Entry(Entity.ToEF()).State = EntityState.Modified;
+            var attachedRoom = facilityContext.Rooms.FirstOrDefault(x => x.Id == Entity.Id);
 
-            return Entity;
+            if (attachedRoom != default)
+            {
+                attachedRoom.UpdateFromDetached(Entity.ToEF());
+            }
+
+            var tracking = facilityContext.Rooms.Update(attachedRoom);
+            tracking.State = EntityState.Detached;
+            //var entity = facilityContext.Rooms.Update(attachedRoom).Entity.ToTransfertObject();
+            //facilityContext.SaveChanges();
+            return tracking.Entity.ToTransfertObject();
         }
     }
 }

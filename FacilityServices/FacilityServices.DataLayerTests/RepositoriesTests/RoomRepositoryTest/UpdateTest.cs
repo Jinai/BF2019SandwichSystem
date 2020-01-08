@@ -27,7 +27,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             added.Name = new MultiLanguageString("New Room1", "New Room1", "New Room1");
             //ACT
             var updated = repository.Update(added);
-            context.SaveChanges();
+            //context.SaveChanges();
             //ASSERT
             Assert.AreEqual(updated.Name.English, "New Room1");
         }
