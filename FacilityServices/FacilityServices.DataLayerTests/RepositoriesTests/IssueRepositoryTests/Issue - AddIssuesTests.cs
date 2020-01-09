@@ -43,10 +43,24 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
                 .Options;
             using (var memoryCtx = new FacilityContext(options))
             {
+                
+                var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
+
+                var componentType = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
+                };
+                
+                var addedComponentType1 = componentTypeRepository.Add(componentType);
+                memoryCtx.SaveChanges();
+
                 var IssueToUseInTest = new IssueTO
                 {
                     Description = "prout",
-                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL")
+                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"),
+                    ComponentType = addedComponentType1,
+
                 };
 
                 var issueRepository = new IssueRepository(memoryCtx);

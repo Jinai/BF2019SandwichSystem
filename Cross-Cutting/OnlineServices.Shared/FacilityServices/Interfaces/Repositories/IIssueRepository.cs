@@ -8,5 +8,6 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
     public interface IIssueRepository : IRepositoryTemp<IssueTO, int>
     {
+        List<IssueTO> GetIssuesByComponentType(ComponentTypeTO ComponentType);
     }
 }
