@@ -13,7 +13,7 @@ using System.Text;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryTest
 {
     [TestClass]
-    public class ComponentRepositoryAddTests
+    public class AddComponentsTests
     {
         [TestMethod]
         public void AddComponent_ShouldInsertInDb_WhenValidComponentIsSupplied()
