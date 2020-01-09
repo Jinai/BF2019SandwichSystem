@@ -5,15 +5,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using System;
+using System.Collections.Generic;
 using System.Reflection;
+using System.Text;
 
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {
     [TestClass]
-    public class RemoveByEntityTest
+    public class RemoveRoomsByIDTests
     {
         [TestMethod]
-        public void RemoveByEntity_AddANewRoomAndRemoveTheAddedRoom_ReturnTrue()
+        public void RemoveTest_AddANewRoomAndRemoveTheAddedRoom_ReturnTrue()
         {
             //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -31,7 +34,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             var added = repository.Add(room);
             context.SaveChanges();
             //ACT
-            var result = repository.Remove(added);
+            var result = repository.Remove(added.Id);
             context.SaveChanges();
             //ASSERT
             Assert.IsTrue(result);

@@ -11,7 +11,7 @@ using System.Reflection;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {
     [TestClass]
-    public class GetAllTest
+    public class GetAllRoomsTests
     {
         [TestMethod]
         public void GetAll_AddThreeRooms_ReturnCorrectNumberOfRooms()

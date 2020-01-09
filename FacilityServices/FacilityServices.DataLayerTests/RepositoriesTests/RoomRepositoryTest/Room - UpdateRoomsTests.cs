@@ -10,7 +10,7 @@ using System.Reflection;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {
     [TestClass]
-    public class UpdateTest
+    public class UpdateRoomsTests
     {
         [TestMethod]
         public void UpdateTest_AddARoopmAndChangeItsName_ReturnUpdatedRoom()

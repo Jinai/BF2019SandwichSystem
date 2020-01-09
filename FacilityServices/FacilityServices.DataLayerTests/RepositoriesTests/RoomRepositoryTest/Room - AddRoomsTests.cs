@@ -10,7 +10,7 @@ using System.Reflection;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {
     [TestClass]
-    public class AddRoomTest
+    public class AddRoomTests
     {
         [TestMethod]
         public void Add_ReturnRoomTONotNull()

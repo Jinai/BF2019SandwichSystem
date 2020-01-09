@@ -11,7 +11,7 @@ using System.Reflection;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryTest
 {
     [TestClass]
-    public class ComponentRepositoryGetTests
+    public class GetComponentsTests
     {
         [TestMethod]
         public void GetComponentById_ThrowsException_WhenInvalidIdIsProvided()

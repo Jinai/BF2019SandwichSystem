@@ -13,7 +13,7 @@ using System.Reflection;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {
     [TestClass]
-    public class GetRoomsByFloors
+    public class GetRoomsByFloorsTests
     {
         [TestMethod]
         //[Ignore]

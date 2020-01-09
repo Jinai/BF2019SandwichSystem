@@ -10,11 +10,12 @@ using System.Reflection;
 namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 {
     [TestClass]
-    public class GetByIDTest
+    public class RemoveRoomsByEntityTests
     {
         [TestMethod]
-        public void GetByID_AddNewRoomAndRetrieveTheAddedRoom_ReturnTheCoorectRoom()
+        public void RemoveByEntity_AddANewRoomAndRemoveTheAddedRoom_ReturnTrue()
         {
+            //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
                 .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
                 .Options;
@@ -27,13 +28,13 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             context.SaveChanges();
 
             RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
-            var result = repository.Add(room);
+            var added = repository.Add(room);
             context.SaveChanges();
-
-            var retrievedRoom = repository.GetByID(result.Id);
-
-            Assert.IsNotNull(retrievedRoom);
-            Assert.AreEqual(retrievedRoom.ToString(), result.ToString());
+            //ACT
+            var result = repository.Remove(added);
+            context.SaveChanges();
+            //ASSERT
+            Assert.IsTrue(result);
         }
     }
 }
