@@ -1,7 +1,9 @@
-﻿using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
+﻿using FacilityServices.DataLayer.Extensions;
+using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FacilityServices.DataLayer.Repositories
 {
@@ -16,7 +18,14 @@ namespace FacilityServices.DataLayer.Repositories
 
         public IncidentTO Add(IncidentTO Entity)
         {
-            throw new NotImplementedException();
+            if (Entity is null)
+                throw new ArgumentNullException(nameof(Entity));
+
+            var incident = Entity.ToEF();
+            incident.Issue = facilityContext.Issues.First(x => x.Id == Entity.Issue.Id);
+            incident.Component = facilityContext.Components.First(x => x.Id == Entity.Id);
+
+            return facilityContext.Incidents.Add(incident).Entity.ToTransfertObject();
         }
 
         public IEnumerable<IncidentTO> GetAll()

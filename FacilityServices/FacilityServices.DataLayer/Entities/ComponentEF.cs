@@ -11,9 +11,11 @@ namespace FacilityServices.DataLayer.Entities
     {
         [Key]
         public int Id { get; set; }
+        public ComponentTypeEF ComponentType { get; set; }
         public RoomEF Room { get; set; }
         public string NameFrench { get; set; }
         public string NameEnglish { get; set; }
         public string NameDutch { get; set; }
+        public bool Archived { get; set; }
     }
 }
