@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
             {
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
 
-                //Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetByID(100));
+                Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetByID(100));
             }
         }
         [TestMethod]
@@ -41,6 +41,11 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
                 {
                     Archived = false,
                     Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
+                };
+                var ComponentTypeToUseInTest2 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
                 };
 
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
