@@ -1,4 +1,5 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
+﻿using FacilityServices.BusinessLayer.Domain;
+using OnlineServices.Shared.DataAccessHelpers;
 using OnlineServices.Shared.TranslationServices;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
@@ -18,5 +19,6 @@ namespace FacilityServices.DataLayer.Entities
         public string NameEnglish { get; set; }
         public string NameDutch { get; set; }
         public string Description { get; set; }
+        public ComponentTypeEF ComponentType { get; set; }
     }
 }
