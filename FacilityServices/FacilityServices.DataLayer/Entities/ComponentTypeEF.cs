@@ -12,9 +12,9 @@ namespace FacilityServices.DataLayer.Entities
         [Key]
         public int Id { get; set; }
         public bool Archived { get; set; }
-        public List<IssueEF> Issues { get; set; }
         public string NameFrench { get; set; }
         public string NameEnglish { get; set; }
         public string NameDutch { get; set; }
+        // public List<IssueEF> Issues { get; set; }
     }
 }

@@ -22,6 +22,7 @@ namespace FacilityServices.DataLayer
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=FacilityDB;Trusted_Connection=True;");
+                optionsBuilder.EnableSensitiveDataLogging();
             }
         }
 
@@ -30,5 +31,7 @@ namespace FacilityServices.DataLayer
         public DbSet<ComponentEF> Components { get; set; }
         public DbSet<RoomEF> Rooms { get; set; }
         public DbSet<FloorEF> Floors { get; set; }
+        public DbSet<ComponentTypeEF> ComponentTypes { get; set; }
+        public DbSet<CommentEF> Comments { get; set; }
     }
 }
