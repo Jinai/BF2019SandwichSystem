@@ -1,4 +1,5 @@
 ﻿using FacilityServices.DataLayer.Extensions;
+using Microsoft.EntityFrameworkCore;
 using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using System;
@@ -30,7 +31,13 @@ namespace FacilityServices.DataLayer.Repositories
 
         public IEnumerable<IncidentTO> GetAll()
         {
-            throw new NotImplementedException();
+            return facilityContext.Incidents
+                                  .Include(i => i.Issue)
+                                  .Include(i => i.Component)
+                                  .ThenInclude(comp => comp.Room)
+                                  .ThenInclude(r => r.Floor)
+                                  .Include(i => i.Component.ComponentType)
+                                  .Select(i => i.ToTransfertObject());
         }
 
         public IncidentTO GetByID(int Id)
