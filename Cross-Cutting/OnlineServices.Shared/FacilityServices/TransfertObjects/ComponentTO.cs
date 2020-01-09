@@ -6,6 +6,7 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
     public class ComponentTO : IEntity<int>
     {
         public int Id { get; set; }
+        public ComponentTypeTO ComponentType { get; set; }
         public RoomTO Room { get; set; }
         public MultiLanguageString Name { get; set; }
         public bool Archived { get; set; }

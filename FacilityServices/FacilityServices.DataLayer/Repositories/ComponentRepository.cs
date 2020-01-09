@@ -24,17 +24,21 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            return facilityContext.Components.Add(entity.ToEF()).Entity.ToTransfertObject();
+            var componentEF = entity.ToEF();
+            componentEF.Room = facilityContext.Rooms.Include(x => x.Floor).First(x => x.Id == entity.Room.Id);
+            componentEF.ComponentType = facilityContext.ComponentTypes.First(x => x.Id == entity.ComponentType.Id);
+
+            return facilityContext.Components.Add(componentEF).Entity.ToTransfertObject();
         }
 
         public IEnumerable<ComponentTO> GetAll()
         {
-            return facilityContext.Components.AsNoTracking().Include(x => x.Room).ThenInclude(x => x.Floor).Select(x => x.ToTransfertObject()).ToList();
+            return facilityContext.Components.AsNoTracking().Include(x => x.ComponentType).Include(x => x.Room).ThenInclude(x => x.Floor).Select(x => x.ToTransfertObject()).ToList();
         }
 
         public ComponentTO GetByID(int id)
         {
-            return facilityContext.Components.AsNoTracking().Include(x => x.Room).ThenInclude(x => x.Floor).FirstOrDefault(x => x.Id == id).ToTransfertObject();
+            return facilityContext.Components.AsNoTracking().Include(x => x.ComponentType).Include(x => x.Room).ThenInclude(x => x.Floor).FirstOrDefault(x => x.Id == id).ToTransfertObject();
         }
 
         public bool Remove(ComponentTO entity)

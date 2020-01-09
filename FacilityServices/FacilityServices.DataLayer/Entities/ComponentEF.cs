@@ -1,6 +1,5 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
 using OnlineServices.Shared.TranslationServices;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
