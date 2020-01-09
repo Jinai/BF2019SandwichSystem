@@ -10,6 +10,7 @@ namespace FacilityServices.BusinessLayer.Extensions
             return new Component(ComponentTO.Name)
             {
                 Id = ComponentTO.Id
+                
             };
         }
         public static ComponentTO ToTransfertObject(this Component Component)

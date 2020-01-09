@@ -10,8 +10,7 @@ namespace FacilityServices.DataLayer.Entities
     {
         [Key]
         public int Id { get; set; }
-        // TODO : User from UserServices
-        //public IUser User { get; set; }
+        public int UserId { get; set; }
         public IncidentEF Incident { get; set; }
         public string Message { get; set; }
         public DateTime SubmitDate { get; set; }
