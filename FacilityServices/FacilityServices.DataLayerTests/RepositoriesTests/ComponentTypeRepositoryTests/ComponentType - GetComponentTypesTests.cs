@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
             {
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
 
-                //Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetByID(100));
+                Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetByID(100));
             }
         }
         [TestMethod]
@@ -42,15 +42,22 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
                     Archived = false,
                     Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
                 };
+                var ComponentTypeToUseInTest2 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
+                };
 
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
 
                 componentTypeRepository.Add(ComponentTypeToUseInTest);
+                componentTypeRepository.Add(ComponentTypeToUseInTest2);
+
                 memoryCtx.SaveChanges();
 
-                //var ComponentTypeToAssert = componentTypeRepository.GetByID(2);
-                //Assert.AreEqual(2, ComponentTypeToAssert.Id);
-                //Assert.AreEqual(0, ComponentTypeToAssert.Number);
+                var ComponentTypeToAssert = componentTypeRepository.GetByID(2);
+                Assert.AreEqual(2, ComponentTypeToAssert.Id);
+                Assert.AreEqual("Name2Fr", ComponentTypeToAssert.Name.French);
             }
         }
 
@@ -62,27 +69,30 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
                 .Options;
             using (var memoryCtx = new FacilityContext(options))
             {
-                var ComponentTypeToUseInTest = new ComponentTypeTO
-                {
-                    
-                };
-
                 var ComponentTypeToUseInTest1 = new ComponentTypeTO
                 {
-                   
+                    Archived = false,
+                    Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
                 };
                 var ComponentTypeToUseInTest2 = new ComponentTypeTO
                 {
-                   
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
                 };
+                var ComponentTypeToUseInTest3 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name3En", "Name3Fr", "Name3Nl"),
+                };
+
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
 
-                componentTypeRepository.Add(ComponentTypeToUseInTest);
                 componentTypeRepository.Add(ComponentTypeToUseInTest1);
                 componentTypeRepository.Add(ComponentTypeToUseInTest2);
+                componentTypeRepository.Add(ComponentTypeToUseInTest3);
                 memoryCtx.SaveChanges();
 
-                //Assert.AreEqual(3, componentTypeRepository.GetAll().Count());
+                Assert.AreEqual(3, componentTypeRepository.GetAll().Count());
             }
         }
     }

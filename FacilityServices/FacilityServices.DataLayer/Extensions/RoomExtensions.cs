@@ -55,6 +55,7 @@ namespace FacilityServices.DataLayer.Extensions
             {
                 AttachedEF.Floor = DetachedEF.Floor;
                 AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
+                AttachedEF.Archived = DetachedEF.Archived;
             }
 
             return AttachedEF;

@@ -6,18 +6,16 @@ using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryTest
 {
     [TestClass]
-    public class AddComponentsTests
+    public class GetComponentsTests
     {
         [TestMethod]
-        public void AddComponent_ShouldInsertInDb_WhenValidComponentIsSupplied()
+        public void GetComponentById_ThrowsException_WhenInvalidIdIsProvided()
         {
             var options = new DbContextOptionsBuilder<FacilityContext>()
                 .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
@@ -25,7 +23,21 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryT
 
             using (var memoryCtx = new FacilityContext(options))
             {
-                // Arrange
+                var componentRepository = new ComponentRepository(memoryCtx);
+
+                Assert.ThrowsException<ArgumentNullException>(() => componentRepository.GetByID(100));
+            }
+        }
+
+        [TestMethod]
+        public void GetComponentById_AddNewComponentAndRetrieveIt_ReturnsTheCorrectComponent()
+        {
+            var options = new DbContextOptionsBuilder<FacilityContext>()
+                .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
+                .Options;
+
+            using (var memoryCtx = new FacilityContext(options))
+            {
                 IComponentRepository componentRepository = new ComponentRepository(memoryCtx);
                 IRoomRepository roomRepository = new RoomRepository(memoryCtx);
                 IFloorRepository floorRepository = new FloorRepository(memoryCtx);
@@ -36,36 +48,14 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryT
                 var room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor };
                 var addedRoom = roomRepository.Add(room);
                 memoryCtx.SaveChanges();
-                var component = new ComponentTO { Name = new MultiLanguageString("Comp1", "Comp1", "Comp1"), Room = addedRoom };
-
-                // Act
+                var component = new ComponentTO { Name = new MultiLanguageString("Comp1", "Comp1", "Comp1"), Room = addedRoom};
                 var addedComponent = componentRepository.Add(component);
                 memoryCtx.SaveChanges();
 
-                // Assert
-                Assert.IsNotNull(addedComponent);
-                Assert.IsNotNull(addedComponent.Room);
-                Assert.IsNotNull(addedComponent.Room.Floor);
-                Assert.IsTrue(addedComponent.Id != 0);
-                Assert.AreEqual(1, componentRepository.GetAll().Count());
-            }
-        }
+                var retrievedComponent = componentRepository.GetByID(addedComponent.Id);
 
-        [TestMethod]
-        public void AddComponent_ShouldThrowException_WhenNullIsSupplied()
-        {
-            var options = new DbContextOptionsBuilder<FacilityContext>()
-                .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
-                .Options;
-
-            using (var memoryCtx = new FacilityContext(options))
-            {
-                // Arrange
-                ComponentTO component = null;
-                var componentRepository = new ComponentRepository(memoryCtx);
-
-                // Act & Assert
-                Assert.ThrowsException<ArgumentNullException>(() => componentRepository.Add(component));
+                Assert.IsNotNull(retrievedComponent);
+                Assert.AreEqual(addedComponent.Id, retrievedComponent.Id);
             }
         }
     }

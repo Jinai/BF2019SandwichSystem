@@ -24,21 +24,41 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
+                var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
+
+                var componentType = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
+                };
+                var componentType2 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
+                };
+                var addedComponentType1 = componentTypeRepository.Add(componentType);
+                var addedComponentType2 = componentTypeRepository.Add(componentType2);
+                memoryCtx.SaveChanges();
+
                 var IssueToUseInTest = new IssueTO
                 {
                     Description = "prout",
-                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL")
-                };
+                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"),
+                    ComponentType = addedComponentType1,
 
+
+                };
                 var IssueToUseInTest2 = new IssueTO
                 {
                     Description = "proutprout",
-                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL")
+                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL"),
+                    ComponentType = addedComponentType1,
                 };
                 var IssueToUseInTest3 = new IssueTO
                 {
                     Description = "proutproutprout",
-                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL")
+                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL"),
+                    ComponentType = addedComponentType2,
                 };
 
                 var issueRepository = new IssueRepository(memoryCtx);
@@ -59,16 +79,41 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
+                var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
+
+                var componentType = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
+                };
+                var componentType2 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
+                };
+                var addedComponentType1 = componentTypeRepository.Add(componentType);
+                var addedComponentType2 = componentTypeRepository.Add(componentType2);
+                memoryCtx.SaveChanges();
+
                 var IssueToUseInTest = new IssueTO
                 {
                     Description = "prout",
-                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL")
-                };
+                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"),
+                    ComponentType = addedComponentType1,
 
+
+                };
                 var IssueToUseInTest2 = new IssueTO
                 {
                     Description = "proutprout",
-                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL")
+                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL"),
+                    ComponentType = addedComponentType1,
+                };
+                var IssueToUseInTest3 = new IssueTO
+                {
+                    Description = "proutproutprout",
+                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL"),
+                    ComponentType = addedComponentType2,
                 };
 
                 var issueRepository = new IssueRepository(memoryCtx);
@@ -96,21 +141,41 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
             using (var memoryCtx = new FacilityContext(options))
             {
 
+                var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
+
+                var componentType = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
+                };
+                var componentType2 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
+                };
+                var addedComponentType1 = componentTypeRepository.Add(componentType);
+                var addedComponentType2 = componentTypeRepository.Add(componentType2);
+                memoryCtx.SaveChanges();
+
                 var IssueToUseInTest = new IssueTO
                 {
                     Description = "prout",
-                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL")
-                };
+                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"),
+                    ComponentType = addedComponentType1,
 
+
+                };
                 var IssueToUseInTest2 = new IssueTO
                 {
                     Description = "proutprout",
-                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL")
+                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL"),
+                    ComponentType = addedComponentType1,
                 };
                 var IssueToUseInTest3 = new IssueTO
                 {
                     Description = "proutproutprout",
-                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL")
+                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL"),
+                    ComponentType = addedComponentType2,
                 };
 
                 var issueRepository = new IssueRepository(memoryCtx);
@@ -131,21 +196,41 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
 
             using (var memoryCtx = new FacilityContext(options))
             {
+                var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
+
+                var componentType = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl"),
+                };
+                var componentType2 = new ComponentTypeTO
+                {
+                    Archived = false,
+                    Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl"),
+                };
+                var addedComponentType1 = componentTypeRepository.Add(componentType);
+                var addedComponentType2 = componentTypeRepository.Add(componentType2);
+                memoryCtx.SaveChanges();
+
                 var IssueToUseInTest = new IssueTO
                 {
                     Description = "prout",
-                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL")
-                };
+                    Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"),
+                    ComponentType = addedComponentType1,
 
+
+                };
                 var IssueToUseInTest2 = new IssueTO
                 {
                     Description = "proutprout",
-                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL")
+                    Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL"),
+                    ComponentType = addedComponentType1,
                 };
                 var IssueToUseInTest3 = new IssueTO
                 {
                     Description = "proutproutprout",
-                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL")
+                    Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL"),
+                    ComponentType = addedComponentType2,
                 };
 
                 var issueRepository = new IssueRepository(memoryCtx);

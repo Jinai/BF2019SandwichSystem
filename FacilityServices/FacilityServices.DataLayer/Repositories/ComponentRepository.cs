@@ -24,7 +24,10 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(entity));
             }
 
-            return facilityContext.Components.Add(entity.ToEF()).Entity.ToTransfertObject();
+            var componentEF = entity.ToEF();
+            componentEF.Room = facilityContext.Rooms.Include(x => x.Floor).First(x => x.Id == entity.Room.Id);
+
+            return facilityContext.Components.Add(componentEF).Entity.ToTransfertObject();
         }
 
         public IEnumerable<ComponentTO> GetAll()
