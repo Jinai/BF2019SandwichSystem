@@ -8,6 +8,7 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
 {
     public interface IComponentRepository : IRepositoryTemp<ComponentTO, int>
     {
+        // TODO : GetComponentsByRoom()
         List<ComponentTO> GetComponentByRoom(RoomTO Room);
 
     }

@@ -9,7 +9,7 @@ namespace FacilityServices.DataLayer.Extensions
 {
     public static class IncidentExtensions
     {
-        public static IncidentTO ToTranfertsObject(this IncidentEF Incident)
+        public static IncidentTO ToTransfertObject(this IncidentEF Incident)
         {
             if (Incident is null)
                 throw new ArgumentNullException(nameof(Incident));
@@ -17,9 +17,9 @@ namespace FacilityServices.DataLayer.Extensions
             return new IncidentTO
             {
                 Id = Incident.Id,
-                Component = Incident.Component.ToTranfertsObject(),
-                Issue = Incident.Issue.ToTranfertsObject(),
-                Comment = Incident.Comment,
+                Component = Incident.Component.ToTransfertObject(),
+                Issue = Incident.Issue.ToTransfertObject(),
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate
             };
@@ -35,7 +35,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = Incident.Id,
                 Component = Incident.Component.ToEF(),
                 Issue = Incident.Issue.ToEF(),
-                Comment = Incident.Comment,
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate
             };

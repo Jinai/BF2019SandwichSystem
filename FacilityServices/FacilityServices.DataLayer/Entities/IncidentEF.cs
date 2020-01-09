@@ -11,6 +11,7 @@ namespace FacilityServices.DataLayer.Entities
     {
         [Key]
         public int Id { get; set; }
+        public int UserId { get; set; }
         public ComponentEF Component { get; set; }
         public IssueEF Issue { get; set; }
         public string Comment { get; set; }

@@ -8,5 +8,6 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
         public int Id { get; set; }
         public RoomTO Room { get; set; }
         public MultiLanguageString Name { get; set; }
+        public bool Archived { get; set; }
     }
 }
