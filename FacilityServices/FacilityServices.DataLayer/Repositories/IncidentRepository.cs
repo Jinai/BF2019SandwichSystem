@@ -1,10 +1,11 @@
 ﻿using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using System;
 using System.Collections.Generic;
 
 namespace FacilityServices.DataLayer.Repositories
 {
-    internal class IncidentRepository : IIncidentRepository
+    public class IncidentRepository : IIncidentRepository
     {
         private FacilityContext facilityContext;
 
@@ -15,37 +16,37 @@ namespace FacilityServices.DataLayer.Repositories
 
         public IncidentTO Add(IncidentTO Entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public IEnumerable<IncidentTO> GetAll()
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public IncidentTO GetByID(int Id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public List<IncidentTO> GetIncidentsByUserId(int UserId)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Remove(IncidentTO entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Remove(int Id)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public IncidentTO Update(IncidentTO Entity)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
     }
 }

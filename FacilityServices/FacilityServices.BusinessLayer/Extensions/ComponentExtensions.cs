@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using FacilityServices.BusinessLayer.Domain;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 
 namespace FacilityServices.BusinessLayer.Extensions
@@ -12,6 +10,7 @@ namespace FacilityServices.BusinessLayer.Extensions
             return new Component(ComponentTO.Name)
             {
                 Id = ComponentTO.Id
+                
             };
         }
         public static ComponentTO ToTransfertObject(this Component Component)

@@ -6,6 +6,8 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
     public interface IFSUnitOfWork : IDisposable
     {
         IComponentRepository ComponentRepository { get; }
+        IComponentTypeRepository ComponentTypeRepository { get; }
+        ICommentRepository CommentRepository { get; }
         IFloorRepository FloorRepository { get; }
         IIssueRepository IssueRepository { get; }
         IRoomRepository RoomRepository { get; }
