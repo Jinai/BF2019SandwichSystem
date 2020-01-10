@@ -21,11 +21,12 @@ namespace FacilityServices.DataLayer.Repositories
         {
             if (Entity is null)
                 throw new ArgumentNullException(nameof(Entity));
-            
+
             return facilityContext.ComponentTypes
                 .Add(Entity.ToEF())
                 .Entity
                 .ToTransfertObject();
+        
         }
 
         public IEnumerable<ComponentTypeTO> GetAll()
@@ -40,6 +41,11 @@ namespace FacilityServices.DataLayer.Repositories
             .AsNoTracking()
             .FirstOrDefault(x => x.Id == Id)
             .ToTransfertObject();
+        }
+
+        public List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO Room)
+        {
+            throw new NotImplementedException();
         }
 
         public bool Remove(ComponentTypeTO entity)
