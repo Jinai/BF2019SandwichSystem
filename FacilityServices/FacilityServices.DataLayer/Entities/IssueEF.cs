@@ -1,12 +1,7 @@
-﻿using FacilityServices.BusinessLayer.Domain;
-using OnlineServices.Shared.DataAccessHelpers;
+﻿using OnlineServices.Shared.DataAccessHelpers;
 using OnlineServices.Shared.TranslationServices;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace FacilityServices.DataLayer.Entities
 {
@@ -20,5 +15,6 @@ namespace FacilityServices.DataLayer.Entities
         public string NameDutch { get; set; }
         public string Description { get; set; }
         public ComponentTypeEF ComponentType { get; set; }
+        public bool Archived { get; set; }
     }
 }

@@ -24,23 +24,9 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(Entity));
 
             var roomEf = Entity.ToEF();
-            roomEf.Floor = facilityContext.Floors.First(x=>x.Id == Entity.Floor.Id);
-            roomEf.Floor = roomEf.Floor.UpdateFromDetached(Entity.Floor.ToEF());
+            roomEf.Floor = facilityContext.Floors.First(x => x.Id == Entity.Floor.Id);
 
-            return facilityContext.Rooms.Add(roomEf).Entity.ToTransfertObject();
-
-            //return facilityContext.Rooms
-            //    .Add(Entity.ToEF())
-            //    .Entity
-            //    .ToTransfertObject();
-            //if (Entity is null)
-            //{
-            //    throw new ArgumentNullException(nameof(Entity));
-            //}
-
-            //var tracking = facilityContext.Rooms.Add(Entity.ToEF());
-            //tracking.State = EntityState.Added;
-            //return tracking.Entity.ToTransfertObject();
+            return facilityContext.Rooms.Add(roomEf).Entity.ToTransfertObject();        
         }
 
         public IEnumerable<RoomTO> GetAll()

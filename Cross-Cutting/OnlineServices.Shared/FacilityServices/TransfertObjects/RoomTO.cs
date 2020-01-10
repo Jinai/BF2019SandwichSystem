@@ -9,7 +9,7 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
         public int Id { get; set; }
         public MultiLanguageString Name { get; set; }
         public FloorTO Floor { get; set; }
+        public IList<ComponentTypeTO> ComponentTypes { get; set; }
         public bool Archived { get; set; }
-        public List<ComponentTO> Components { get; set; } = new List<ComponentTO>();
     }
 }
