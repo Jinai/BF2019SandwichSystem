@@ -25,10 +25,15 @@ namespace FacilityServices.DataLayer.Repositories
 
             //return facilityContext.Update<FloorEF>(Entity.ToEF()).Entity.ToTransfertObject();
 
-            return facilityContext.Floors
-                .Add(Entity.ToEF())
-                .Entity
-                .ToTransfertObject();
+            //return facilityContext.Floors
+            //    .Add(Entity.ToEF())
+            //    .Entity
+            //    .ToTransfertObject();
+
+            var entity = facilityContext.Floors.Add(Entity.ToEF()).Entity;
+            //facilityContext.SaveChanges();
+            //return GetByID(entity.Id);
+            return entity.ToTransfertObject();
         }
 
         public IEnumerable<FloorTO> GetAll()

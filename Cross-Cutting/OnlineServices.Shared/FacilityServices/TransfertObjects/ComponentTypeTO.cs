@@ -9,6 +9,7 @@ namespace OnlineServices.Shared.FacilityServices.TransfertObjects
         public int Id { get; set; }
         public MultiLanguageString Name { get; set; }
         public bool Archived { get; set; }
-        public List<IssueTO> Issues { get; set; } = new List<IssueTO>();
+        //public List<IssueTO> Issues { get; set; } = new List<IssueTO>();
+        public List<RoomComponentTO> RoomComponents { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using OnlineServices.Shared.DataAccessHelpers;
 using OnlineServices.Shared.TranslationServices;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,6 +15,7 @@ namespace FacilityServices.DataLayer.Entities
         public string NameEnglish { get; set; }
         public string NameDutch { get; set; }
         public FloorEF Floor { get; set; }
+        public IList<RoomComponentEF> RoomComponents { get; set; }
         public bool Archived { get; set; }
     }
 }
