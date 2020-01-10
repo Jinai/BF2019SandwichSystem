@@ -5,15 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-<<<<<<< HEAD:UserServices/UserServices.BusinessLayerTests/RegistrationServices.BusinessLayerTests.csproj:UserServices/UserServices.BusinessLayerTests/RegistrationServices.BusinessLayerTests.csproj
-    <AssemblyVersion>2001.10.4.1639</AssemblyVersion>
-
-    <FileVersion>2001.10.4.1639</FileVersion>
-=======
     <AssemblyVersion>2001.9.3.0944</AssemblyVersion>
 
     <FileVersion>2001.9.3.0944</FileVersion>
->>>>>>> master:MealServices/MealServices.SharedTests/MealServices.SharedTests.csproj:MealServices/MealServices.SharedTests/MealServices.SharedTests.csproj
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,8 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Common.csproj" />
-    <ProjectReference Include="..\UserServices.BusinessLayer\RegistrationServices.BusinessLayer.csproj" />
+    <ProjectReference Include="..\OnlineServices.Shared\OnlineServices.Shared.csproj" />
   </ItemGroup>
 
 </Project>
