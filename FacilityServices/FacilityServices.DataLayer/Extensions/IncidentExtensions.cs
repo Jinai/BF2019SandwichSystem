@@ -17,12 +17,11 @@ namespace FacilityServices.DataLayer.Extensions
             return new IncidentTO
             {
                 Id = Incident.Id,
+                Component = Incident.Component.ToTransfertObject(),
                 Issue = Incident.Issue.ToTransfertObject(),
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
-                SubmitDate = Incident.SubmitDate,
-                Description = Incident.Description,
-                // TODO RoomComponent = Incident.RoomComponent,
-                UserId = Incident.UserId
+                SubmitDate = Incident.SubmitDate
             };
         }
 
@@ -34,12 +33,11 @@ namespace FacilityServices.DataLayer.Extensions
             return new IncidentEF
             {
                 Id = Incident.Id,
+                Component = Incident.Component.ToEF(),
                 Issue = Incident.Issue.ToEF(),
+                //Comment = Incident.Comment,
                 Status = Incident.Status,
-                SubmitDate = Incident.SubmitDate,
-                Description = Incident.Description,
-                // TODO RoomComponent = Incident.RoomComponent,
-                UserId = Incident.UserId
+                SubmitDate = Incident.SubmitDate
             };
         }
     }

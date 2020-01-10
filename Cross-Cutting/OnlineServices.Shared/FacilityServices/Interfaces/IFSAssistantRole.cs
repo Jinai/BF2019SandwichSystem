@@ -6,6 +6,7 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
     public interface IFSAssistantRole : IFSAttendeeRole
     {
         public bool AddComment(CommentTO comment);
+        public bool AddComponent(ComponentTO componentToAdd);
         public bool AddComponentType(ComponentTypeTO componentTypeToAdd);
         public bool AddFloor(FloorTO floorToAdd);
         public bool AddRoom(RoomTO roomToAdd);

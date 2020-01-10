@@ -7,7 +7,7 @@ namespace FacilityServices.BusinessLayer.UseCases.Assistant
 {
     public partial class Assistant
     {
-        public bool AddComponent(ComponentTypeTO componentTypeToAdd)
+        public bool AddComponent(ComponentTO componentToAdd)
         {
             return true;
         }

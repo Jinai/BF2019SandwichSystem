@@ -10,7 +10,7 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
         public List<IssueTO> GetIssues();
         public List<FloorTO> GetFloors();
         public List<RoomTO> GetRooms();
-        public List<ComponentTypeTO> GetComponents();
+        public List<ComponentTO> GetComponents();
         public List<ComponentTypeTO> GetComponentTypes();
     }
 }

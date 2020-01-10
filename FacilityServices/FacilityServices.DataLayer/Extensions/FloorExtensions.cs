@@ -54,7 +54,6 @@ namespace FacilityServices.DataLayer.Extensions
             if ((AttachedEF != default) && (DetachedEF != default))
             {
                 AttachedEF.Number = DetachedEF.Number;
-                AttachedEF.Archived = DetachedEF.Archived;
             }
             return AttachedEF;
         }

@@ -2,7 +2,6 @@
 using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
@@ -26,28 +25,27 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentRepositoryT
             using (var memoryCtx = new FacilityContext(options))
             {
                 // Arrange
-                IComponentRepository componentRepository = new ComponentRepository(memoryCtx);
-                IRoomRepository roomRepository = new RoomRepository(memoryCtx);
-                IFloorRepository floorRepository = new FloorRepository(memoryCtx);
+                var componentName = new MultiLanguageString("Soap dispenser", "Distributeur de savon", "Zeeppomp");
+                var roomName = new MultiLanguageString("WC Men", "WC Hommes", "WC Mannen");
+                var component = new ComponentTO
+                {
+                    Id = 0,
+                    Name = componentName,
+                    Room = new RoomTO { Id = 1, Name = roomName, Floor = new FloorTO { Id = 1, Number = -2 } }
+                };
 
-                var floor = new FloorTO { Number = 2 };
-                var addedFloor = floorRepository.Add(floor);
-                memoryCtx.SaveChanges();
-                var room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor };
-                var addedRoom = roomRepository.Add(room);
-                memoryCtx.SaveChanges();
-                var component = new ComponentTO { Name = new MultiLanguageString("Comp1", "Comp1", "Comp1"), Room = addedRoom };
+                var componentRepository = new ComponentRepository(memoryCtx);
 
                 // Act
-                var addedComponent = componentRepository.Add(component);
+                componentRepository.Add(component);
                 memoryCtx.SaveChanges();
 
                 // Assert
-                Assert.IsNotNull(addedComponent);
-                Assert.IsNotNull(addedComponent.Room);
-                Assert.IsNotNull(addedComponent.Room.Floor);
-                Assert.IsTrue(addedComponent.Id != 0);
                 Assert.AreEqual(1, componentRepository.GetAll().Count());
+                var componentToAssert = componentRepository.GetByID(1);
+                Assert.AreEqual(1, componentToAssert.Id);
+                Assert.AreEqual(1, componentToAssert.Room.Id);
+                Assert.AreEqual("WC Men", componentToAssert.Room.Name.English);
             }
         }
 

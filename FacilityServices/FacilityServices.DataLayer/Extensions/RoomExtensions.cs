@@ -5,7 +5,6 @@ using OnlineServices.Shared.FacilityServices.TransfertObjects;
 using OnlineServices.Shared.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace FacilityServices.DataLayer.Extensions
@@ -22,9 +21,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = Room.Id,
                 Floor = Room.Floor.ToTransfertObject(),
                 Name = new MultiLanguageString(Room.NameEnglish, Room.NameFrench, Room.NameDutch),
-                Archived = Room.Archived,
-                ComponentTypes = Room.RoomComponents?.Select(x => x.ComponentType.ToTransfertObject()).ToList(),
-                
+                Archived = Room.Archived
             };
         }
 
@@ -40,9 +37,7 @@ namespace FacilityServices.DataLayer.Extensions
                 NameEnglish = Room.Name.English,
                 NameFrench = Room.Name.French,
                 NameDutch = Room.Name.Dutch,
-                Archived = Room.Archived,
-                // TODO Extension methods RoomComponents                         RoomComponents = Room.ComponentTypes?.Select(x => x.RoomComponents.ToEF()).ToList(),
-
+                Archived = Room.Archived
             };
         }
         public static RoomEF UpdateFromDetached(this RoomEF AttachedEF, RoomEF DetachedEF)
@@ -60,7 +55,6 @@ namespace FacilityServices.DataLayer.Extensions
             {
                 AttachedEF.Floor = DetachedEF.Floor;
                 AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
-                AttachedEF.Archived = DetachedEF.Archived;
             }
 
             return AttachedEF;

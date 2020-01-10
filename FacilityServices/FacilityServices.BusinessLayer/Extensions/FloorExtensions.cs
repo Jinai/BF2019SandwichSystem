@@ -7,10 +7,9 @@ namespace FacilityServices.BusinessLayer.Extensions
     {
         public static Floor ToDomain(this FloorTO FloorTO)
         {
-            return new Floor()
+            return new Floor(FloorTO.Number)
             {
-                Id = FloorTO.Id,
-                Number = FloorTO.Number
+                Id = FloorTO.Id
             };
         }
         public static FloorTO ToTransfertObject(this Floor Floor)

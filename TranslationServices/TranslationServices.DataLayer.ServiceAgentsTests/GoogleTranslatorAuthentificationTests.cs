@@ -28,20 +28,20 @@ namespace TranslationServices.DataLayer.ServiceAgentsTests
             }
         }
 
-        [Fact(Skip = "Code as Demo to Google Translation services")]
-        public void DemoOfGeneralUseOfGoogleTranslator()
-        {
-            var OriginalText = new Tuple<Language, string>(Language.English, "Hello World!");
+        //[Fact]//(Skip = "Code as Demo to Azure Cognitive")]
+        //public void DemoOfGeneralUseOfGoogleTranslator()
+        //{
+        //    var OriginalText = new Tuple<Language, string>(Language.English, "Hello World!");
 
-            ITRSTranslationService Translator = new GoogleTranslationAgent(TestHelper.MockILogger().Object);
+        //    ITRSTranslationService Translator = new GoogleTranslationAgent(TestHelper.MockILogger().Object);
 
-            var Translations = Translator.TranslateAsync(OriginalText);
+        //    var Translations = Translator.TranslateAsync(OriginalText);
 
-            Translations.Wait();
+        //    Translations.Wait();
 
-            var r = Translations.Result;
+        //    var r = Translations.Result;
 
-            Assert.Equal(Enum.GetNames(typeof(Language)).Length, r.Length);
-        }
+        //    Assert.Equal(Enum.GetNames(typeof(Language)).Length, r.Length);
+        //}
     }
 }

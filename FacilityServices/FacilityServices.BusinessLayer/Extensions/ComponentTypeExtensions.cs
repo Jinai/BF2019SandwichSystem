@@ -18,7 +18,7 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Id = ComponentTypeTO.Id,
                 Archived = ComponentTypeTO.Archived,
                 Name = ComponentTypeTO.Name,
-                //Issues = ComponentTypeTO.Issues.Select(x => x.ToDomain()).ToList(),
+                Issues = ComponentTypeTO.Issues.Select(x => x.ToDomain()).ToList(),
                 
                 
                 
@@ -34,7 +34,7 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Id = ComponentType.Id,
                 Archived = ComponentType.Archived,
                 Name = ComponentType.Name,
-                //Issues = ComponentType.Issues.Select(x => x.ToTransfertObject()).ToList(),
+                Issues = ComponentType.Issues.Select(x => x.ToTransfertObject()).ToList(),
 
 
             };
