@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyVersion>2001.9.1.0940</AssemblyVersion>
-    <FileVersion>2001.9.1.0940</FileVersion>
+    <AssemblyVersion>2001.10.5.1642</AssemblyVersion>
+    <FileVersion>2001.10.5.1642</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +12,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CommunicationServices\CommunicationServices.CrossCutting\CrossCutting\CommunicationServices.CrossCutting.csproj" />
+    <ProjectReference Include="..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Common.csproj" />
   </ItemGroup>
 
 </Project>

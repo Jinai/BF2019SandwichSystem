@@ -1,8 +1,8 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+﻿using OnlineServices.Common.DataAccessHelpers;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System.Collections.Generic;
 
-namespace OnlineServices.Shared.FacilityServices.TransfertObjects
+namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
     public class RoomTO : IEntity<int>
     {

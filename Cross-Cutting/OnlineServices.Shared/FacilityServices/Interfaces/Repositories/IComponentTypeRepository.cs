@@ -1,10 +1,11 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using OnlineServices.Common.DataAccessHelpers;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using System;
 using System.Collections.Generic;
 
-namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
+namespace OnlineServices.Common.FacilityServices.Interfaces.Repositories
 {
-    public interface IComponentTypeRepository : IRepositoryTemp<ComponentTypeTO, int>
+    public interface IComponentRepository : IRepository<ComponentTO, int>
     {
         List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO Room);
     }

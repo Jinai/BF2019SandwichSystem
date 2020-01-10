@@ -1,5 +1,6 @@
 ﻿using FacilityServices.BusinessLayer.Domain;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
+using System.Collections.Generic;
 
 namespace FacilityServices.BusinessLayer.Extensions
 {

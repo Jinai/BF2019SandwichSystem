@@ -1,8 +1,7 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
-using System.Collections.Generic;
+﻿using OnlineServices.Common.DataAccessHelpers;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 
-namespace OnlineServices.Shared.FacilityServices.TransfertObjects
+namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
     public class ComponentTypeTO : IEntity<int>
     {

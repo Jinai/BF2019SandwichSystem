@@ -1,9 +1,9 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
-using OnlineServices.Shared.FacilityServices.Enumerations;
+﻿using OnlineServices.Common.DataAccessHelpers;
+using OnlineServices.Common.FacilityServices.Enumerations;
 using System;
 using System.Collections.Generic;
 
-namespace OnlineServices.Shared.FacilityServices.TransfertObjects
+namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
     public class IncidentTO : IEntity<int>
     {

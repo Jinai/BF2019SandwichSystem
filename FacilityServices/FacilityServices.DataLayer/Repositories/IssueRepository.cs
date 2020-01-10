@@ -1,7 +1,7 @@
 ﻿using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace FacilityServices.DataLayer.Repositories
             .Select(x => x.ToTransfertObject())
             .ToList();
 
-        public IssueTO GetByID(int Id)
+        public IssueTO GetById(int Id)
         {
             return facilityContext.Issues
             .FirstOrDefault(x => x.Id == Id)

@@ -1,8 +1,8 @@
 ﻿using FacilityServices.DataLayer.Entities;
 using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace FacilityServices.DataLayer.Repositories
                                   .Select(r => r.ToTransfertObject());
         }
 
-        public RoomTO GetByID(int Id)
+        public RoomTO GetById(int Id)
         {
             if (Id <= 0)
             {

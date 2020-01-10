@@ -1,7 +1,7 @@
 ﻿using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,7 +39,7 @@ namespace FacilityServices.DataLayer.Repositories
                                   .Select(i => i.ToTransfertObject());
         }
 
-        public IncidentTO GetByID(int Id)
+        public IncidentTO GetById(int Id)
         {
             throw new NotImplementedException();
         }
