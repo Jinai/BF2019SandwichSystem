@@ -3,8 +3,8 @@ using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -59,7 +59,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
 
                 //ASSERT
                 Assert.AreEqual(1, floorRepository.GetAll().Count());
-                var FloorToAssert = floorRepository.GetByID(1);
+                var FloorToAssert = floorRepository.GetById(1);
                 Assert.AreEqual(1, FloorToAssert.Id);
                 Assert.AreEqual(0, FloorToAssert.Number);
             }

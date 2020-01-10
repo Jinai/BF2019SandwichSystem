@@ -2,9 +2,9 @@
 using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OnlineServices.Shared.FacilityServices.Exceptions;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Exceptions;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
             {
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
 
-                Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetByID(100));
+                Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetById(100));
             }
         }
         [TestMethod]
@@ -55,7 +55,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
 
                 memoryCtx.SaveChanges();
 
-                var ComponentTypeToAssert = componentTypeRepository.GetByID(2);
+                var ComponentTypeToAssert = componentTypeRepository.GetById(2);
                 Assert.AreEqual(2, ComponentTypeToAssert.Id);
                 Assert.AreEqual("Name2Fr", ComponentTypeToAssert.Name.French);
             }

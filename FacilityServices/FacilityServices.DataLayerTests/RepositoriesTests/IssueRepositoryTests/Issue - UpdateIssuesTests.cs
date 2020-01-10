@@ -2,8 +2,8 @@
 using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

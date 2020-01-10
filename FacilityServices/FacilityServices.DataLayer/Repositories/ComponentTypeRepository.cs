@@ -1,7 +1,7 @@
 ﻿using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +35,7 @@ namespace FacilityServices.DataLayer.Repositories
             .Select(x => x.ToTransfertObject())
             .ToList();
 
-        public ComponentTypeTO GetByID(int Id)
+        public ComponentTypeTO GetById(int Id)
         {
             return facilityContext.ComponentTypes
             .AsNoTracking()

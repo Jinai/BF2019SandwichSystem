@@ -82,7 +82,7 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentException("The ID isn't in the correct format!");
             }
 
-            return Remove(GetByID(Id));
+            return Remove(GetById(Id));
         }
 
         public RoomTO Update(RoomTO Entity)

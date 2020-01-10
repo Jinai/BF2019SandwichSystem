@@ -3,10 +3,10 @@ using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using OnlineServices.Shared.FacilityServices.Exceptions;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Exceptions;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
             {
                 var issueRepository = new IssueRepository(memoryCtx);
 
-                Assert.ThrowsException<NotExistingIssueException>(() => issueRepository.GetByID(84));
+                Assert.ThrowsException<NotExistingIssueException>(() => issueRepository.GetById(84));
             }
         }
         [TestMethod()]
@@ -60,7 +60,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
                 issueRepository.Add(IssueToUseInTest);
                 memoryCtx.SaveChanges();
 
-                var IssueToAssert = issueRepository.GetByID(1);
+                var IssueToAssert = issueRepository.GetById(1);
                 Assert.AreEqual(1, IssueToAssert.Id);
                 Assert.AreEqual("prout", IssueToAssert.Description);
             }

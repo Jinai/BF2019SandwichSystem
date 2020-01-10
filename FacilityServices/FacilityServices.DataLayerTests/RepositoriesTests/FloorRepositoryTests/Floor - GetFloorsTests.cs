@@ -2,8 +2,8 @@
 using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OnlineServices.Shared.FacilityServices.Exceptions;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Exceptions;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             {
                 var floorRepository = new FloorRepository(memoryCtx);
 
-                Assert.ThrowsException<NotExistingFloorException>(() => floorRepository.GetByID(100));
+                Assert.ThrowsException<NotExistingFloorException>(() => floorRepository.GetById(100));
             }
         }
         [TestMethod]
@@ -50,7 +50,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
                 memoryCtx.SaveChanges();
 
                 //ASSERT
-                var FloorToAssert = floorRepository.GetByID(2);
+                var FloorToAssert = floorRepository.GetById(2);
                 Assert.AreEqual(2, FloorToAssert.Id);
                 Assert.AreEqual(0, FloorToAssert.Number);
             }

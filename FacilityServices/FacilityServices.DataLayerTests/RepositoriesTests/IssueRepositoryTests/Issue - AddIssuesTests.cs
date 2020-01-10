@@ -3,9 +3,9 @@ using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -69,7 +69,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
                 memoryCtx.SaveChanges();
 
                 Assert.AreEqual(1, issueRepository.GetAll().Count());
-                var IssueToAssert = issueRepository.GetByID(1);
+                var IssueToAssert = issueRepository.GetById(1);
                 Assert.AreEqual(1, IssueToAssert.Id);
                 Assert.AreEqual("prout", IssueToAssert.Description);
             }

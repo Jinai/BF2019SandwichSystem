@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineServices.Shared.RegistrationServices.Interface
+namespace OnlineServices.Common.RegistrationServices.Interface
 {
      public interface IRSUnitOfWork
     {

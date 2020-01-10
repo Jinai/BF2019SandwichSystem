@@ -23,7 +23,7 @@ namespace FacilityServices.DataLayer.Repositories
             throw new System.NotImplementedException();
         }
 
-        public ComponentTO GetById(int Id)
+        public CommentTO GetById(int Id)
         {
             throw new System.NotImplementedException();
         }

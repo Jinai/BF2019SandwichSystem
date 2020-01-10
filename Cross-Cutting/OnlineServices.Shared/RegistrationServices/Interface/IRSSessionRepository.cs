@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using OnlineServices.Shared.RegistrationServices.TransferObject;
-using OnlineServices.Shared.DataAccessHelpers;
+using OnlineServices.Common.RegistrationServices.TransferObject;
+using OnlineServices.Common.DataAccessHelpers;
 
-namespace OnlineServices.Shared.RegistrationServices.Interface
+namespace OnlineServices.Common.RegistrationServices.Interface
 {
-    public interface IRSSessionRepository : OnlineServices.Shared.DataAccessHelpers.IRepository<SessionTO, int>
+    public interface IRSSessionRepository : OnlineServices.Common.DataAccessHelpers.IRepository<SessionTO, int>
     {
         IEnumerable<UserTO> GetStudents(SessionTO session);
 

@@ -1,5 +1,5 @@
 ﻿using FacilityServices.BusinessLayer.Domain;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Linq;
 using System.Runtime.Serialization;

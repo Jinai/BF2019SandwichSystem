@@ -1,4 +1,4 @@
-﻿namespace OnlineServices.Shared.FacilityServices.TransfertObjects
+﻿namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
     public class RoomComponentTO
     {
