@@ -10,7 +10,6 @@ namespace FacilityServices.BusinessLayer.Extensions
             return new Incident
             {
                 Id = IncidentTO.Id,
-                Component = IncidentTO.Component.ToDomain(),
                 Issue = IncidentTO.Issue.ToDomain(),
                 //Comment = IncidentTO.Comment,
                 Status = IncidentTO.Status,
@@ -24,7 +23,6 @@ namespace FacilityServices.BusinessLayer.Extensions
             return new IncidentTO
             {
                 Id = Incident.Id,
-                Component = Incident.Component.ToTransfertObject(),
                 Issue = Incident.Issue.ToTransfertObject(),
                 //Comment = Incident.Comment,
                 Status = Incident.Status,

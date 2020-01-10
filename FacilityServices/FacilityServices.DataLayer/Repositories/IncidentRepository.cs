@@ -24,7 +24,6 @@ namespace FacilityServices.DataLayer.Repositories
 
             var incident = Entity.ToEF();
             incident.Issue = facilityContext.Issues.First(x => x.Id == Entity.Issue.Id);
-            incident.Component = facilityContext.Components.First(x => x.Id == Entity.Id);
 
             return facilityContext.Incidents.Add(incident).Entity.ToTransfertObject();
         }
@@ -33,10 +32,10 @@ namespace FacilityServices.DataLayer.Repositories
         {
             return facilityContext.Incidents
                                   .Include(i => i.Issue)
-                                  .Include(i => i.Component)
-                                  .ThenInclude(comp => comp.Room)
-                                  .ThenInclude(r => r.Floor)
-                                  .Include(i => i.Component.ComponentType)
+                                  //.Include(i => i.RommComponent)
+                                  //.ThenInclude(comp => comp.Room)
+                                  //.ThenInclude(r => r.Floor)
+                                  //.Include(i => i.Component.ComponentType)
                                   .Select(i => i.ToTransfertObject());
         }
 
