@@ -17,10 +17,6 @@ namespace FacilityServices.DataLayer
             this.facilityContext = ContextIoC ?? throw new ArgumentNullException(nameof(ContextIoC));
         }
 
-        private IComponentRepository componentRepository;
-        public IComponentRepository ComponentRepository
-            => componentRepository ??= new ComponentRepository(facilityContext);
-
         private IComponentTypeRepository componentTypeRepository;
         public IComponentTypeRepository ComponentTypeRepository
             => componentTypeRepository ??= new ComponentTypeRepository(facilityContext);
@@ -44,8 +40,8 @@ namespace FacilityServices.DataLayer
         private IIncidentRepository incidentRepository;
         public IIncidentRepository IncidentRepository
             => incidentRepository ??= new IncidentRepository(facilityContext);
-
-
+        
+       
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {

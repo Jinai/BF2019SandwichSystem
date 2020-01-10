@@ -36,13 +36,11 @@ namespace FacilityServices.DataLayer
                 .HasOne<RoomEF>(RoomsComponentsEF => RoomsComponentsEF.Room)
                 .WithMany(RoomEF => RoomEF.RoomComponents)
                 .HasForeignKey(RoomComponentEF => RoomComponentEF.RoomId);
-                //.OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<RoomComponentEF>()
                 .HasOne<ComponentTypeEF>(RoomComponentEF => RoomComponentEF.ComponentType)
                 .WithMany(ComponentEF => ComponentEF.RoomComponents)
                 .HasForeignKey(RoomsWithComponent => RoomsWithComponent.ComponentTypeId);
-            //.OnDelete(DeleteBehavior.Restrict);
         }
 
         public DbSet<IncidentEF> Incidents { get; set; }
