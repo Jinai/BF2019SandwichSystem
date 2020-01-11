@@ -42,7 +42,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             //ACT
             var rooms = repository.GetAll();
             //ASSERT
-            Assert.AreEqual(rooms.Count(), 3);
+            Assert.AreEqual(3, rooms.Count());
         }
     }
 }

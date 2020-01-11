@@ -26,12 +26,12 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
             var addedFloor1 = floorRepository.Add(floor);
             context.SaveChanges();
 
-            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1};
+            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
             var added = repository.Add(room);
             context.SaveChanges();
             added.Name = new MultiLanguageString("New Room1", "New Room1", "New Room1");
             var updated = repository.Update(added);
-            Assert.AreEqual(updated.Name.English, "New Room1");
+            Assert.AreEqual("New Room1", updated.Name.English);
         }
     }
 }
