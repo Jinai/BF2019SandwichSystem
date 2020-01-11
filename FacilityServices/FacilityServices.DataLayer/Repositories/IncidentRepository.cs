@@ -32,36 +32,69 @@ namespace FacilityServices.DataLayer.Repositories
         {
             return facilityContext.Incidents
                                   .Include(i => i.Issue)
-                                  //.Include(i => i.RommComponent)
-                                  //.ThenInclude(comp => comp.Room)
-                                  //.ThenInclude(r => r.Floor)
-                                  //.Include(i => i.Component.ComponentType)
+                                  .Include(i => i.RoomComponent.ComponentType)
+                                  .Include(i => i.RoomComponent.Room)
+                                  .ThenInclude(r => r.Floor)
                                   .Select(i => i.ToTransfertObject());
         }
 
         public IncidentTO GetById(int Id)
         {
-            throw new NotImplementedException();
+            return facilityContext.Incidents.Find(Id)
+                                            .ToTransfertObject();
         }
 
         public List<IncidentTO> GetIncidentsByUserId(int UserId)
         {
-            throw new NotImplementedException();
+            return facilityContext.Incidents.Where(i => i.UserId == UserId)
+                                            .Select(i => i.ToTransfertObject())
+                                            .ToList();
         }
 
         public bool Remove(IncidentTO entity)
         {
-            throw new NotImplementedException();
+            if (entity is null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+
+            var entityEF = facilityContext.Incidents.Find(entity.Id);
+            var tracking = facilityContext.Incidents.Remove(entityEF);
+            return tracking.State == EntityState.Deleted;
         }
 
         public bool Remove(int Id)
         {
-            throw new NotImplementedException();
+            if (Id <= 0)
+            {
+                throw new ArgumentException("The ID isn't in the correct format!");
+            }
+
+            return Remove(GetById(Id));
         }
 
         public IncidentTO Update(IncidentTO Entity)
         {
-            throw new NotImplementedException();
+            if (Entity is null)
+            {
+                throw new ArgumentNullException(nameof(Entity));
+            }
+            if (Entity.Id <= 0)
+            {
+                throw new ArgumentException("The Incident's ID is not in the correct format !");
+            }
+
+            var attachedIncident = facilityContext.Incidents.FirstOrDefault(x => x.Id == Entity.Id);
+
+            if (attachedIncident != null)
+            {
+                attachedIncident.UpdateFromDetached(Entity.ToEF());
+            }
+
+            var tracking = facilityContext.Incidents.Update(attachedIncident);
+            tracking.State = EntityState.Detached;
+
+            return tracking.Entity.ToTransfertObject();
         }
     }
 }

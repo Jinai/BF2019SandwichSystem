@@ -20,6 +20,8 @@ namespace FacilityServices.DataLayer.Extensions
             {
                 Id = Issue.Id,
                 Name = new MultiLanguageString(Issue.NameEnglish, Issue.NameFrench, Issue.NameDutch),
+                ComponentType = Issue.ComponentType.ToTransfertObject(),
+                Archived = Issue.Archived,
                 Description = Issue.Description
             };
         }
@@ -35,6 +37,8 @@ namespace FacilityServices.DataLayer.Extensions
                 NameEnglish = Issue.Name.English,
                 NameFrench = Issue.Name.French,
                 NameDutch = Issue.Name.Dutch,
+                ComponentType = Issue.ComponentType.ToEF(),
+                Archived = Issue.Archived,
                 Description = Issue.Description
             };
         }
@@ -53,6 +57,8 @@ namespace FacilityServices.DataLayer.Extensions
             if ((AttachedEF != default) && (DetachedEF != default))
             {
                 AttachedEF.Description = DetachedEF.Description;
+                AttachedEF.ComponentType = DetachedEF.ComponentType;
+                AttachedEF.Archived = DetachedEF.Archived;
                 AttachedEF = AttachedEF.FillFromMultiLanguageString(DetachedEF.ExtractToMultiLanguageString());
             }
 
