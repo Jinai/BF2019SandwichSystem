@@ -1,7 +1,7 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
+﻿using OnlineServices.Common.DataAccessHelpers;
 using System;
 
-namespace OnlineServices.Shared.FacilityServices.TransfertObjects
+namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
     public class CommentTO : IEntity<int>
     {

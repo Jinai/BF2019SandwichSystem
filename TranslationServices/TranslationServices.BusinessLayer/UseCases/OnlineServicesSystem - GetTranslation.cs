@@ -1,15 +1,13 @@
 ﻿//VERIFIED V3
-using OnlineServices.Shared.Enumerations;
-using OnlineServices.Shared.Exceptions;
-using OnlineServices.Shared.Extensions;
-using OnlineServices.Shared.SecurityServices.Extensions;
-using OnlineServices.Shared.SecurityServices.TransfertObjects;
-using OnlineServices.Shared.TranslationServices.Extensions;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using OnlineServices.Common.Enumerations;
+using OnlineServices.Common.Exceptions;
+using OnlineServices.Common.Extensions;
+using OnlineServices.Common.SecurityServices.Extensions;
+using OnlineServices.Common.SecurityServices.TransfertObjects;
+using OnlineServices.Common.TranslationServices.Extensions;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
 using System.Linq;
-using TranslationServices.DataLayer.ServiceAgents.Domain;
-using TranslationServices.DataLayer.ServiceAgents.Extensions;
 
 namespace TranslationServices.BusinessLayer.UseCases
 {

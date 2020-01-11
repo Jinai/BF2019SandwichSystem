@@ -1,7 +1,7 @@
-﻿using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System.Collections.Generic;
 
-namespace OnlineServices.Shared.FacilityServices.Interfaces
+namespace OnlineServices.Common.FacilityServices.Interfaces
 {
     public interface IFSAttendeeRole
     {
@@ -10,7 +10,7 @@ namespace OnlineServices.Shared.FacilityServices.Interfaces
         public List<IssueTO> GetIssues();
         public List<FloorTO> GetFloors();
         public List<RoomTO> GetRooms();
-        public List<ComponentTO> GetComponents();
+        public List<ComponentTypeTO> GetComponents();
         public List<ComponentTypeTO> GetComponentTypes();
     }
 }

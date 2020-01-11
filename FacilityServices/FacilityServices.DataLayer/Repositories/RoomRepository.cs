@@ -1,8 +1,8 @@
 ﻿using FacilityServices.DataLayer.Entities;
 using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,23 +24,9 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentNullException(nameof(Entity));
 
             var roomEf = Entity.ToEF();
-            roomEf.Floor = facilityContext.Floors.First(x=>x.Id == Entity.Floor.Id);
-            roomEf.Floor = roomEf.Floor.UpdateFromDetached(Entity.Floor.ToEF());
+            roomEf.Floor = facilityContext.Floors.First(x => x.Id == Entity.Floor.Id);
 
-            return facilityContext.Rooms.Add(roomEf).Entity.ToTransfertObject();
-
-            //return facilityContext.Rooms
-            //    .Add(Entity.ToEF())
-            //    .Entity
-            //    .ToTransfertObject();
-            //if (Entity is null)
-            //{
-            //    throw new ArgumentNullException(nameof(Entity));
-            //}
-
-            //var tracking = facilityContext.Rooms.Add(Entity.ToEF());
-            //tracking.State = EntityState.Added;
-            //return tracking.Entity.ToTransfertObject();
+            return facilityContext.Rooms.Add(roomEf).Entity.ToTransfertObject();        
         }
 
         public IEnumerable<RoomTO> GetAll()
@@ -50,7 +36,7 @@ namespace FacilityServices.DataLayer.Repositories
                                   .Select(r => r.ToTransfertObject());
         }
 
-        public RoomTO GetByID(int Id)
+        public RoomTO GetById(int Id)
         {
             if (Id <= 0)
             {
@@ -96,7 +82,7 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentException("The ID isn't in the correct format!");
             }
 
-            return Remove(GetByID(Id));
+            return Remove(GetById(Id));
         }
 
         public RoomTO Update(RoomTO Entity)

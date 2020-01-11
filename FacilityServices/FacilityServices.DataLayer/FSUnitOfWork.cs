@@ -1,6 +1,6 @@
 ﻿using FacilityServices.DataLayer.Repositories;
-using OnlineServices.Shared.FacilityServices.Interfaces;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.Interfaces;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,10 +16,6 @@ namespace FacilityServices.DataLayer
         {
             this.facilityContext = ContextIoC ?? throw new ArgumentNullException(nameof(ContextIoC));
         }
-
-        private IComponentRepository componentRepository;
-        public IComponentRepository ComponentRepository
-            => componentRepository ??= new ComponentRepository(facilityContext);
 
         private IComponentTypeRepository componentTypeRepository;
         public IComponentTypeRepository ComponentTypeRepository
@@ -44,8 +40,8 @@ namespace FacilityServices.DataLayer
         private IIncidentRepository incidentRepository;
         public IIncidentRepository IncidentRepository
             => incidentRepository ??= new IncidentRepository(facilityContext);
-
-
+        
+       
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {

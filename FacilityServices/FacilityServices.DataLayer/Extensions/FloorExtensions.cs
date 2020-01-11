@@ -1,8 +1,8 @@
 ﻿using FacilityServices.DataLayer.Entities;
-using OnlineServices.Shared.Extensions;
-using OnlineServices.Shared.FacilityServices.Exceptions;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
-using OnlineServices.Shared.TranslationServices.TransfertObjects;
+using OnlineServices.Common.Extensions;
+using OnlineServices.Common.FacilityServices.Exceptions;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -54,6 +54,7 @@ namespace FacilityServices.DataLayer.Extensions
             if ((AttachedEF != default) && (DetachedEF != default))
             {
                 AttachedEF.Number = DetachedEF.Number;
+                AttachedEF.Archived = DetachedEF.Archived;
             }
             return AttachedEF;
         }

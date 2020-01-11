@@ -1,6 +1,7 @@
 ﻿using FacilityServices.DataLayer.Extensions;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using Microsoft.EntityFrameworkCore;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,10 +22,11 @@ namespace FacilityServices.DataLayer.Repositories
             if (Entity is null)
                 throw new ArgumentNullException(nameof(Entity));
 
-            return facilityContext.Issues
-                .Add(Entity.ToEF())
-                .Entity
-                .ToTransfertObject();
+            var issueEF = Entity.ToEF();
+            issueEF.ComponentType = facilityContext.ComponentTypes.First(x => x.Id == Entity.ComponentType.Id);
+            issueEF.ComponentType = issueEF.ComponentType.UpdateFromDetached(Entity.ComponentType.ToEF());
+
+            return facilityContext.Issues.Add(issueEF).Entity.ToTransfertObject();
         }
 
         public IEnumerable<IssueTO> GetAll()
@@ -32,11 +34,25 @@ namespace FacilityServices.DataLayer.Repositories
             .Select(x => x.ToTransfertObject())
             .ToList();
 
-        public IssueTO GetByID(int Id)
+        public IssueTO GetById(int Id)
         {
             return facilityContext.Issues
             .FirstOrDefault(x => x.Id == Id)
             .ToTransfertObject();
+        }
+
+        public List<IssueTO> GetIssuesByComponentType(ComponentTypeTO ComponentType)
+        {
+            if (ComponentType is null)
+            {
+                throw new ArgumentNullException(nameof(ComponentType));
+            }
+            return facilityContext.Issues
+                           .Include(r => r.ComponentType)
+                           .Where(r => r.ComponentType.Id == ComponentType.Id)
+                           .Select(r => r.ToTransfertObject())
+                           .ToList();
+
         }
 
         public bool Remove(IssueTO entity)

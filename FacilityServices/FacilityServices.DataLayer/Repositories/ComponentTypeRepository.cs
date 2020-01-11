@@ -1,6 +1,10 @@
-﻿using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using FacilityServices.DataLayer.Extensions;
+using Microsoft.EntityFrameworkCore;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FacilityServices.DataLayer.Repositories
 {
@@ -15,32 +19,76 @@ namespace FacilityServices.DataLayer.Repositories
 
         public ComponentTypeTO Add(ComponentTypeTO Entity)
         {
-            throw new System.NotImplementedException();
+            if (Entity is null)
+                throw new ArgumentNullException(nameof(Entity));
+
+            return facilityContext.ComponentTypes
+                .Add(Entity.ToEF())
+                .Entity
+                .ToTransfertObject();
+        
         }
 
         public IEnumerable<ComponentTypeTO> GetAll()
+         => facilityContext.ComponentTypes
+            .AsNoTracking()
+            .Select(x => x.ToTransfertObject())
+            .ToList();
+
+        public ComponentTypeTO GetById(int Id)
         {
-            throw new System.NotImplementedException();
+            return facilityContext.ComponentTypes
+            .AsNoTracking()
+            .FirstOrDefault(x => x.Id == Id)
+            .ToTransfertObject();
         }
 
-        public ComponentTypeTO GetByID(int Id)
+        public List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO Room)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public bool Remove(ComponentTypeTO entity)
-        {
-            throw new System.NotImplementedException();
-        }
+        => Remove(entity.Id);
 
         public bool Remove(int Id)
         {
-            throw new System.NotImplementedException();
+            if (!facilityContext.ComponentTypes.Any(x => x.Id == Id))
+                throw new Exception($"ComponentTypeRepository. Delete(ComponentTypeId = {Id}) no record to delete.");
+
+            var ReturnValue = false;
+
+            var componentType = facilityContext.ComponentTypes.FirstOrDefault(x => x.Id == Id);
+            if (componentType != default)
+            {
+                try
+                {
+                    facilityContext.ComponentTypes.Remove(componentType);
+                    ReturnValue = true;
+                }
+                catch (Exception)
+                {
+                    ReturnValue = false;
+                }
+            }
+
+            return ReturnValue;
         }
 
         public ComponentTypeTO Update(ComponentTypeTO Entity)
         {
-            throw new System.NotImplementedException();
+            if (!facilityContext.ComponentTypes.Any(x => x.Id == Entity.Id))
+                throw new Exception($"ComponentTypeRepository. Update(ComponentTypeTransfertObject) no record to update.");
+
+            var attachedComponentTypes = facilityContext.ComponentTypes
+                .FirstOrDefault(x => x.Id == Entity.Id);
+
+            if (attachedComponentTypes != default)
+            {
+                attachedComponentTypes.UpdateFromDetached(Entity.ToEF());
+            }
+
+            return facilityContext.ComponentTypes.Update(attachedComponentTypes).Entity.ToTransfertObject();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using OnlineServices.Shared.Exceptions;
+﻿using OnlineServices.Common.Exceptions;
 using System;
 
-namespace OnlineServices.Shared.FacilityServices.Exceptions
+namespace OnlineServices.Common.FacilityServices.Exceptions
 {
     [Serializable]
     public class NotExistingFloorException : LoggedException

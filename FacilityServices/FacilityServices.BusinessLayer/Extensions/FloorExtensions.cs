@@ -1,5 +1,6 @@
 ﻿using FacilityServices.BusinessLayer.Domain;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
+using System.Collections.Generic;
 
 namespace FacilityServices.BusinessLayer.Extensions
 {
@@ -7,9 +8,10 @@ namespace FacilityServices.BusinessLayer.Extensions
     {
         public static Floor ToDomain(this FloorTO FloorTO)
         {
-            return new Floor(FloorTO.Number)
+            return new Floor()
             {
-                Id = FloorTO.Id
+                Id = FloorTO.Id,
+                Number = FloorTO.Number
             };
         }
         public static FloorTO ToTransfertObject(this Floor Floor)

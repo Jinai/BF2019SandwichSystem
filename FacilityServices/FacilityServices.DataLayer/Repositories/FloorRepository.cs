@@ -1,8 +1,8 @@
 ﻿using FacilityServices.DataLayer.Entities;
 using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
-using OnlineServices.Shared.FacilityServices.Interfaces.Repositories;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +25,15 @@ namespace FacilityServices.DataLayer.Repositories
 
             //return facilityContext.Update<FloorEF>(Entity.ToEF()).Entity.ToTransfertObject();
 
-            return facilityContext.Floors
-                .Add(Entity.ToEF())
-                .Entity
-                .ToTransfertObject();
+            //return facilityContext.Floors
+            //    .Add(Entity.ToEF())
+            //    .Entity
+            //    .ToTransfertObject();
+
+            var entity = facilityContext.Floors.Add(Entity.ToEF()).Entity;
+            //facilityContext.SaveChanges();
+            //return GetByID(entity.Id);
+            return entity.ToTransfertObject();
         }
 
         public IEnumerable<FloorTO> GetAll()
@@ -37,7 +42,7 @@ namespace FacilityServices.DataLayer.Repositories
             .Select(x => x.ToTransfertObject())
             .ToList();
 
-        public FloorTO GetByID(int Id)
+        public FloorTO GetById(int Id)
         {
             return facilityContext.Floors
             .AsNoTracking()

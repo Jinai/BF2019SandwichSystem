@@ -5,9 +5,9 @@
 
     <IsPackable>false</IsPackable>
 
-    <AssemblyVersion>2001.9.0.0813</AssemblyVersion>
+    <AssemblyVersion>2001.10.2.1527</AssemblyVersion>
 
-    <FileVersion>2001.9.0.0813</FileVersion>
+    <FileVersion>2001.10.2.1527</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Common.csproj" />
     <ProjectReference Include="..\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj" />
-    <ProjectReference Include="..\..\Cross-Cutting\OnlineServices.Shared\OnlineServices.Shared.csproj" />
     <ProjectReference Include="..\FacilityServices.DataLayer\FacilityServices.DataLayer.csproj" />
   </ItemGroup>
 

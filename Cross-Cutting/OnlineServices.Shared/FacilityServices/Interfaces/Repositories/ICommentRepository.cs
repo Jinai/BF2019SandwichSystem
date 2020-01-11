@@ -1,9 +1,9 @@
-﻿using OnlineServices.Shared.DataAccessHelpers;
-using OnlineServices.Shared.FacilityServices.TransfertObjects;
+﻿using OnlineServices.Common.DataAccessHelpers;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 
-namespace OnlineServices.Shared.FacilityServices.Interfaces.Repositories
+namespace OnlineServices.Common.FacilityServices.Interfaces.Repositories
 {
-    public interface ICommentRepository : IRepositoryTemp<CommentTO, int>
+    public interface ICommentRepository : IRepository<CommentTO, int>
     {
     }
 }
