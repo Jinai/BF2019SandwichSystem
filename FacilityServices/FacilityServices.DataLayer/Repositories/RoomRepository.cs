@@ -65,6 +65,11 @@ namespace FacilityServices.DataLayer.Repositories
 
         public bool Remove(RoomTO entity)
         {
+            if (!facilityContext.Rooms.Any(x => x.Id == entity.Id))
+            {
+                throw new KeyNotFoundException("No room found !");
+            }
+
             if (entity is null)
             {
                 throw new ArgumentNullException(nameof(entity));
@@ -97,6 +102,11 @@ namespace FacilityServices.DataLayer.Repositories
             if (attachedRoom != default)
             {
                 attachedRoom.UpdateFromDetached(Entity.ToEF());
+            }
+
+            if (!facilityContext.Rooms.Any(x => x.Id == Entity.Id))
+            {
+                throw new KeyNotFoundException("No room found !");
             }
 
             var tracking = facilityContext.Rooms.Update(attachedRoom);

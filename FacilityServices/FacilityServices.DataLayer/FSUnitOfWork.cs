@@ -41,7 +41,7 @@ namespace FacilityServices.DataLayer
         public IIncidentRepository IncidentRepository
             => incidentRepository ??= new IncidentRepository(facilityContext);
         
-       
+        
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {

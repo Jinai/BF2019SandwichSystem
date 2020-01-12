@@ -53,9 +53,14 @@ namespace FacilityServices.DataLayer.Repositories
 
         public bool Remove(IncidentTO entity)
         {
+            if (!facilityContext.Incidents.Any(x => x.Id == entity.Id))
+            {
+                throw new KeyNotFoundException("No incident found !");
+            }
             if (entity is null)
             {
                 throw new ArgumentNullException(nameof(entity));
+
             }
 
             var entityEF = facilityContext.Incidents.Find(entity.Id);
@@ -84,6 +89,11 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new ArgumentException("The Incident's ID is not in the correct format !");
             }
 
+            if (!facilityContext.Incidents.Any(x => x.Id == Entity.Id))
+            {
+                throw new KeyNotFoundException("No incident found !");
+            }
+            
             var attachedIncident = facilityContext.Incidents.FirstOrDefault(x => x.Id == Entity.Id);
 
             if (attachedIncident != null)
