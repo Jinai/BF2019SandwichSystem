@@ -7,15 +7,16 @@ using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTests
 {
     [TestClass]
-    public class AddIncidentTest
+    public class GetAllIncidentsTest
     {
         [TestMethod]
-        public void Add_ReturnIncidentTONotNull()
+        public void GetAll_AddThreeIncidents_ReturnCorrectNumberOfIncidents()
         {
             //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -31,39 +32,51 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
             var floor = new FloorTO { Number = 2 };
             var addedFloor1 = floorRepository.Add(floor);
             context.SaveChanges();
-            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };            
+            RoomTO room = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1 };
             var addedRoom = roomRepository.Add(room);
             context.SaveChanges();
             //Component
-            var componentType = new ComponentTypeTO{Archived = false, Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl")};
+            var componentType = new ComponentTypeTO { Archived = false, Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl") };
             var addedComponentType = componentTypeRepository.Add(componentType);
             context.SaveChanges();
             //Issue
-            var issue = new IssueTO{ Description = "prout", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = addedComponentType };
+            var issue = new IssueTO { Description = "prout", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = addedComponentType };
             var addedIssue = issueRepository.Add(issue);
             context.SaveChanges();
-            //Incident
-            var incident = new IncidentTO
+            //Incidents
+            var incident1 = new IncidentTO
             {
                 Description = "No coffee",
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
-                UserId = 1,
-                RoomComponent = new RoomComponentTO
-                {
-                    RoomId = addedRoom.Id,
-                    ComponentTypeId = addedComponentType.Id,
-                    Room = addedRoom,
-                    ComponentType = addedComponentType
-                }
+                UserId = 1
             };
-            //ACT
-            var result = incidentRepository.Add(incident);
+            var incident2 = new IncidentTO
+            {
+                Description = "Technical issue",
+                Issue = addedIssue,
+                Status = IncidentStatus.Waiting,
+                SubmitDate = DateTime.Now,
+                UserId = 2
+            };
+            var incident3 = new IncidentTO
+            {
+                Description = "No sugar",
+                Issue = addedIssue,
+                Status = IncidentStatus.Waiting,
+                SubmitDate = DateTime.Now,
+                UserId = 1
+            };
+            incidentRepository.Add(incident1);
+            incidentRepository.Add(incident2);
+            incidentRepository.Add(incident3);
             context.SaveChanges();
+            //ACT
+            var result = incidentRepository.GetAll();
             //ASSERT   
             Assert.IsNotNull(result);
-            Assert.AreNotEqual(0, result.Id);
+            Assert.AreEqual(3, result.Count());
         }
     }
 }
