@@ -57,6 +57,11 @@ namespace FacilityServices.DataLayer.Repositories
             {
                 throw new KeyNotFoundException("No incident found !");
             }
+            if (entity is null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+
+            }
 
             var entityEF = facilityContext.Incidents.Find(entity.Id);
             var tracking = facilityContext.Incidents.Remove(entityEF);
@@ -88,7 +93,7 @@ namespace FacilityServices.DataLayer.Repositories
             {
                 throw new KeyNotFoundException("No incident found !");
             }
-
+            
             var attachedIncident = facilityContext.Incidents.FirstOrDefault(x => x.Id == Entity.Id);
 
             if (attachedIncident != null)
