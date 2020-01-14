@@ -1,8 +1,4 @@
-﻿using OnlineServices.Common.FacilityServices;
-using OnlineServices.Common.FacilityServices.Enumerations;
-using OnlineServices.Common.FacilityServices.Interfaces;
-using OnlineServices.Common.FacilityServices.TransfertObjects;
-using System.Collections.Generic;
+﻿using OnlineServices.Common.FacilityServices.Interfaces;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
