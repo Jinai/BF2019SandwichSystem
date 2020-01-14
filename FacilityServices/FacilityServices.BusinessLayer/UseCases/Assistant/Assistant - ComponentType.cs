@@ -12,7 +12,7 @@ namespace FacilityServices.BusinessLayer.UseCases
                 throw new ArgumentNullException(nameof(componentTypeToAdd));
             }
 
-            return iFSUnitOfWork.ComponentTypeRepository.Add(componentTypeToAdd);
+            return unitOfWork.ComponentTypeRepository.Add(componentTypeToAdd);
         }
     }
 }

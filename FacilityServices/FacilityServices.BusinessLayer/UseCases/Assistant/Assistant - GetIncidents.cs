@@ -11,7 +11,7 @@ namespace FacilityServices.BusinessLayer.UseCases
     public partial class AssistantRole
     {
         public List<IncidentTO> GetIncidents()
-           => iFSUnitOfWork.IncidentRepository
+           => unitOfWork.IncidentRepository
                     .GetAll()
                     .Select(x => x.ToDomain().ToTransfertObject())
                     .ToList();
