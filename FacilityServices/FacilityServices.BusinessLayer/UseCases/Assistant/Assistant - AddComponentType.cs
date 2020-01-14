@@ -5,14 +5,11 @@ using System.Text;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
-    public partial class AttendeeRole
+    public partial class AssistantRole
     {
-        public bool CreateIncident(IncidentTO incidentTO)
+        public bool AddComponentType(ComponentTypeTO componentTypeToAdd)
         {
-            throw new NotImplementedException();
+            return true;
         }
-
-
-
     }
 }
