@@ -1,6 +1,7 @@
 ﻿using FacilityServices.BusinessLayer.UseCases;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+
 using OnlineServices.Common.FacilityServices.Enumerations;
 using OnlineServices.Common.FacilityServices.Interfaces;
 using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
@@ -10,11 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 {
     [TestClass]
     public class Assistant_GetIncidentsTests
     {
+
         public List<IncidentTO> GetTestsListOfIncidents()
         {
             //Floor
@@ -50,6 +53,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 
             var Assistante = new AssistantRole(mockUoW.Object);
 
+
             var incidents = Assistante.GetIncidents();
 
             Assert.AreEqual(GetTestsListOfIncidents().Count(), incidents.Count());
@@ -72,5 +76,6 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 
             mockIncidentRepository.Verify(x => x.GetAll(), Times.Once);
         }
+
     }
 }
