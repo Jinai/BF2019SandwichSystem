@@ -1,4 +1,7 @@
-﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
+﻿using OnlineServices.Common.Exceptions;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
+using System;
+using System.Collections.Generic;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
@@ -16,11 +19,35 @@ namespace FacilityServices.BusinessLayer.UseCases
 
         public bool RemoveFloor(int floorId)
         {
-            throw new System.NotImplementedException();
+            if (floorId <= 0)
+            {
+                throw new LoggedException("The Floor's ID is not in the correct format ! An integer in required.");
+            }
+
+            var floor = unitOfWork.FloorRepository.GetById(floorId);
+
+            if (floor is null)
+            {
+                throw new KeyNotFoundException("No Floor was found for the given ID!");
+            }
+            floor.Archived = true;
+            var result = unitOfWork.FloorRepository.Update(floor);
+
+            return result.Archived == true;
         }
         public FloorTO UpdateFloor(FloorTO floorToUpdate)
         {
-            throw new System.NotImplementedException();
+            if (floorToUpdate is null)
+            {
+                throw new ArgumentNullException("The ComponentType object cannot be null !");
+            }
+
+            if (floorToUpdate.Id <= 0)
+            {
+                throw new LoggedException("The Floor object cannot be updated without it's ID");
+            }
+
+            return unitOfWork.FloorRepository.Update(floorToUpdate);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace OnlineServices.Common.FacilityServices.Interfaces
         public List<IncidentTO> GetIncidents();
         public CommentTO AddComment(CommentTO comment);
         public ComponentTypeTO AddComponentType(ComponentTypeTO componentTypeToAdd);
+        public ComponentTypeTO UpdateComponentType(ComponentTypeTO componentTypeToUpdate);
+        public bool RemoveComponentType(int componentTypeId);
         public FloorTO AddFloor(FloorTO floorToAdd);
         public FloorTO UpdateFloor(FloorTO floorToUpdate);
         public bool RemoveFloor(int floorId);

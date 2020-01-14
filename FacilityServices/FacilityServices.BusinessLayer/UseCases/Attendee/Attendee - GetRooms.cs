@@ -1,6 +1,7 @@
-﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
-using System;
+﻿using FacilityServices.BusinessLayer.Extensions;
+using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
@@ -8,7 +9,10 @@ namespace FacilityServices.BusinessLayer.UseCases
     {
         public List<RoomTO> GetRooms()
         {
-            throw new NotImplementedException();
+            var rooms = unitOfWork.RoomRepository.GetAll()
+                                                 .Select(f => f.ToDomain().ToTransfertObject());
+
+            return rooms.ToList();
         }
     }
 }
