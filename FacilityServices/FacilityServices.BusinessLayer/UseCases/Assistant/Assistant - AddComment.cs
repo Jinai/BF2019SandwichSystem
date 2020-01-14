@@ -1,15 +1,18 @@
 ﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AssistantRole
     {
-        public bool AddComment(CommentTO comment) 
+        public CommentTO AddComment(CommentTO comment) 
         {
-            return true;
+            if (comment is null)
+            {
+                throw new ArgumentNullException(nameof(comment));
+            }
+
+            return iFSUnitOfWork.CommentRepository.Add(comment);
         }
     }
 }

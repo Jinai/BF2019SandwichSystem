@@ -1,15 +1,17 @@
 ﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AssistantRole
     {
-        public bool AddIssue(IssueTO issueToAdd)
+        public IssueTO AddIssue(IssueTO issueToAdd)
         {
-            return true;
+            if (issueToAdd is null)
+            {
+                throw new System.ArgumentNullException(nameof(issueToAdd));
+            }
+
+            return iFSUnitOfWork.IssueRepository.Add(issueToAdd);
         }
     }
 }

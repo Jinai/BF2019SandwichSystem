@@ -1,15 +1,18 @@
 ﻿using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AssistantRole
     {
-        public bool AddRoom(RoomTO room) 
+        public RoomTO AddRoom(RoomTO room) 
         {
-            return true;
+            if (room is null)
+            {
+                throw new ArgumentNullException(nameof(room));
+            }
+
+            return iFSUnitOfWork.RoomRepository.Add(room);
         }
     }
 }
