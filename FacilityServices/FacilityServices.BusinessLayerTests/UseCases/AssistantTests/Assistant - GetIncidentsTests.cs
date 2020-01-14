@@ -25,7 +25,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
         }
 
         [TestMethod]
-        public void GetSuppliers_ReturnsSupplierInDB_WhenCalled()
+        public void GetIncident_ReturnsIncidentInDB_WhenCalled()
         {
             var mockIncidentRepository = new Mock<IIncidentRepository>();
             mockIncidentRepository.Setup(x => x.GetAll()).Returns(IncidentList());
@@ -37,7 +37,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 
             var suppliers = Assistante.GetIncidents();
 
-           // Assert.AreEqual(IncidentList().Count(), incidents.Count());
+            //Assert.AreEqual(IncidentList().Count(), incidents.Count());
         }
 
         //[TestMethod]
