@@ -1,7 +1,6 @@
 ﻿using OnlineServices.Common.DataAccessHelpers;
 using OnlineServices.Common.FacilityServices.Enumerations;
 using System;
-using System.Collections.Generic;
 
 namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
@@ -9,7 +8,7 @@ namespace OnlineServices.Common.FacilityServices.TransfertObjects
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public RoomComponentTO RoomComponent { get; set; }
+        public RoomTO Room { get; set; }
         public IssueTO Issue { get; set; }
         //public List<CommentTO> AssistantComments { get; set; } = new List<CommentTO>();
         public string Description { get; set; }

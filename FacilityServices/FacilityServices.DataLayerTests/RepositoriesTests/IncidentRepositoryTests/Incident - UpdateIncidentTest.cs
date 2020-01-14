@@ -46,17 +46,11 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
             var incident = new IncidentTO
             {
                 Description = "No coffee",
+                Room = addedRoom,
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
-                UserId = 1,
-                RoomComponent = new RoomComponentTO
-                {
-                    RoomId = addedRoom.Id,
-                    ComponentTypeId = addedComponentType.Id,
-                    Room = addedRoom,
-                    ComponentType = addedComponentType
-                }
+                UserId = 1,                
             };
             var addedIncident = incidentRepository.Add(incident);
             context.SaveChanges();
