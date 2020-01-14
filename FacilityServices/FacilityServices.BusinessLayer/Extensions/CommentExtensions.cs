@@ -26,7 +26,6 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Message = Comment.Message,
                 SubmitDate = Comment.SubmitDate,
                 UserId = Comment.UserId,
-
             };
         }
     }

@@ -13,5 +13,14 @@ namespace FacilityServices.BusinessLayer.UseCases
 
             return iFSUnitOfWork.IssueRepository.Add(issueToAdd);
         }
+
+        public bool RemoveIssue(int issueId)
+        {
+            throw new System.NotImplementedException();
+        }
+        public IssueTO UpdateIssue(IssueTO issueToUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

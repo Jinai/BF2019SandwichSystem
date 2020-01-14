@@ -1,10 +1,6 @@
 ﻿using FacilityServices.DataLayer.Entities;
-using OnlineServices.Common.Extensions;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
-using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FacilityServices.DataLayer.Extensions
 {

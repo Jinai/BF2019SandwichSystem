@@ -13,7 +13,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static ComponentTypeTO ToTransfertObject(this ComponentTypeEF componentType)
         {
             if (componentType is null)
-                throw new NotExistingComponentTypeException(nameof(componentType));
+                throw new NullComponentTypeException(nameof(componentType));
 
             return new ComponentTypeTO
             {
@@ -27,7 +27,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static ComponentTypeEF ToEF(this ComponentTypeTO componentType)
         {
             if (componentType is null)
-                throw new NotExistingComponentTypeException(nameof(componentType));
+                throw new NullComponentTypeException(nameof(componentType));
 
             return new ComponentTypeEF
             {

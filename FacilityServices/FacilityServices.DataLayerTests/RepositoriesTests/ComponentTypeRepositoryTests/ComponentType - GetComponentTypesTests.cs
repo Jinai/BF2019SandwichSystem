@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
             {
                 var componentTypeRepository = new ComponentTypeRepository(memoryCtx);
 
-                Assert.ThrowsException<NotExistingComponentTypeException>(() => componentTypeRepository.GetById(100));
+                Assert.ThrowsException<NullComponentTypeException>(() => componentTypeRepository.GetById(100));
             }
         }
         [TestMethod]

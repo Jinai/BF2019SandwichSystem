@@ -25,7 +25,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.FloorRepositoryTests
             {
                 var floorRepository = new FloorRepository(memoryCtx);
 
-                Assert.ThrowsException<NotExistingFloorException>(() => floorRepository.GetById(100));
+                Assert.ThrowsException<NullFloorException>(() => floorRepository.GetById(100));
             }
         }
         [TestMethod]

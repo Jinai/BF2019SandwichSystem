@@ -49,7 +49,8 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
-                UserId = 1
+                UserId = 1,
+                Room = addedRoom
             };
             var addedIncident = incidentRepository.Add(incident);
             context.SaveChanges();

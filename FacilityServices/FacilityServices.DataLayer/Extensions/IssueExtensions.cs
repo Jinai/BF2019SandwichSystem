@@ -14,7 +14,7 @@ namespace FacilityServices.DataLayer.Extensions
         public static IssueTO ToTransfertObject(this IssueEF Issue)
         {
             if (Issue is null)
-                throw new NotExistingIssueException(nameof(Issue));
+                throw new NullIssueException(nameof(Issue));
 
             return new IssueTO
             {
@@ -22,14 +22,14 @@ namespace FacilityServices.DataLayer.Extensions
                 Name = new MultiLanguageString(Issue.NameEnglish, Issue.NameFrench, Issue.NameDutch),
                 ComponentType = Issue.ComponentType.ToTransfertObject(),
                 Archived = Issue.Archived,
-                Description = Issue.Description
+                Description = Issue.Description,
             };
         }
 
         public static IssueEF ToEF(this IssueTO Issue)
         {
             if (Issue is null)
-                throw new NotExistingIssueException(nameof(Issue));
+                throw new NullIssueException(nameof(Issue));
 
             return new IssueEF
             {
@@ -39,7 +39,7 @@ namespace FacilityServices.DataLayer.Extensions
                 NameDutch = Issue.Name.Dutch,
                 ComponentType = Issue.ComponentType.ToEF(),
                 Archived = Issue.Archived,
-                Description = Issue.Description
+                Description = Issue.Description,
             };
         }
 

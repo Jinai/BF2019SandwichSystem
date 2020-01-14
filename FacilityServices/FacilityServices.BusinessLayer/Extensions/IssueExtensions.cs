@@ -10,7 +10,10 @@ namespace FacilityServices.BusinessLayer.Extensions
             return new Issue(IssueTO.Name)
             {
                 Id = IssueTO.Id,
-                Description = IssueTO.Description
+                Description = IssueTO.Description,
+                Archived = IssueTO.Archived,
+                ComponentType = IssueTO.ComponentType.ToDomain(),
+                Name = IssueTO.Name,
             };
         }
         public static IssueTO ToTransfertObject(this Issue Issue)
@@ -19,7 +22,9 @@ namespace FacilityServices.BusinessLayer.Extensions
             {
                 Id = Issue.Id,
                 Name = Issue.Name,
-                Description = Issue.Description
+                Description = Issue.Description,
+                Archived = Issue.Archived,
+                ComponentType = Issue.ComponentType.ToTransfertObject(),
             };
         }
     }
