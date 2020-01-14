@@ -7,12 +7,9 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AttendeeRole
     {
-        public bool CreateIncident(IncidentTO incidentTO)
+        public List<IncidentTO> GetUserIncidents(int userId)
         {
             throw new NotImplementedException();
         }
-
-
-
     }
 }
