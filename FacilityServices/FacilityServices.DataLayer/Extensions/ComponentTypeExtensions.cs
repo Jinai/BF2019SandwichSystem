@@ -20,7 +20,6 @@ namespace FacilityServices.DataLayer.Extensions
                 Id = componentType.Id,
                 Name = new MultiLanguageString(componentType.NameEnglish, componentType.NameFrench, componentType.NameDutch),
                 Archived = componentType.Archived,
-                //Issues = componentType.Issues.Select(x => x.ToTransfertObject()).ToList(),
             };
         }
 
@@ -36,8 +35,6 @@ namespace FacilityServices.DataLayer.Extensions
                 NameFrench = componentType.Name.French,
                 NameDutch = componentType.Name.Dutch,
                 Archived = componentType.Archived,
-                //Issues = componentType.Issues.Select(x => x.ToEF()).ToList(),
-
             };
         }
         public static ComponentTypeEF UpdateFromDetached(this ComponentTypeEF AttachedEF, ComponentTypeEF DetachedEF)

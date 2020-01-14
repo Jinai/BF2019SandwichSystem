@@ -35,7 +35,8 @@ namespace FacilityServices.DataLayer.Extensions
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate,
                 Description = Incident.Description,
-                UserId = Incident.UserId
+                UserId = Incident.UserId,
+                Room = Incident.Room.ToEF()
             };
         }
 

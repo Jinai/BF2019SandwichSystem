@@ -30,15 +30,19 @@ namespace FacilityServices.DataLayer.Repositories
         }
 
         public IEnumerable<ComponentTypeTO> GetAll()
-         => facilityContext.ComponentTypes
-            .AsNoTracking()
-            .Select(x => x.ToTransfertObject())
-            .ToList();
+        {
+            return facilityContext.ComponentTypes
+                .AsNoTracking()
+                .Include(r => r.RoomComponents)
+                .Select(x => x.ToTransfertObject())
+                .ToList();
+        }
 
         public ComponentTypeTO GetById(int Id)
         {
             return facilityContext.ComponentTypes
             .AsNoTracking()
+            .Include(r => r.RoomComponents)
             .FirstOrDefault(x => x.Id == Id)
             .ToTransfertObject();
         }

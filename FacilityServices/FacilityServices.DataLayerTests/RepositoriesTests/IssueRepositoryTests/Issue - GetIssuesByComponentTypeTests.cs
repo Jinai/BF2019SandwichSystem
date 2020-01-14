@@ -8,7 +8,7 @@ using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System.Linq;
 using System.Reflection;
 
-namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTest
+namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
 {
     [TestClass]
     public class GetIssuesByComponentTypesTests

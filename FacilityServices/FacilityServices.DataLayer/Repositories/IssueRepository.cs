@@ -30,15 +30,19 @@ namespace FacilityServices.DataLayer.Repositories
         }
 
         public IEnumerable<IssueTO> GetAll()
-        => facilityContext.Issues
-            .Select(x => x.ToTransfertObject())
-            .ToList();
+        {
+            return facilityContext.Issues
+                .Include(i => i.ComponentType)
+                .Select(x => x.ToTransfertObject())
+                .ToList();
+        }
 
         public IssueTO GetById(int Id)
         {
             return facilityContext.Issues
-            .FirstOrDefault(x => x.Id == Id)
-            .ToTransfertObject();
+                .Include(i => i.ComponentType)
+                .FirstOrDefault(x => x.Id == Id)
+                .ToTransfertObject();
         }
 
         public List<IssueTO> GetIssuesByComponentType(ComponentTypeTO ComponentType)
