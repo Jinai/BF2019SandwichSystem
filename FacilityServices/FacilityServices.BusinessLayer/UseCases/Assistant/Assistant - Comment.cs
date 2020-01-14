@@ -12,7 +12,7 @@ namespace FacilityServices.BusinessLayer.UseCases
                 throw new ArgumentNullException(nameof(comment));
             }
 
-            return iFSUnitOfWork.CommentRepository.Add(comment);
+            return unitOfWork.CommentRepository.Add(comment);
         }
     }
 }

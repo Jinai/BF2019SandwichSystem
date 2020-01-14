@@ -11,7 +11,7 @@ namespace FacilityServices.BusinessLayer.UseCases
                 throw new System.ArgumentNullException(nameof(floorToAdd));
             }
 
-            return iFSUnitOfWork.FloorRepository.Add(floorToAdd);
+            return unitOfWork.FloorRepository.Add(floorToAdd);
         }
 
         public bool RemoveFloor(int floorId)

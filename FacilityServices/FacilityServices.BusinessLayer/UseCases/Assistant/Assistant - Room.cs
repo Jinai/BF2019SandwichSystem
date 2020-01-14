@@ -12,7 +12,7 @@ namespace FacilityServices.BusinessLayer.UseCases
                 throw new ArgumentNullException(nameof(room));
             }
 
-            return iFSUnitOfWork.RoomRepository.Add(room);
+            return unitOfWork.RoomRepository.Add(room);
         }
 
         public bool RemoveRoom(int roomId)
