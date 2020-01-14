@@ -9,7 +9,6 @@ namespace FacilityServices.BusinessLayer.Domain
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public ComponentType ComponentType { get; set; }
         public Room Room { get; set; }
         public Issue Issue { get; set; }
         //public List<Comment> AssistantComments { get; set; } = new List<Comment>();

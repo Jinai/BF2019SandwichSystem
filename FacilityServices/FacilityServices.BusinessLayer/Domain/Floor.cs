@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace FacilityServices.BusinessLayer.Domain
+﻿namespace FacilityServices.BusinessLayer.Domain
 {
     public class Floor
     {

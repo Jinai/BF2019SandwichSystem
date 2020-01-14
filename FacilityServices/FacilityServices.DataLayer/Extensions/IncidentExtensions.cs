@@ -1,9 +1,6 @@
 ﻿using FacilityServices.DataLayer.Entities;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
-using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace FacilityServices.DataLayer.Extensions
 {
@@ -58,7 +55,7 @@ namespace FacilityServices.DataLayer.Extensions
             {
                 AttachedEF.Description = DetachedEF.Description;
                 AttachedEF.Issue = DetachedEF.Issue;
-                AttachedEF.RoomComponent = DetachedEF.RoomComponent;
+                AttachedEF.Room = DetachedEF.Room;
                 AttachedEF.Status = DetachedEF.Status;
                 AttachedEF.SubmitDate = DetachedEF.SubmitDate;
                 AttachedEF.UserId = DetachedEF.UserId;
