@@ -23,8 +23,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Floor = Room.Floor.ToTransfertObject(),
                 Name = new MultiLanguageString(Room.NameEnglish, Room.NameFrench, Room.NameDutch),
                 Archived = Room.Archived,
-                ComponentTypes = Room.RoomComponents?.Select(x => x.ComponentType.ToTransfertObject()).ToList(),
-                
+                ComponentTypes = Room.RoomComponents?.Select(x => x.ComponentType.ToTransfertObject()).ToList(),                
             };
         }
 
@@ -33,7 +32,7 @@ namespace FacilityServices.DataLayer.Extensions
             if (Room is null)
                 throw new ArgumentNullException(nameof(Room));
 
-            return new RoomEF()
+            var roomEF = new RoomEF
             {
                 Id = Room.Id,
                 Floor = Room.Floor.ToEF(),
@@ -41,9 +40,17 @@ namespace FacilityServices.DataLayer.Extensions
                 NameFrench = Room.Name.French,
                 NameDutch = Room.Name.Dutch,
                 Archived = Room.Archived,
-                // TODO Extension methods RoomComponents                         RoomComponents = Room.ComponentTypes?.Select(x => x.RoomComponents.ToEF()).ToList(),
-
             };
+
+            // Association des Id de Room et ComponentTypes via RoomComponent (table de relation)
+            roomEF.RoomComponents = Room.ComponentTypes?.Select(x => new RoomComponentEF
+            {
+                Room = Room.ToEF(),
+                RoomId = Room.Id,
+                ComponentType = x.ToEF(),
+                ComponentTypeId = x.Id
+            }).ToList();
+            return roomEF;
         }
         public static RoomEF UpdateFromDetached(this RoomEF AttachedEF, RoomEF DetachedEF)
         {

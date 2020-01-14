@@ -26,7 +26,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
             {
                 var issueRepository = new IssueRepository(memoryCtx);
 
-                Assert.ThrowsException<NotExistingIssueException>(() => issueRepository.GetById(84));
+                Assert.ThrowsException<NullIssueException>(() => issueRepository.GetById(84));
             }
         }
         [TestMethod()]

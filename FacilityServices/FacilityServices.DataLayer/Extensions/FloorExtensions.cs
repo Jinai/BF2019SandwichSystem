@@ -15,38 +15,36 @@ namespace FacilityServices.DataLayer.Extensions
         public static FloorTO ToTransfertObject(this FloorEF Floor)
         {
             if (Floor is null)
-                throw new NotExistingFloorException(nameof(Floor));
+                throw new NullFloorException(nameof(Floor));
 
             return new FloorTO
             {
                 Id = Floor.Id,
                 Number = Floor.Number,
-                //Rooms = Floor.Rooms?.Select(x => x.ToTransfertObject()).ToList(),
-                Archived = Floor.Archived
+                Archived = Floor.Archived,
             };
         }
 
         public static FloorEF ToEF(this FloorTO Floor)
         {
             if (Floor is null)
-                throw new NotExistingFloorException(nameof(Floor));
+                throw new NullFloorException(nameof(Floor));
 
             return new FloorEF()
             {
                 Id = Floor.Id,
                 Number = Floor.Number,
-                //Rooms = Floor.Rooms?.Select(x => x.ToEF()).ToList(),
-                Archived = Floor.Archived
+                Archived = Floor.Archived,
             };
         }
 
         public static FloorEF UpdateFromDetached(this FloorEF AttachedEF, FloorEF DetachedEF)
         {
             if (AttachedEF is null)
-                throw new ArgumentNullException(nameof(AttachedEF));
+                throw new NullFloorException(nameof(AttachedEF));
 
             if (DetachedEF is null)
-                throw new ArgumentNullException(nameof(DetachedEF));
+                throw new NullFloorException(nameof(DetachedEF));
 
             if (AttachedEF.Id != DetachedEF.Id)
                 throw new Exception("Cannot update FloorEF entity as it is not the same.");

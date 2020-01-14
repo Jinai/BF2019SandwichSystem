@@ -13,5 +13,14 @@ namespace FacilityServices.BusinessLayer.UseCases
 
             return iFSUnitOfWork.FloorRepository.Add(floorToAdd);
         }
+
+        public bool RemoveFloor(int floorId)
+        {
+            throw new System.NotImplementedException();
+        }
+        public FloorTO UpdateFloor(FloorTO floorToUpdate)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

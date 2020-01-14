@@ -50,7 +50,8 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
-                UserId = 1
+                UserId = 1,
+                Room = addedRoom
             };
             var incident2 = new IncidentTO
             {
@@ -58,7 +59,8 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
-                UserId = 2
+                UserId = 2,
+                Room = addedRoom
             };
             var incident3 = new IncidentTO
             {
@@ -66,7 +68,8 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
-                UserId = 1
+                UserId = 1,
+                Room = addedRoom
             };
             incidentRepository.Add(incident1);
             incidentRepository.Add(incident2);

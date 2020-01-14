@@ -32,8 +32,9 @@ namespace FacilityServices.DataLayer.Repositories
         public IEnumerable<RoomTO> GetAll()
         {
             return facilityContext.Rooms
-                                  .Include(r => r.Floor)
-                                  .Select(r => r.ToTransfertObject());
+                .Include(r => r.Floor)
+                .Include(r => r.RoomComponents)
+                .Select(r => r.ToTransfertObject());
         }
 
         public RoomTO GetById(int Id)
@@ -44,9 +45,10 @@ namespace FacilityServices.DataLayer.Repositories
             }
 
             return facilityContext.Rooms
-                                  .AsNoTracking()
-                                  .Include(r => r.Floor)
-                                  .FirstOrDefault(r => r.Id == Id).ToTransfertObject();
+                .AsNoTracking()
+                .Include(r => r.Floor)
+                .Include(r => r.RoomComponents)
+                .FirstOrDefault(r => r.Id == Id).ToTransfertObject();
         }
 
         public List<RoomTO> GetRoomsByFloors(FloorTO Floor)

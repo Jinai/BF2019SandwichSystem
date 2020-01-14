@@ -4,20 +4,20 @@ using System;
 namespace OnlineServices.Common.FacilityServices.Exceptions
 {
     [Serializable]
-    public class NotExistingIssueException : LoggedException
+    public class NullIssueException : LoggedException
     {
         private const string ExceptionMessage = "Not existing Issue.";
-        public NotExistingIssueException(string message)
+        public NullIssueException(string message)
             : base($"{ExceptionMessage}. {message}")
         {
         }
 
-        public NotExistingIssueException(string message, Exception innerException)
+        public NullIssueException(string message, Exception innerException)
             : base($"{ExceptionMessage}. {message}", innerException)
         {
         }
 
-        public NotExistingIssueException()
+        public NullIssueException()
             : base($"{ExceptionMessage}")
         {
         }

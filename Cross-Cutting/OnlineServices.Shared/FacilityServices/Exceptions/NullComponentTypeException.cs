@@ -4,20 +4,20 @@ using System;
 namespace OnlineServices.Common.FacilityServices.Exceptions
 {
     [Serializable]
-    public class NotExistingFloorException : LoggedException
+    public class NullComponentTypeException : LoggedException
     {
-        private const string ExceptionMessage = "Not existing Floor.";
-        public NotExistingFloorException(string message)
+        private const string ExceptionMessage = "Not existing ComponentType.";
+        public NullComponentTypeException(string message)
             : base($"{ExceptionMessage}. {message}")
         {
         }
 
-        public NotExistingFloorException(string message, Exception innerException)
+        public NullComponentTypeException(string message, Exception innerException)
             : base($"{ExceptionMessage}. {message}", innerException)
         {
         }
 
-        public NotExistingFloorException()
+        public NullComponentTypeException()
             : base($"{ExceptionMessage}")
         {
         }

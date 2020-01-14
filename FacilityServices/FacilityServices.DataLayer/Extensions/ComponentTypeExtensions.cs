@@ -13,21 +13,20 @@ namespace FacilityServices.DataLayer.Extensions
         public static ComponentTypeTO ToTransfertObject(this ComponentTypeEF componentType)
         {
             if (componentType is null)
-                throw new NotExistingComponentTypeException(nameof(componentType));
+                throw new NullComponentTypeException(nameof(componentType));
 
             return new ComponentTypeTO
             {
                 Id = componentType.Id,
                 Name = new MultiLanguageString(componentType.NameEnglish, componentType.NameFrench, componentType.NameDutch),
                 Archived = componentType.Archived,
-                //Issues = componentType.Issues.Select(x => x.ToTransfertObject()).ToList(),
             };
         }
 
         public static ComponentTypeEF ToEF(this ComponentTypeTO componentType)
         {
             if (componentType is null)
-                throw new NotExistingComponentTypeException(nameof(componentType));
+                throw new NullComponentTypeException(nameof(componentType));
 
             return new ComponentTypeEF
             {
@@ -36,8 +35,6 @@ namespace FacilityServices.DataLayer.Extensions
                 NameFrench = componentType.Name.French,
                 NameDutch = componentType.Name.Dutch,
                 Archived = componentType.Archived,
-                //Issues = componentType.Issues.Select(x => x.ToEF()).ToList(),
-
             };
         }
         public static ComponentTypeEF UpdateFromDetached(this ComponentTypeEF AttachedEF, ComponentTypeEF DetachedEF)

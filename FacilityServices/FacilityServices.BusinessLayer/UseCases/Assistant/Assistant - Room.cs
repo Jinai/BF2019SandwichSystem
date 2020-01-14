@@ -5,7 +5,7 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AssistantRole
     {
-        public RoomTO AddRoom(RoomTO room) 
+        public RoomTO AddRoom(RoomTO room)
         {
             if (room is null)
             {
@@ -13,6 +13,16 @@ namespace FacilityServices.BusinessLayer.UseCases
             }
 
             return iFSUnitOfWork.RoomRepository.Add(room);
+        }
+
+        public bool RemoveRoom(int roomId)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public RoomTO UpdateRoom(RoomTO roomToUpdate)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

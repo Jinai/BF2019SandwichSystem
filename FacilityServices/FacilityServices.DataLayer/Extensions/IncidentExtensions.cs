@@ -18,8 +18,8 @@ namespace FacilityServices.DataLayer.Extensions
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate,
                 Description = Incident.Description,
-                //RoomComponent = Incident.RoomComponent,
-                UserId = Incident.UserId
+                UserId = Incident.UserId,
+                Room = Incident.Room.ToTransfertObject(),
             };
         }
 
@@ -35,8 +35,8 @@ namespace FacilityServices.DataLayer.Extensions
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate,
                 Description = Incident.Description,
-                // TODO RoomComponent = Incident.RoomComponent,
-                UserId = Incident.UserId
+                UserId = Incident.UserId,
+                Room = Incident.Room.ToEF()
             };
         }
 

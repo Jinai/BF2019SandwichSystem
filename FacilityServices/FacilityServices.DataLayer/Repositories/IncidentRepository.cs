@@ -24,6 +24,7 @@ namespace FacilityServices.DataLayer.Repositories
 
             var incident = Entity.ToEF();
             incident.Issue = facilityContext.Issues.First(x => x.Id == Entity.Issue.Id);
+            incident.Room = facilityContext.Rooms.First(x => x.Id == Entity.Room.Id);
 
             return facilityContext.Incidents.Add(incident).Entity.ToTransfertObject();
         }
@@ -31,29 +32,29 @@ namespace FacilityServices.DataLayer.Repositories
         public IEnumerable<IncidentTO> GetAll()
         {
             return facilityContext.Incidents.AsNoTracking()
-                                            .Include(i => i.Issue)
-                                            .ThenInclude(i => i.ComponentType)
-                                            .Include(i => i.Room)
-                                            .ThenInclude(r => r.Floor)
-                                            .Select(i => i.ToTransfertObject());
+                .Include(i => i.Issue)
+                .ThenInclude(i => i.ComponentType)
+                .Include(i => i.Room)
+                .ThenInclude(r => r.Floor)
+                .Select(i => i.ToTransfertObject());
         }
 
         public IncidentTO GetById(int Id)
         {
             return facilityContext.Incidents.AsNoTracking()
-                                            .Include(i => i.Issue)
-                                            .ThenInclude(i => i.ComponentType)
-                                            .Include(i => i.Room)
-                                            .ThenInclude(r => r.Floor)
-                                            .FirstOrDefault(x => x.Id == Id)
-                                            .ToTransfertObject();
+                .Include(i => i.Issue)
+                .ThenInclude(i => i.ComponentType)
+                .Include(i => i.Room)
+                .ThenInclude(r => r.Floor)
+                .FirstOrDefault(x => x.Id == Id)
+                .ToTransfertObject();
         }
 
         public List<IncidentTO> GetIncidentsByUserId(int UserId)
         {
             return facilityContext.Incidents.Where(i => i.UserId == UserId)
-                                            .Select(i => i.ToTransfertObject())
-                                            .ToList();
+                .Select(i => i.ToTransfertObject())
+                .ToList();
         }
 
         public bool Remove(IncidentTO entity)
@@ -99,7 +100,12 @@ namespace FacilityServices.DataLayer.Repositories
                 throw new KeyNotFoundException("No incident found !");
             }
 
-            var attachedIncident = facilityContext.Incidents.FirstOrDefault(x => x.Id == Entity.Id);
+            var attachedIncident = facilityContext.Incidents
+                .Include(i => i.Issue)
+                .ThenInclude(i => i.ComponentType)
+                .Include(i => i.Room)
+                .ThenInclude(r => r.Floor)
+                .FirstOrDefault(x => x.Id == Entity.Id);
 
             if (attachedIncident != null)
             {

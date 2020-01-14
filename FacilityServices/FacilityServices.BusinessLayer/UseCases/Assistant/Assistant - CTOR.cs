@@ -10,6 +10,5 @@ namespace FacilityServices.BusinessLayer.UseCases
         {
             this.iFSUnitOfWork = iFSUnitOfWork ?? throw new System.ArgumentNullException(nameof(iFSUnitOfWork));
         }
-
     }
 }
