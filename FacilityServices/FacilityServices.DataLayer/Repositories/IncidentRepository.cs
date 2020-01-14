@@ -10,7 +10,7 @@ namespace FacilityServices.DataLayer.Repositories
 {
     public class IncidentRepository : IIncidentRepository
     {
-        private FacilityContext facilityContext;
+        private readonly FacilityContext facilityContext;
 
         public IncidentRepository(FacilityContext facilityContext)
         {
@@ -30,17 +30,22 @@ namespace FacilityServices.DataLayer.Repositories
 
         public IEnumerable<IncidentTO> GetAll()
         {
-            return facilityContext.Incidents
-                                  .Include(i => i.Issue)
-                                  .Include(i => i.RoomComponent.ComponentType)
-                                  .Include(i => i.RoomComponent.Room)
-                                  .ThenInclude(r => r.Floor)
-                                  .Select(i => i.ToTransfertObject());
+            return facilityContext.Incidents.AsNoTracking()
+                                            .Include(i => i.Issue)
+                                            .ThenInclude(i => i.ComponentType)
+                                            .Include(i => i.Room)
+                                            .ThenInclude(r => r.Floor)
+                                            .Select(i => i.ToTransfertObject());
         }
 
         public IncidentTO GetById(int Id)
         {
-            return facilityContext.Incidents.Find(Id)
+            return facilityContext.Incidents.AsNoTracking()
+                                            .Include(i => i.Issue)
+                                            .ThenInclude(i => i.ComponentType)
+                                            .Include(i => i.Room)
+                                            .ThenInclude(r => r.Floor)
+                                            .FirstOrDefault(x => x.Id == Id)
                                             .ToTransfertObject();
         }
 
@@ -93,7 +98,7 @@ namespace FacilityServices.DataLayer.Repositories
             {
                 throw new KeyNotFoundException("No incident found !");
             }
-            
+
             var attachedIncident = facilityContext.Incidents.FirstOrDefault(x => x.Id == Entity.Id);
 
             if (attachedIncident != null)

@@ -1,6 +1,5 @@
 ﻿using OnlineServices.Common.DataAccessHelpers;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
-using System.Collections.Generic;
 
 namespace OnlineServices.Common.FacilityServices.TransfertObjects
 {
@@ -10,6 +9,6 @@ namespace OnlineServices.Common.FacilityServices.TransfertObjects
         public MultiLanguageString Name { get; set; }
         public bool Archived { get; set; }
         //public List<IssueTO> Issues { get; set; } = new List<IssueTO>();
-        public List<RoomComponentTO> RoomComponents { get; set; } = new List<RoomComponentTO>();
+        //public List<RoomTO> Rooms { get; set; } = new List<RoomTO>();
     }
 }

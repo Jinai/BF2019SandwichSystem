@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace FacilityServices.BusinessLayer.UseCases.Attendee
+namespace FacilityServices.BusinessLayer.UseCases
 {
-    public partial class Attendee
+    public partial class AssistantRole
     {
-        public bool ChangeIncidentStatus(int IncidentId, IncidentStatus status)
+        public bool ChangeIncidentStatus(IncidentStatus statusToSubmit, int incidentId)
         {
-            return false;
+            throw new System.NotImplementedException();
         }
 
     }
