@@ -21,7 +21,7 @@ namespace FacilityServices.DataLayer.Extensions
                 Status = Incident.Status,
                 SubmitDate = Incident.SubmitDate,
                 Description = Incident.Description,
-                // TODO RoomComponent = Incident.RoomComponent,
+                //RoomComponent = Incident.RoomComponent,
                 UserId = Incident.UserId
             };
         }
@@ -41,6 +41,30 @@ namespace FacilityServices.DataLayer.Extensions
                 // TODO RoomComponent = Incident.RoomComponent,
                 UserId = Incident.UserId
             };
+        }
+
+        public static IncidentEF UpdateFromDetached(this IncidentEF AttachedEF, IncidentEF DetachedEF)
+        {
+            if (AttachedEF is null)
+                throw new ArgumentNullException(nameof(AttachedEF));
+
+            if (DetachedEF is null)
+                throw new ArgumentNullException(nameof(DetachedEF));
+
+            if (AttachedEF.Id != DetachedEF.Id)
+                throw new Exception("Cannot update ComponentEF entity as it is not the same.");
+
+            if ((AttachedEF != default) && (DetachedEF != default))
+            {
+                AttachedEF.Description = DetachedEF.Description;
+                AttachedEF.Issue = DetachedEF.Issue;
+                AttachedEF.RoomComponent = DetachedEF.RoomComponent;
+                AttachedEF.Status = DetachedEF.Status;
+                AttachedEF.SubmitDate = DetachedEF.SubmitDate;
+                AttachedEF.UserId = DetachedEF.UserId;
+            }
+
+            return AttachedEF;
         }
     }
 }
