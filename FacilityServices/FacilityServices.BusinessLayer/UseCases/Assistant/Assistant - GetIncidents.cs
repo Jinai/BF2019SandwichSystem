@@ -10,10 +10,7 @@ namespace FacilityServices.BusinessLayer.UseCases
     {
         public List<IncidentTO> GetIncidents()
         {
-            if (iFSUnitOfWork.IncidentRepository.GetAll().Count() == 0)
-            {
-                throw new Exception("Il n'y a pas d'Incidents sauvegardés in DB");
-            }
+
 
             return iFSUnitOfWork.IncidentRepository
                 .GetAll()

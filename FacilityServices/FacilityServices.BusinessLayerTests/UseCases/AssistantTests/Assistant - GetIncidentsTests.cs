@@ -57,34 +57,20 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 
 
         [TestMethod]
-        public void GetIncidents_ThrowsException_NoIncidentInDB()
+        public void GetIncidents_IncidentRepositoryIsCalledOnce_WhenCalled()
         {
+
             var mockIncidentRepository = new Mock<IIncidentRepository>();
-            mockIncidentRepository.Setup(x => x.GetAll()).Returns(new List<IncidentTO>());
+            mockIncidentRepository.Setup(x => x.GetAll()).Returns(GetTestsListOfIncidents());
 
             var mockUoW = new Mock<IFSUnitOfWork>();
             mockUoW.Setup(x => x.IncidentRepository).Returns(mockIncidentRepository.Object);
 
             var Assistante = new AssistantRole(mockUoW.Object);
 
-            Assert.ThrowsException<Exception>(() => Assistante.GetIncidents());
+            Assistante.GetIncidents();
+
+            mockIncidentRepository.Verify(x => x.GetAll(), Times.Once);
         }
-
-        //[TestMethod]
-        //public void GetIncidents_IncidentRepositoryIsCalledOnce_WhenCalled()
-        //{
-
-        //    var mockIncidentRepository = new Mock<IIncidentRepository>();
-        //    mockIncidentRepository.Setup(x => x.GetAll()).Returns(GetTestsListOfIncidents());
-
-        //    var mockUoW = new Mock<IFSUnitOfWork>();
-        //    mockUoW.Setup(x => x.IncidentRepository).Returns(mockIncidentRepository.Object);
-
-        //    var Assistante = new AssistantRole(mockUoW.Object);
-
-        //    Assistante.GetIncidents();
-
-        //    mockIncidentRepository.Verify(x => x.GetAll(), Times.Once);
-        //}
     }
 }
