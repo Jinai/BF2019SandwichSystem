@@ -7,9 +7,9 @@ namespace FacilityServices.BusinessLayer.UseCases
     {
         public IncidentTO ChangeIncidentStatus(IncidentStatus statusToSubmit, int incidentId)
         {
-            var incident = iFSUnitOfWork.IncidentRepository.GetById(incidentId);
+            var incident = unitOfWork.IncidentRepository.GetById(incidentId);
             incident.Status = statusToSubmit;
-            var updatedIncident = iFSUnitOfWork.IncidentRepository.Update(incident);
+            var updatedIncident = unitOfWork.IncidentRepository.Update(incident);
 
             return updatedIncident;
         }

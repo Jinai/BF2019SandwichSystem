@@ -4,11 +4,11 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AssistantRole : AttendeeRole, IFSAssistantRole
     {
-        private readonly IFSUnitOfWork iFSUnitOfWork;
+        private readonly IFSUnitOfWork unitOfWork;
 
         public AssistantRole(IFSUnitOfWork iFSUnitOfWork) : base(iFSUnitOfWork)
         {
-            this.iFSUnitOfWork = iFSUnitOfWork ?? throw new System.ArgumentNullException(nameof(iFSUnitOfWork));
+            this.unitOfWork = iFSUnitOfWork ?? throw new System.ArgumentNullException(nameof(iFSUnitOfWork));
         }
     }
 }
