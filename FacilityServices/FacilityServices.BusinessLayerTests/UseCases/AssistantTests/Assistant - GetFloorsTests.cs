@@ -9,7 +9,7 @@ using System.Linq;
 namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 {
     [TestClass]
-    public class Attendee_GetFloorsTests
+    public class Assistant_GetFloorsTests
     {
         [TestMethod]
         public void GetFloors_AddThreeFloorsThenRetrieveThem_ReturnCorrectNumberOfFloors()
@@ -23,7 +23,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
                 new FloorTO{ Id = 3, Archived = false },
             };
             mockUnitOfWork.Setup(u => u.FloorRepository.GetAll()).Returns(floors);
-            var sut = new AttendeeRole(mockUnitOfWork.Object);            
+            var sut = new AssistantRole(mockUnitOfWork.Object);            
             //ACT
             var listOfFloors = sut.GetFloors();
             //ASSERT

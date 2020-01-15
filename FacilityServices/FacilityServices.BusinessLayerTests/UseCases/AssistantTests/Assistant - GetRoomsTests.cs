@@ -10,7 +10,7 @@ using System.Linq;
 namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
 {
     [TestClass]
-    public class Attendee_GetRoomsTests
+    public class Assistant_GetRoomsTests
     {
         [TestMethod]
         public void GetRooms_AddThreeRooms_ThenRetrieveThem_ReturnCorrectNumberOfRmoms()
@@ -24,7 +24,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
                 new RoomTO{ Id = 3, Archived = false, Name = new MultiLanguageString("Reims2", "Reims2", "Reims2"), Floor = new FloorTO {Id = 3 } }
             };
             mockUnitOfWork.Setup(u => u.RoomRepository.GetAll()).Returns(rooms);
-            var sut = new AttendeeRole(mockUnitOfWork.Object);
+            var sut = new AssistantRole(mockUnitOfWork.Object);
             //ACT
             var listOfRooms = sut.GetRooms();
             //ASSERT
