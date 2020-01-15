@@ -22,8 +22,4 @@
     <ProjectReference Include="..\FacilityServices.BusinessLayer\FacilityServices.BusinessLayer.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UseCases\AttendeeTests\" />
-  </ItemGroup>
-
 </Project>
