@@ -6,7 +6,7 @@ using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
+namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
 {
     [TestClass]
     public class Attendee_GetFloorsTests
