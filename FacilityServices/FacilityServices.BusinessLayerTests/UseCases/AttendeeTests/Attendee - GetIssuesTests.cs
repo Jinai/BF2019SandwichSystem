@@ -13,7 +13,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
     public class Attendee_GetIssuesTests
     {
         [TestMethod]
-        public void GetIssues_AddThreeIssues_ThenRetrieveThem_ReturnCorrectNumberOfRmoms()
+        public void GetIssues_AddThreeIssues_ThenRetrieveThem_ReturnCorrectNumberOfIssues()
         {
             var componentType1 = new ComponentTypeTO { Archived = false, Name = new MultiLanguageString("Name1En", "Name1Fr", "Name1Nl") };
             var componentType2 = new ComponentTypeTO { Archived = false, Name = new MultiLanguageString("Name2En", "Name2Fr", "Name2Nl") };

@@ -13,7 +13,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
     public class Attendee_GetComponentTypesTests
     {
         [TestMethod]
-        public void GetComponentTypes_AddThreeComponentTypes_ThenRetrieveThem_ReturnCorrectNumberOfRmoms()
+        public void GetComponentTypes_AddThreeComponentTypes_ThenRetrieveThem_ReturnCorrectNumberOfComponentTypes()
         {
             //ARRANGE
             var mockUnitOfWork = new Mock<IFSUnitOfWork>();
