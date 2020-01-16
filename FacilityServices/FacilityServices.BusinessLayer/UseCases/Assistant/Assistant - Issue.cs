@@ -29,8 +29,9 @@ namespace FacilityServices.BusinessLayer.UseCases
             {
                 throw new KeyNotFoundException("No Issue was found for the given ID!");
             }
+            var issue = unitOfWork.IssueRepository.GetById(issueId);
 
-            return unitOfWork.IssueRepository.Remove(issueId);
+            return unitOfWork.IssueRepository.Update(issue) != null;
         }
         public IssueTO UpdateIssue(IssueTO issueToUpdate)
         {
