@@ -21,22 +21,23 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AssistantTests
             //Issue
             var issues = new List<IssueTO> 
             {
-             new IssueTO {Archived = false, Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 },
-             new IssueTO {Archived = false, Description = "Fuite d'eau", Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL"), ComponentType = componentType2 },
-             new IssueTO {Archived = false, Description = "Plus de PQ", Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL"), ComponentType = componentType2 }, 
+             new IssueTO {Id = 1, Archived = false, Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 },
+             new IssueTO {Id = 2, Archived = false, Description = "Fuite d'eau", Name = new MultiLanguageString("Issue2EN", "Issue2FR", "Issue2NL"), ComponentType = componentType2 },
+             new IssueTO {Id = 3, Archived = false, Description = "Plus de PQ", Name = new MultiLanguageString("Issue3EN", "Issue3FR", "Issue3NL"), ComponentType = componentType2 }, 
             };
 
             var mockUnitOfWork = new Mock<IFSUnitOfWork>();
             mockUnitOfWork.Setup(u => u.IssueRepository.Update(It.IsAny<IssueTO>()))
-                         .Returns(new IssueTO { Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 });
+                         .Returns(new IssueTO { Id = 1, Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 });
             mockUnitOfWork.Setup(u => u.IssueRepository.GetAll()).Returns(issues);
 
             var sut = new AssistantRole(mockUnitOfWork.Object);
-            var issue = new IssueTO { Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 };
+            var issue = new IssueTO { Id = 1, Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 };
             //ACT
-            var result = sut.RemoveComponentType(1);
+            var result = sut.RemoveIssue(1);
             //ASSERT
             mockUnitOfWork.Verify(u => u.IssueRepository.Update(It.IsAny<IssueTO>()), Times.Once);
+            mockUnitOfWork.Verify(u => u.IssueRepository.GetById(It.IsAny<int>()), Times.Once);
             Assert.IsTrue(result);
         }
 
