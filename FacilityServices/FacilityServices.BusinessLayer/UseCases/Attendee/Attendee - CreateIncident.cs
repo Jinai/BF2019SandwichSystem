@@ -1,5 +1,4 @@
 ﻿using OnlineServices.Common.Exceptions;
-using OnlineServices.Common.FacilityServices.Enumerations;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 
@@ -29,7 +28,6 @@ namespace FacilityServices.BusinessLayer.UseCases
             // Todo check unique constraints, check if room + componenttype exists, etc.
             var incident = unitOfWork.IncidentRepository.Add(incidentTO);
             return incident.Id != 0;
-
         }
     }
 }
