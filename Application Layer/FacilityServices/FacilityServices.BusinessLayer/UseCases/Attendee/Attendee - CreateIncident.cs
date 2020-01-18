@@ -1,4 +1,5 @@
 ﻿using OnlineServices.Common.Exceptions;
+using OnlineServices.Common.FacilityServices.Enumerations;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
 
