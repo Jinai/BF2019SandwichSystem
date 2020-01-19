@@ -50,7 +50,15 @@ namespace FacilityServices.DataLayer.Repositories
 
         public List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO Room)
         {
-            throw new NotImplementedException();
+            if (Room is null)
+            {
+                throw new ArgumentNullException(nameof(Room));
+            }
+            return facilityContext.ComponentTypes
+                           .Include(r => r.RoomComponents)
+                           .ThenInclude(RoomComponents => RoomComponents.RoomId.Equals(Room.Id))
+                           .Select(x => x.ToTransfertObject())
+                           .ToList();
         }
 
         public bool Remove(ComponentTypeTO entity)

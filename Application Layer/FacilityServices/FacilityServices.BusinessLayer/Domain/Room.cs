@@ -11,6 +11,7 @@ namespace FacilityServices.BusinessLayer.Domain
         public MultiLanguageString Name { get; set; }
         public Floor Floor { get; set; }
         public bool Archived { get; set; }
+        public IList<ComponentType> ComponentTypes { get; set; }
 
         public Room()
         {
