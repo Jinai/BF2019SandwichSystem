@@ -67,14 +67,14 @@ namespace FacilityServices.DataLayer.Repositories
 
         public bool Remove(RoomTO entity)
         {
-            if (!facilityContext.Rooms.Any(x => x.Id == entity.Id && x.Archived != true))
-            {
-                throw new KeyNotFoundException("No room found !");
-            }
-
             if (entity is null)
             {
                 throw new ArgumentNullException(nameof(entity));
+            }
+
+            if (!facilityContext.Rooms.Any(x => x.Id == entity.Id && x.Archived != true))
+            {
+                throw new KeyNotFoundException("No room found !");
             }
 
             var entityEF = facilityContext.Rooms.Find(entity.Id);

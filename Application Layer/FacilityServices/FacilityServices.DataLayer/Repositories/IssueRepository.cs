@@ -1,5 +1,6 @@
 ﻿using FacilityServices.DataLayer.Extensions;
 using Microsoft.EntityFrameworkCore;
+using OnlineServices.Common.Exceptions;
 using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using System;
@@ -65,7 +66,7 @@ namespace FacilityServices.DataLayer.Repositories
         public bool Remove(int Id)
         {
             if (!facilityContext.Issues.Any(x => x.Id == Id && x.Archived != true))
-                throw new Exception($"IssueRepository. Delete(IssueId = {Id}) no record to delete.");
+                throw new LoggedException($"IssueRepository. Delete(IssueId = {Id}) no record to delete.");
 
             var issue = facilityContext.Issues.FirstOrDefault(x => x.Id == Id && x.Archived != true);
             
@@ -88,7 +89,7 @@ namespace FacilityServices.DataLayer.Repositories
         public IssueTO Update(IssueTO Entity)
         {
             if (!facilityContext.Issues.Any(x => x.Id == Entity.Id && x.Archived != true))
-                throw new Exception($"IssueRepository. Update(IssueTransfertObject) no record to update.");
+                throw new LoggedException($"IssueRepository. Update(IssueTransfertObject) no record to update.");
 
             var attachedIssues = facilityContext.Issues
                 .FirstOrDefault(x => x.Id == Entity.Id && x.Archived != true);

@@ -2,6 +2,7 @@
 using FacilityServices.DataLayer.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OnlineServices.Common.Exceptions;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
@@ -67,7 +68,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
                 issueRepository.Add(IssueToUseInTest2);
                 memoryCtx.SaveChanges();
 
-                Assert.ThrowsException<Exception>(() => issueRepository.Remove(IssueToUseInTest3));
+                Assert.ThrowsException<LoggedException>(() => issueRepository.Remove(IssueToUseInTest3));
             }
         }
         [TestMethod()]
@@ -184,7 +185,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
                 issueRepository.Add(IssueToUseInTest2);
                 memoryCtx.SaveChanges();
 
-                Assert.ThrowsException<Exception>(() => issueRepository.Remove(3));
+                Assert.ThrowsException<LoggedException>(() => issueRepository.Remove(3));
             }
         }
         [TestMethod()]

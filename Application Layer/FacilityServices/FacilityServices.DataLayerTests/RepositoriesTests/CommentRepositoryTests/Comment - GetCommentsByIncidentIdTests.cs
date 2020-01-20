@@ -7,16 +7,16 @@ using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace FacilityServices.DataLayerTests.RepositoriesTests.CommentRepositoryTests
 {
     [TestClass]
-    public class RemoveCommentByEntityTests
+    public class GetCommentsByIncidentIdTests
     {
         [TestMethod]
-        public void RemoveCommentByEntity_AddNewCommentThenRemoveIt_ReturnsTrue()
+        public void GetCommentsByIncidentId_AddMultipleComments_ReturnRelevantComments()
         {
             // Arrange
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -47,50 +47,63 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.CommentRepositoryTes
             var addedIssue = issueRepository.Add(issue);
             context.SaveChanges();
 
-            var incident = new IncidentTO
+            var incident1 = new IncidentTO
             {
-                Description = "This thing is broken !",
+                Description = "This thing is broken!",
                 Room = addedRoom,
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
                 UserId = 1,
             };
-            var addedIncident = incidentRepository.Add(incident);
+            var incident2 = new IncidentTO
+            {
+                Description = "This thing is still broken after a week!",
+                Room = addedRoom,
+                Issue = addedIssue,
+                Status = IncidentStatus.Waiting,
+                SubmitDate = DateTime.Now.AddDays(7),
+                UserId = 1,
+            };
+            var addedIncident1 = incidentRepository.Add(incident1);
+            var addedIncident2 = incidentRepository.Add(incident2);
             context.SaveChanges();
 
-            var comment = new CommentTO
+            var comment1 = new CommentTO
             {
-                Incident = addedIncident,
+                Incident = addedIncident1,
                 Message = "I got in touch with the right people, it'll get fixed soon!",
                 SubmitDate = DateTime.Now,
-                UserId = 1
+                UserId = 2
             };
-            var addedComment = commentRepository.Add(comment);
+            var comment2 = new CommentTO
+            {
+                Incident = addedIncident1,
+                Message = "New ETA is Monday morning.",
+                SubmitDate = DateTime.Now.AddDays(1),
+                UserId = 2
+            };
+            var comment3 = new CommentTO
+            {
+                Incident = addedIncident2,
+                Message = "It should be fixed very soon, sorry for the inconvenience!",
+                SubmitDate = DateTime.Now.AddDays(8),
+                UserId = 2
+            };
+            commentRepository.Add(comment1);
+            commentRepository.Add(comment2);
+            commentRepository.Add(comment3);
             context.SaveChanges();
 
             // Act
-            var result = commentRepository.Remove(addedComment);
-            context.SaveChanges();
+            var result1 = commentRepository.GetCommentsByIncidentId(addedIncident1.Id);
+            var result2 = commentRepository.GetCommentsByIncidentId(addedIncident2.Id);
 
             // Assert
-            Assert.IsTrue(result);
-            Assert.ThrowsException<KeyNotFoundException>(() => commentRepository.GetById(addedComment.Id));
-        }
-
-        [TestMethod]
-        public void RemoveCommentByEntity_RemoveNull_ThrowsException()
-        {
-            // Arrange
-            var options = new DbContextOptionsBuilder<FacilityContext>()
-                .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
-                .Options;
-
-            using var context = new FacilityContext(options);
-            ICommentRepository commentRepository = new CommentRepository(context);
-
-            // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => commentRepository.Remove(null));
+            Assert.IsNotNull(result1);
+            Assert.IsNotNull(result2);
+            Assert.AreEqual(2, result1.Count());
+            Assert.AreEqual(1, result2.Count());
         }
     }
 }
