@@ -15,7 +15,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
     public class Attendee_GetRoomsByFloorTests
     {
         [TestMethod]
-        public void GetRoomsByFloor_ReturnUpdatedRoom()
+        public void GetRoomsByFloor_ReturnRooms()
         {
             //Floor
             var floor1 = new FloorTO { Number = 2 };

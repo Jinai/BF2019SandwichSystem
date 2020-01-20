@@ -16,7 +16,7 @@ namespace FacilityServices.BusinessLayer.UseCases
             }
             if (floorTO.Id <= 0)
             {
-                throw new LoggedException("The Floor object cannot be updated without it's ID");
+                throw new LoggedException("The Rooms cannot be reached without existing Floor ID");
             }
             
             return unitOfWork.RoomRepository.GetRoomsByFloors(floorTO);
