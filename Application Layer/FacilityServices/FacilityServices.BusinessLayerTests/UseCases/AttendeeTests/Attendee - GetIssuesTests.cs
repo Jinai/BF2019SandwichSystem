@@ -28,27 +28,15 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
             };
             //ARRANGE
             var mockUnitOfWork = new Mock<IFSUnitOfWork>();
-            mockUnitOfWork.Setup(u => u.IssueRepository.GetIssuesByComponentType(It.IsAny<ComponentTypeTO>()))
-                          .Returns(issues);
+            //mockUnitOfWork.Setup(u => u.IssueRepository.GetIssuesByComponentType(It.IsAny<ComponentTypeTO>)
+            //              .Returns(issues);
             var sut = new AssistantRole(mockUnitOfWork.Object);
             var room = new IssueTO { Id = 1, Archived = false, Description = "Plus de café", Name = new MultiLanguageString("Issue1EN", "Issue1FR", "Issue1NL"), ComponentType = componentType1 };
             //ACT
-            var result = sut.GetIssuesByComponentType(componentType1);
+            var result = sut.GetIssuesByComponentType(1);
             //ASSERT
             mockUnitOfWork.Verify(u => u.IssueRepository.GetIssuesByComponentType(It.IsAny<ComponentTypeTO>()), Times.Once);
             Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
-        public void GetIssuesByComponentType_NullFloorSubmitted_ThrowArgumentNullException()
-        {
-            //ARRANGE
-            var mockUnitOfWork = new Mock<IFSUnitOfWork>();
-            var sut = new AssistantRole(mockUnitOfWork.Object);
-            //ACT
-
-            //ASSERT
-            Assert.ThrowsException<ArgumentNullException>(() => sut.GetIssuesByComponentType(null));
         }
 
         [TestMethod]
@@ -57,10 +45,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
             //ARRANGE
             var mockUnitOfWork = new Mock<IFSUnitOfWork>();
             var sut = new AssistantRole(mockUnitOfWork.Object);
-            //ACT
-
-            //ASSERT
-            Assert.ThrowsException<LoggedException>(() => sut.GetIssuesByComponentType(new ComponentTypeTO { Archived = false }));
+            Assert.ThrowsException<LoggedException>(() => sut.GetIssuesByComponentType(-1));
         }
     }
 }

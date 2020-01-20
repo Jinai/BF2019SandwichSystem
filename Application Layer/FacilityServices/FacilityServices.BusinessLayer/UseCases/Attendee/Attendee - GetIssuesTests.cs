@@ -8,17 +8,14 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AttendeeRole
     {
-        public List<IssueTO> GetIssuesByComponentType(ComponentTypeTO componentTypeTO)
+        public List<IssueTO> GetIssuesByComponentType(int componentTypeId)
         {
-            if (componentTypeTO is null)
-            {
-                throw new System.ArgumentNullException(nameof(componentTypeTO));
-            }
-            if (componentTypeTO.Id <= 0)
+            if (componentTypeId <= 0)
             {
                 throw new LoggedException("The Issues cannot be reached without existing ComponentType ID");
             }
-            return unitOfWork.IssueRepository.GetIssuesByComponentType(componentTypeTO);
+            var componentType = unitOfWork.ComponentTypeRepository.GetById(componentTypeId);
+            return unitOfWork.IssueRepository.GetIssuesByComponentType(componentType);
         }
     }
 }

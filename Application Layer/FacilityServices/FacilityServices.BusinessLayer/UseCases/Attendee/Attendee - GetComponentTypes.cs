@@ -8,17 +8,14 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AttendeeRole
     {
-        public List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO roomTO)
+        public List<ComponentTypeTO> GetComponentTypesByRoom(int roomId)
         {
-            if (roomTO is null)
-            {
-                throw new System.ArgumentNullException(nameof(roomTO));
-            }
-            if (roomTO.Id <= 0)
+            if (roomId <= 0)
             {
                 throw new LoggedException("The ComponentTypes cannot be reached without existing Room ID");
             }
-            return unitOfWork.ComponentTypeRepository.GetComponentTypesByRoom(roomTO);                                                 
+            var room = unitOfWork.RoomRepository.GetById(roomId);
+            return unitOfWork.ComponentTypeRepository.GetComponentTypesByRoom(room);                                                 
         }
     }
 }

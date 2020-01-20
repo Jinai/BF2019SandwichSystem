@@ -8,18 +8,15 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AttendeeRole
     {
-        public List<RoomTO> GetRoomsByFloor(FloorTO floorTO)
+        public List<RoomTO> GetRoomsByFloor(int floorId)
         {
-            if (floorTO is null)
-            {
-                throw new System.ArgumentNullException(nameof(floorTO));
-            }
-            if (floorTO.Id <= 0)
+            if (floorId <= 0)
             {
                 throw new LoggedException("The Rooms cannot be reached without existing Floor ID");
             }
-            
-            return unitOfWork.RoomRepository.GetRoomsByFloors(floorTO);
+
+            var floor = unitOfWork.FloorRepository.GetById(floorId);
+            return unitOfWork.RoomRepository.GetRoomsByFloors(floor);
         }
     }
 }

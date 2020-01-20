@@ -47,17 +47,6 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
             //Assert.IsNotNull(result);
         }
 
-        [TestMethod]
-        public void GetComponentTypesByRoom_NullFloorSubmitted_ThrowArgumentNullException()
-        {
-            //ARRANGE
-            var mockUnitOfWork = new Mock<IFSUnitOfWork>();
-            var sut = new AssistantRole(mockUnitOfWork.Object);
-            //ACT
-
-            //ASSERT
-            Assert.ThrowsException<ArgumentNullException>(() => sut.GetComponentTypesByRoom(null));
-        }
 
         [TestMethod]
         public void GetComponentTypesByRoom_IncorrectRoomID_ThrowLoggedException()
@@ -68,7 +57,7 @@ namespace FacilityServices.BusinessLayerTests.UseCases.AttendeeTests
             //ACT
 
             //ASSERT
-            Assert.ThrowsException<LoggedException>(() => sut.GetComponentTypesByRoom(new RoomTO { Archived = false }));
+            Assert.ThrowsException<LoggedException>(() => sut.GetComponentTypesByRoom(-1));
         }
     }
 }
