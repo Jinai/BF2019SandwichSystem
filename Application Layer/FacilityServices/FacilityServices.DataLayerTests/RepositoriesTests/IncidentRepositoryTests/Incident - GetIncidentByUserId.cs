@@ -7,15 +7,18 @@ using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTests
 {
     [TestClass]
-    public class RemoveIncidentByIdTest
+    public class GetIncidentByUserId
     {
         [TestMethod]
-        public void RemoveById_AddANewIncidentThenRemoveIt_ReturnTrue()
+        public void GetByUserId_AddMultipleIncidents_ReturnRelevantIncidents()
         {
             //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -43,37 +46,50 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IncidentRepositoryTe
             var addedIssue = issueRepository.Add(issue);
             context.SaveChanges();
             //Incident
-            var incident = new IncidentTO
+            var incident1 = new IncidentTO
             {
                 Description = "No coffee",
+                Room = addedRoom,
                 Issue = addedIssue,
                 Status = IncidentStatus.Waiting,
                 SubmitDate = DateTime.Now,
                 UserId = 1,
-                Room = addedRoom
             };
-            var addedIncident = incidentRepository.Add(incident);
+            var incident2 = new IncidentTO
+            {
+                Description = "No coffee",
+                Room = addedRoom,
+                Issue = addedIssue,
+                Status = IncidentStatus.Waiting,
+                SubmitDate = DateTime.Now,
+                UserId = 1,
+            };
+            var incident3 = new IncidentTO
+            {
+                Description = "No coffee",
+                Room = addedRoom,
+                Issue = addedIssue,
+                Status = IncidentStatus.Waiting,
+                SubmitDate = DateTime.Now,
+                UserId = 2,
+            };
+            var addedIncident1 = incidentRepository.Add(incident1);
+            var addedIncident2 = incidentRepository.Add(incident2);
+            var addedIncident3 = incidentRepository.Add(incident3);
             context.SaveChanges();
+
             //ACT
-            var result = incidentRepository.Remove(addedIncident.Id);
-            context.SaveChanges();
-            //ASSERT   
-            Assert.IsTrue(result);
-        }
+            var result1 = incidentRepository.GetIncidentsByUserId(addedIncident1.UserId);
+            var result2 = incidentRepository.GetIncidentsByUserId(addedIncident2.UserId);
+            var result3 = incidentRepository.GetIncidentsByUserId(addedIncident3.UserId);
 
-        [TestMethod]
-        public void RemoveById_ThrowException_WhenInvalidIdIsSupplied()
-        {
-            //ARRANGE
-            var options = new DbContextOptionsBuilder<FacilityContext>()
-                .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
-                .Options;
-            using var context = new FacilityContext(options);
-            IIncidentRepository incidentRepository = new IncidentRepository(context);
-
-            //ACT & ASSERT
-            Assert.ThrowsException<ArgumentException>(() => incidentRepository.Remove(0));
-            Assert.ThrowsException<ArgumentException>(() => incidentRepository.Remove(-1));
+            //ASSERT
+            Assert.IsNotNull(result1);
+            Assert.IsNotNull(result2);
+            Assert.IsNotNull(result3);
+            Assert.AreEqual(2, result1.Count());
+            Assert.AreEqual(2, result2.Count());
+            Assert.AreEqual(1, result3.Count());
         }
     }
 }

@@ -7,6 +7,7 @@ using OnlineServices.Common.FacilityServices.Interfaces;
 using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -16,8 +17,7 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
     public class GetRoomsByFloorsTests
     {
         [TestMethod]
-        //[Ignore]
-        public void GetRoomsByFloors_ReturnCoorectNumberOfCorrespondingRooms()
+        public void GetRoomsByFloors_ReturnCorrectNumberOfCorrespondingRooms()
         {
             //ARRANGE
             var options = new DbContextOptionsBuilder<FacilityContext>()
@@ -47,6 +47,21 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.RoomRepositoryTest
 
             Assert.IsNotNull(retrievedRooms);
             Assert.AreEqual(2, retrievedRooms.Count());
+        }
+
+        [TestMethod]
+        public void GetRoomsByFloors_ThrowException_WhenNullIsSupplied()
+        {
+            //ARRANGE
+            var options = new DbContextOptionsBuilder<FacilityContext>()
+                .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
+                .Options;
+
+            using var context = new FacilityContext(options);
+            IRoomRepository roomRepository = new RoomRepository(context);
+
+            //ACT & ASSERT
+            Assert.ThrowsException<ArgumentNullException>(() => roomRepository.GetRoomsByFloors(null));
         }
     }
 }

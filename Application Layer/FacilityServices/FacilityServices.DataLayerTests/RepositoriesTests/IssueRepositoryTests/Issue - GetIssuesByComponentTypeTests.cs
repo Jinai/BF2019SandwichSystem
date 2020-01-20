@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OnlineServices.Common.FacilityServices.Interfaces.Repositories;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
 using OnlineServices.Common.TranslationServices.TransfertObjects;
+using System;
 using System.Linq;
 using System.Reflection;
 
@@ -14,7 +15,6 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
     public class GetIssuesByComponentTypesTests
     {
         [TestMethod]
-        //[Ignore]
         public void GetIssuesByComponentTypes_ReturnCoorectNumberOfCorrespondingIssues()
         {
             //ARRANGE
@@ -69,6 +69,22 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.IssueRepositoryTests
 
             Assert.IsNotNull(retrievedIssues);
             Assert.AreEqual(2, retrievedIssues.Count());
+        }
+
+        [TestMethod]
+        public void GetIssuesByComponentTypes_ThrowException_WhenNullIsSupplied()
+        {
+            //ARRANGE
+            var options = new DbContextOptionsBuilder<FacilityContext>()
+                .UseInMemoryDatabase(databaseName: MethodBase.GetCurrentMethod().Name)
+                .Options;
+
+            using var context = new FacilityContext(options);
+
+            var issueRepository = new IssueRepository(context);
+
+            //ACT & ASSERT
+            Assert.ThrowsException<ArgumentNullException>(() => issueRepository.GetIssuesByComponentType(null));
         }
     }
 }
