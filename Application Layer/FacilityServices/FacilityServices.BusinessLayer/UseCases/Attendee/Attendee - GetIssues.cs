@@ -7,9 +7,9 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AttendeeRole
     {
-        public List<IssueTO> GetIssues()
+        public List<IssueTO> GetIssuesByComponentType(ComponentTypeTO componentTypeTO)
         {
-            var issues = unitOfWork.IssueRepository.GetAll()
+            var issues = unitOfWork.IssueRepository.GetIssuesByComponentType(componentTypeTO)
                                                  .Select(f => f.ToDomain().ToTransfertObject());
 
             return issues.ToList();

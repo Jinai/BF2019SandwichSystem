@@ -8,9 +8,9 @@ namespace OnlineServices.Common.FacilityServices.Interfaces
     {
         public bool CreateIncident(IncidentTO incidentTO);
         public List<IncidentTO> GetUserIncidents(int userId);
-        public List<IssueTO> GetIssues();
+        public List<IssueTO> GetIssuesByComponentType(ComponentTypeTO componentTypeTO);
         public List<FloorTO> GetFloors();
-        public List<RoomTO> GetRooms();
-        public List<ComponentTypeTO> GetComponentTypes();
+        public List<RoomTO> GetRoomsByFloor(FloorTO floorTO);
+        public List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO roomTO);
     }
 }

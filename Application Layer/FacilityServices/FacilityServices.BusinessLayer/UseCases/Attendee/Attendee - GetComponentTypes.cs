@@ -7,7 +7,7 @@ namespace FacilityServices.BusinessLayer.UseCases
 {
     public partial class AttendeeRole
     {
-        public List<ComponentTypeTO> GetComponentTypes()
+        public List<ComponentTypeTO> GetComponentTypesByRoom(RoomTO roomTO)
         {
             var componentTypes = unitOfWork.ComponentTypeRepository.GetAll()
                                                  .Select(f => f.ToDomain().ToTransfertObject());
