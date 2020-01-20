@@ -1,5 +1,6 @@
 ﻿using FacilityServices.BusinessLayer.Domain;
 using OnlineServices.Common.FacilityServices.TransfertObjects;
+using System.Linq;
 
 namespace FacilityServices.BusinessLayer.Extensions
 {
@@ -13,6 +14,8 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Archived = RoomTO.Archived,
                 Floor = RoomTO.Floor.ToDomain(),
                 Name = RoomTO.Name,
+                ComponentTypes = RoomTO.ComponentTypes?.Select(x=>x.ToDomain()).ToList(),
+                
             };
         }
 
@@ -24,6 +27,7 @@ namespace FacilityServices.BusinessLayer.Extensions
                 Name = Room.Name,
                 Floor = Room.Floor.ToTransfertObject(),
                 Archived = Room.Archived,
+                ComponentTypes = Room.ComponentTypes?.Select(x => x.ToTransfertObject()).ToList(),
             };
         }
     }

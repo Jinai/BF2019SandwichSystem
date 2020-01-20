@@ -58,16 +58,18 @@ namespace FacilityServices.DataLayerTests.RepositoriesTests.ComponentTypeReposit
             var componentTypes1 = new List<ComponentTypeTO>() { componentType1, componentType2 };
             var componentTypes2 = new List<ComponentTypeTO>() { componentType1 };
 
-            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1, /*ComponentTypes = componentTypes1*/ };
-            RoomTO room2= new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1, /*ComponentTypes = componentTypes2*/};
+            RoomTO room1 = new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1, ComponentTypes = componentTypes1 };
+            RoomTO room2= new RoomTO { Name = new MultiLanguageString("Room1", "Room1", "Room1"), Floor = addedFloor1, ComponentTypes = componentTypes2 };
             var addedRoom1 = roomRepository.Add(room1);
             var addedRoom2 = roomRepository.Add(room2);
             context.SaveChanges();
 
             //ACT
             var result = componentTypeRepository.GetComponentTypesByRoom(addedRoom1);
+            var result2 = componentTypeRepository.GetComponentTypesByRoom(addedRoom2);
             //ASSERT
             Assert.AreEqual(2, result.Count());
+            Assert.AreEqual(1, result2.Count());
         }
     }
 }

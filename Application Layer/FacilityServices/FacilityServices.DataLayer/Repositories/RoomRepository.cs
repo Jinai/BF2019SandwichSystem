@@ -59,10 +59,10 @@ namespace FacilityServices.DataLayer.Repositories
             }
 
             return facilityContext.Rooms
-                                  .Include(r => r.Floor)
-                                  .Where(r => r.Floor.Id == Floor.Id && r.Floor.Archived != true)
-                                  .Select(r => r.ToTransfertObject())
-                                  .ToList();
+                .Include(r => r.Floor)
+                .Where(r => r.Floor.Id == Floor.Id && r.Floor.Archived != true)
+                .Select(r => r.ToTransfertObject())
+                .ToList();
         }
 
         public bool Remove(RoomTO entity)

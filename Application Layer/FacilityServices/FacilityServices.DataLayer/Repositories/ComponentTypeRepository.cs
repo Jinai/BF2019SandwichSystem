@@ -54,11 +54,14 @@ namespace FacilityServices.DataLayer.Repositories
             {
                 throw new ArgumentNullException(nameof(Room));
             }
-            return facilityContext.ComponentTypes
-                           .Include(r => r.RoomComponents)
-                           .ThenInclude(RoomComponents => RoomComponents.RoomId.Equals(Room.Id))
-                           .Select(x => x.ToTransfertObject())
-                           .ToList();
+            
+            return facilityContext.RoomComponents
+                //.Include(x => x.Room)
+                //.Include(x => x.ComponentType)
+                .Where(x => x.RoomId == Room.Id)
+                .Select(x => x.ComponentType.ToTransfertObject())
+                .ToList(); ;
+
         }
 
         public bool Remove(ComponentTypeTO entity)
